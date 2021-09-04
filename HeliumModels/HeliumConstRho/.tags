@@ -1,0 +1,35 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Foam	HeliumConstRho.C	/^namespace Foam$/;"	n	language:C++	file:
+Foam	HeliumConstRho.H	/^namespace Foam$/;"	n	language:C++
+Foam::viscosityModels	HeliumConstRho.C	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam	file:
+Foam::viscosityModels	HeliumConstRho.H	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam
+Foam::viscosityModels::HeliumConstRho	HeliumConstRho.H	/^class HeliumConstRho$/;"	c	language:C++	namespace:Foam::viscosityModels
+Foam::viscosityModels::HeliumConstRho::HeliumConstRho	HeliumConstRho.C	/^Foam::viscosityModels::HeliumConstRho::HeliumConstRho$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConstRho
+Foam::viscosityModels::HeliumConstRho::T_	HeliumConstRho.H	/^        const volScalarField& T_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConstRho
+Foam::viscosityModels::HeliumConstRho::calcHeProp	HeliumConstRho.C	/^void Foam::viscosityModels::HeliumConstRho::calcHeProp$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConstRho
+Foam::viscosityModels::HeliumConstRho::calcNu	HeliumConstRho.C	/^Foam::viscosityModels::HeliumConstRho::calcNu() $/;"	f	language:C++	class:Foam::viscosityModels::HeliumConstRho
+Foam::viscosityModels::HeliumConstRho::correct	HeliumConstRho.C	/^void Foam::viscosityModels::HeliumConstRho::correct()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConstRho
+Foam::viscosityModels::HeliumConstRho::nuMax_	HeliumConstRho.H	/^        dimensionedScalar nuMax_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConstRho
+Foam::viscosityModels::HeliumConstRho::nuMin_	HeliumConstRho.H	/^        dimensionedScalar nuMin_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConstRho
+Foam::viscosityModels::HeliumConstRho::override	HeliumConstRho.H	/^        virtual void correct() override;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConstRho
+Foam::viscosityModels::HeliumConstRho::~HeliumConstRho	HeliumConstRho.H	/^    virtual ~HeliumConstRho()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConstRho
+HeliumConstRho	HeliumConstRho.C	/^Foam::viscosityModels::HeliumConstRho::HeliumConstRho$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConstRho
+HeliumConstRho	HeliumConstRho.H	/^class HeliumConstRho$/;"	c	language:C++	namespace:Foam::viscosityModels
+HeliumConstRho.C	HeliumConstRho.C	1;"	F	language:C++
+HeliumConstRho.H	HeliumConstRho.H	1;"	F	language:C++
+HeliumConstRho_H	HeliumConstRho.H	37;"	d	language:C++
+T_	HeliumConstRho.H	/^        const volScalarField& T_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConstRho
+calcHeProp	HeliumConstRho.C	/^void Foam::viscosityModels::HeliumConstRho::calcHeProp$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConstRho
+calcNu	HeliumConstRho.C	/^Foam::viscosityModels::HeliumConstRho::calcNu() $/;"	f	language:C++	class:Foam::viscosityModels::HeliumConstRho
+correct	HeliumConstRho.C	/^void Foam::viscosityModels::HeliumConstRho::correct()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConstRho
+nuMax_	HeliumConstRho.H	/^        dimensionedScalar nuMax_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConstRho
+nuMin_	HeliumConstRho.H	/^        dimensionedScalar nuMin_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConstRho
+override	HeliumConstRho.H	/^        virtual void correct() override;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConstRho
+viscosityModels	HeliumConstRho.C	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam	file:
+viscosityModels	HeliumConstRho.H	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam
+~HeliumConstRho	HeliumConstRho.H	/^    virtual ~HeliumConstRho()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConstRho

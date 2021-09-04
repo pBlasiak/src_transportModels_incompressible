@@ -1,0 +1,82 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AGMHeTable_	HeliumConst.H	/^		static const List<scalar> AGMHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+AGMHe_	HeliumConst.H	/^        volScalarField AGMHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam	HeliumConst.C	/^namespace Foam$/;"	n	language:C++	file:
+Foam	HeliumConst.H	/^namespace Foam$/;"	n	language:C++
+Foam::viscosityModels	HeliumConst.C	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam	file:
+Foam::viscosityModels	HeliumConst.H	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam
+Foam::viscosityModels::HeliumConst	HeliumConst.H	/^class HeliumConst$/;"	c	language:C++	namespace:Foam::viscosityModels
+Foam::viscosityModels::HeliumConst::AGMHeTable_	HeliumConst.H	/^		static const List<scalar> AGMHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::AGMHe_	HeliumConst.H	/^        volScalarField AGMHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::HeliumConst	HeliumConst.C	/^Foam::viscosityModels::HeliumConst::HeliumConst$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::HeliumConstCoeffs_	HeliumConst.H	/^        dictionary HeliumConstCoeffs_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::TMax_	HeliumConst.H	/^		static const dimensionedScalar TMax_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::TMean_	HeliumConst.H	/^		dimensionedScalar TMean_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::TMin_	HeliumConst.H	/^		static const dimensionedScalar TMin_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::Tlambda	HeliumConst.H	/^		static const dimensionedScalar Tlambda() $/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::Tlambda_	HeliumConst.H	/^		static const dimensionedScalar Tlambda_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::betaHeTable_	HeliumConst.H	/^		static const List<scalar> betaHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::betaHe_	HeliumConst.H	/^        volScalarField betaHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::calcHeProp	HeliumConst.C	/^void Foam::viscosityModels::HeliumConst::calcHeProp$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::calcNu	HeliumConst.C	/^Foam::viscosityModels::HeliumConst::calcNu() $/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::correct	HeliumConst.C	/^void Foam::viscosityModels::HeliumConst::correct()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::cpHeTable_	HeliumConst.H	/^		static const List<scalar> cpHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::cpHe_	HeliumConst.H	/^        volScalarField cpHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::dT_	HeliumConst.H	/^		static const scalar dT_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::etaHeTable_	HeliumConst.H	/^		static const List<scalar> etaHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::etaHe_	HeliumConst.H	/^        volScalarField etaHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::indexMax_	HeliumConst.H	/^		static const label indexMax_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::indexMin_	HeliumConst.H	/^		static const label indexMin_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::nu_	HeliumConst.H	/^        volScalarField nu_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::onebyfTable_	HeliumConst.H	/^		static const List<scalar> onebyfTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::onebyf_	HeliumConst.H	/^        volScalarField onebyf_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::override	HeliumConst.H	/^        virtual bool read(const dictionary& viscosityProperties) override;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::override	HeliumConst.H	/^        virtual void correct() override;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::read	HeliumConst.C	/^bool Foam::viscosityModels::HeliumConst::read$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::rhoHeTable_	HeliumConst.H	/^		static const List<scalar> rhoHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::rhoHe_	HeliumConst.H	/^        volScalarField rhoHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::sHeTable_	HeliumConst.H	/^		static const List<scalar> sHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::sHe_	HeliumConst.H	/^        volScalarField sHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Foam::viscosityModels::HeliumConst::~HeliumConst	HeliumConst.H	/^    virtual ~HeliumConst()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+HeliumConst	HeliumConst.C	/^Foam::viscosityModels::HeliumConst::HeliumConst$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+HeliumConst	HeliumConst.H	/^class HeliumConst$/;"	c	language:C++	namespace:Foam::viscosityModels
+HeliumConst.C	HeliumConst.C	1;"	F	language:C++
+HeliumConst.H	HeliumConst.H	1;"	F	language:C++
+HeliumConstCoeffs_	HeliumConst.H	/^        dictionary HeliumConstCoeffs_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+HeliumConst_H	HeliumConst.H	36;"	d	language:C++
+TMax_	HeliumConst.H	/^		static const dimensionedScalar TMax_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+TMean_	HeliumConst.H	/^		dimensionedScalar TMean_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+TMin_	HeliumConst.H	/^		static const dimensionedScalar TMin_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+Tlambda	HeliumConst.H	/^		static const dimensionedScalar Tlambda() $/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+Tlambda_	HeliumConst.H	/^		static const dimensionedScalar Tlambda_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+betaHeTable_	HeliumConst.H	/^		static const List<scalar> betaHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+betaHe_	HeliumConst.H	/^        volScalarField betaHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+calcHeProp	HeliumConst.C	/^void Foam::viscosityModels::HeliumConst::calcHeProp$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+calcNu	HeliumConst.C	/^Foam::viscosityModels::HeliumConst::calcNu() $/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+correct	HeliumConst.C	/^void Foam::viscosityModels::HeliumConst::correct()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+cpHeTable_	HeliumConst.H	/^		static const List<scalar> cpHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+cpHe_	HeliumConst.H	/^        volScalarField cpHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+dT_	HeliumConst.H	/^		static const scalar dT_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+etaHeTable_	HeliumConst.H	/^		static const List<scalar> etaHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+etaHe_	HeliumConst.H	/^        volScalarField etaHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+indexMax_	HeliumConst.H	/^		static const label indexMax_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+indexMin_	HeliumConst.H	/^		static const label indexMin_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+nu_	HeliumConst.H	/^        volScalarField nu_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+onebyfTable_	HeliumConst.H	/^		static const List<scalar> onebyfTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+onebyf_	HeliumConst.H	/^        volScalarField onebyf_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+override	HeliumConst.H	/^        virtual bool read(const dictionary& viscosityProperties) override;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+override	HeliumConst.H	/^        virtual void correct() override;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+read	HeliumConst.C	/^bool Foam::viscosityModels::HeliumConst::read$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst
+rhoHeTable_	HeliumConst.H	/^		static const List<scalar> rhoHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+rhoHe_	HeliumConst.H	/^        volScalarField rhoHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+sHeTable_	HeliumConst.H	/^		static const List<scalar> sHeTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+sHe_	HeliumConst.H	/^        volScalarField sHe_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumConst
+staticTables.H	staticTables.H	1;"	F	language:C++
+viscosityModels	HeliumConst.C	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam	file:
+viscosityModels	HeliumConst.H	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam
+~HeliumConst	HeliumConst.H	/^    virtual ~HeliumConst()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumConst

@@ -1,0 +1,34 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Foam	HeliumFineOnebyfConstRho.C	/^namespace Foam$/;"	n	language:C++	file:
+Foam	HeliumFineOnebyfConstRho.H	/^namespace Foam$/;"	n	language:C++
+Foam::viscosityModels	HeliumFineOnebyfConstRho.C	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam	file:
+Foam::viscosityModels	HeliumFineOnebyfConstRho.H	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam
+Foam::viscosityModels::HeliumFineOnebyfConstRho	HeliumFineOnebyfConstRho.H	/^class HeliumFineOnebyfConstRho$/;"	c	language:C++	namespace:Foam::viscosityModels
+Foam::viscosityModels::HeliumFineOnebyfConstRho::HeliumFineOnebyfConstRho	HeliumFineOnebyfConstRho.C	/^Foam::viscosityModels::HeliumFineOnebyfConstRho::HeliumFineOnebyfConstRho$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+Foam::viscosityModels::HeliumFineOnebyfConstRho::correct	HeliumFineOnebyfConstRho.C	/^void Foam::viscosityModels::HeliumFineOnebyfConstRho::correct()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+Foam::viscosityModels::HeliumFineOnebyfConstRho::dTFineOnebyf_	HeliumFineOnebyfConstRho.H	/^		static const scalar dTFineOnebyf_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+Foam::viscosityModels::HeliumFineOnebyfConstRho::fineOnebyf	HeliumFineOnebyfConstRho.C	/^void Foam::viscosityModels::HeliumFineOnebyfConstRho::fineOnebyf()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+Foam::viscosityModels::HeliumFineOnebyfConstRho::fineOnebyfTable_	HeliumFineOnebyfConstRho.H	/^		static const List<scalar> fineOnebyfTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+Foam::viscosityModels::HeliumFineOnebyfConstRho::largeIndex_	HeliumFineOnebyfConstRho.H	/^		static const label largeIndex_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+Foam::viscosityModels::HeliumFineOnebyfConstRho::override	HeliumFineOnebyfConstRho.H	/^        virtual void correct() override;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+Foam::viscosityModels::HeliumFineOnebyfConstRho::~HeliumFineOnebyfConstRho	HeliumFineOnebyfConstRho.H	/^    virtual ~HeliumFineOnebyfConstRho()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+HeliumFineOnebyfConstRho	HeliumFineOnebyfConstRho.C	/^Foam::viscosityModels::HeliumFineOnebyfConstRho::HeliumFineOnebyfConstRho$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+HeliumFineOnebyfConstRho	HeliumFineOnebyfConstRho.H	/^class HeliumFineOnebyfConstRho$/;"	c	language:C++	namespace:Foam::viscosityModels
+HeliumFineOnebyfConstRho.C	HeliumFineOnebyfConstRho.C	1;"	F	language:C++
+HeliumFineOnebyfConstRho.H	HeliumFineOnebyfConstRho.H	1;"	F	language:C++
+HeliumFineOnebyfConstRho_H	HeliumFineOnebyfConstRho.H	38;"	d	language:C++
+correct	HeliumFineOnebyfConstRho.C	/^void Foam::viscosityModels::HeliumFineOnebyfConstRho::correct()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+dTFineOnebyf_	HeliumFineOnebyfConstRho.H	/^		static const scalar dTFineOnebyf_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+fineOnebyf	HeliumFineOnebyfConstRho.C	/^void Foam::viscosityModels::HeliumFineOnebyfConstRho::fineOnebyf()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+fineOnebyf.H	fineOnebyf.H	1;"	F	language:C++
+fineOnebyfTable_	HeliumFineOnebyfConstRho.H	/^		static const List<scalar> fineOnebyfTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+largeIndex_	HeliumFineOnebyfConstRho.H	/^		static const label largeIndex_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+override	HeliumFineOnebyfConstRho.H	/^        virtual void correct() override;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho
+viscosityModels	HeliumFineOnebyfConstRho.C	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam	file:
+viscosityModels	HeliumFineOnebyfConstRho.H	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam
+~HeliumFineOnebyfConstRho	HeliumFineOnebyfConstRho.H	/^    virtual ~HeliumFineOnebyfConstRho()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyfConstRho

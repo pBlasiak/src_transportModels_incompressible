@@ -1,0 +1,34 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Foam	HeliumFineOnebyf.C	/^namespace Foam$/;"	n	language:C++	file:
+Foam	HeliumFineOnebyf.H	/^namespace Foam$/;"	n	language:C++
+Foam::viscosityModels	HeliumFineOnebyf.C	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam	file:
+Foam::viscosityModels	HeliumFineOnebyf.H	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam
+Foam::viscosityModels::HeliumFineOnebyf	HeliumFineOnebyf.H	/^class HeliumFineOnebyf$/;"	c	language:C++	namespace:Foam::viscosityModels
+Foam::viscosityModels::HeliumFineOnebyf::HeliumFineOnebyf	HeliumFineOnebyf.C	/^Foam::viscosityModels::HeliumFineOnebyf::HeliumFineOnebyf$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+Foam::viscosityModels::HeliumFineOnebyf::correct	HeliumFineOnebyf.C	/^void Foam::viscosityModels::HeliumFineOnebyf::correct()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+Foam::viscosityModels::HeliumFineOnebyf::dTFineOnebyf_	HeliumFineOnebyf.H	/^		static const scalar dTFineOnebyf_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+Foam::viscosityModels::HeliumFineOnebyf::fineOnebyf	HeliumFineOnebyf.C	/^void Foam::viscosityModels::HeliumFineOnebyf::fineOnebyf()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+Foam::viscosityModels::HeliumFineOnebyf::fineOnebyfTable_	HeliumFineOnebyf.H	/^		static const List<scalar> fineOnebyfTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+Foam::viscosityModels::HeliumFineOnebyf::largeIndex_	HeliumFineOnebyf.H	/^		static const label largeIndex_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+Foam::viscosityModels::HeliumFineOnebyf::override	HeliumFineOnebyf.H	/^        virtual void correct() override;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+Foam::viscosityModels::HeliumFineOnebyf::~HeliumFineOnebyf	HeliumFineOnebyf.H	/^    virtual ~HeliumFineOnebyf()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+HeliumFineOnebyf	HeliumFineOnebyf.C	/^Foam::viscosityModels::HeliumFineOnebyf::HeliumFineOnebyf$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+HeliumFineOnebyf	HeliumFineOnebyf.H	/^class HeliumFineOnebyf$/;"	c	language:C++	namespace:Foam::viscosityModels
+HeliumFineOnebyf.C	HeliumFineOnebyf.C	1;"	F	language:C++
+HeliumFineOnebyf.H	HeliumFineOnebyf.H	1;"	F	language:C++
+HeliumFineOnebyf_H	HeliumFineOnebyf.H	37;"	d	language:C++
+correct	HeliumFineOnebyf.C	/^void Foam::viscosityModels::HeliumFineOnebyf::correct()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+dTFineOnebyf_	HeliumFineOnebyf.H	/^		static const scalar dTFineOnebyf_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+fineOnebyf	HeliumFineOnebyf.C	/^void Foam::viscosityModels::HeliumFineOnebyf::fineOnebyf()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+fineOnebyf.H	fineOnebyf.H	1;"	F	language:C++
+fineOnebyfTable_	HeliumFineOnebyf.H	/^		static const List<scalar> fineOnebyfTable_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+largeIndex_	HeliumFineOnebyf.H	/^		static const label largeIndex_;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+override	HeliumFineOnebyf.H	/^        virtual void correct() override;$/;"	m	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf
+viscosityModels	HeliumFineOnebyf.C	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam	file:
+viscosityModels	HeliumFineOnebyf.H	/^namespace viscosityModels$/;"	n	language:C++	namespace:Foam
+~HeliumFineOnebyf	HeliumFineOnebyf.H	/^    virtual ~HeliumFineOnebyf()$/;"	f	language:C++	class:Foam::viscosityModels::HeliumFineOnebyf

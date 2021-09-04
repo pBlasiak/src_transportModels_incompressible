@@ -1,0 +1,34 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Foam	viscosityModel.C	/^namespace Foam$/;"	n	language:C++	file:
+Foam	viscosityModel.H	/^namespace Foam$/;"	n	language:C++
+Foam::viscosityModel	viscosityModel.H	/^class viscosityModel$/;"	c	language:C++	namespace:Foam
+Foam::viscosityModel::New	viscosityModelNew.C	/^Foam::autoPtr<Foam::viscosityModel> Foam::viscosityModel::New$/;"	f	language:C++	class:Foam::viscosityModel
+Foam::viscosityModel::U_	viscosityModel.H	/^        const volVectorField& U_;$/;"	m	language:C++	class:Foam::viscosityModel
+Foam::viscosityModel::name_	viscosityModel.H	/^        word name_;$/;"	m	language:C++	class:Foam::viscosityModel
+Foam::viscosityModel::phi_	viscosityModel.H	/^        const surfaceScalarField& phi_;$/;"	m	language:C++	class:Foam::viscosityModel
+Foam::viscosityModel::read	viscosityModel.C	/^bool Foam::viscosityModel::read(const dictionary& viscosityProperties)$/;"	f	language:C++	class:Foam::viscosityModel
+Foam::viscosityModel::strainRate	viscosityModel.C	/^Foam::tmp<Foam::volScalarField> Foam::viscosityModel::strainRate() const$/;"	f	language:C++	class:Foam::viscosityModel
+Foam::viscosityModel::viscosityModel	viscosityModel.C	/^Foam::viscosityModel::viscosityModel$/;"	f	language:C++	class:Foam::viscosityModel
+Foam::viscosityModel::viscosityProperties	viscosityModel.H	/^        const dictionary& viscosityProperties() const$/;"	f	language:C++	class:Foam::viscosityModel
+Foam::viscosityModel::viscosityProperties_	viscosityModel.H	/^        dictionary viscosityProperties_;$/;"	m	language:C++	class:Foam::viscosityModel
+Foam::viscosityModel::~viscosityModel	viscosityModel.H	/^    virtual ~viscosityModel()$/;"	f	language:C++	class:Foam::viscosityModel
+New	viscosityModelNew.C	/^Foam::autoPtr<Foam::viscosityModel> Foam::viscosityModel::New$/;"	f	language:C++	class:Foam::viscosityModel
+U_	viscosityModel.H	/^        const volVectorField& U_;$/;"	m	language:C++	class:Foam::viscosityModel
+name_	viscosityModel.H	/^        word name_;$/;"	m	language:C++	class:Foam::viscosityModel
+phi_	viscosityModel.H	/^        const surfaceScalarField& phi_;$/;"	m	language:C++	class:Foam::viscosityModel
+read	viscosityModel.C	/^bool Foam::viscosityModel::read(const dictionary& viscosityProperties)$/;"	f	language:C++	class:Foam::viscosityModel
+strainRate	viscosityModel.C	/^Foam::tmp<Foam::volScalarField> Foam::viscosityModel::strainRate() const$/;"	f	language:C++	class:Foam::viscosityModel
+viscosityModel	viscosityModel.C	/^Foam::viscosityModel::viscosityModel$/;"	f	language:C++	class:Foam::viscosityModel
+viscosityModel	viscosityModel.H	/^class viscosityModel$/;"	c	language:C++	namespace:Foam
+viscosityModel.C	viscosityModel.C	1;"	F	language:C++
+viscosityModel.H	viscosityModel.H	1;"	F	language:C++
+viscosityModelNew.C	viscosityModelNew.C	1;"	F	language:C++
+viscosityModel_H	viscosityModel.H	48;"	d	language:C++
+viscosityProperties	viscosityModel.H	/^        const dictionary& viscosityProperties() const$/;"	f	language:C++	class:Foam::viscosityModel
+viscosityProperties_	viscosityModel.H	/^        dictionary viscosityProperties_;$/;"	m	language:C++	class:Foam::viscosityModel
+~viscosityModel	viscosityModel.H	/^    virtual ~viscosityModel()$/;"	f	language:C++	class:Foam::viscosityModel
