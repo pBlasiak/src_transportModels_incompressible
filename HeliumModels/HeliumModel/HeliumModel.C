@@ -33,6 +33,19 @@ namespace Foam
     defineTypeNameAndDebug(HeliumModel, 0);
     defineRunTimeSelectionTable(HeliumModel, dictionary);
 
+	const Enum<HeliumModel::HeliumThermalPropertiesType>
+	HeliumModel::HeliumThermalPropertiesTypeNames_
+	({
+        { HeliumThermalPropertiesType::thermalExpansion, "beta" },
+        { HeliumThermalPropertiesType::AGMCoeff, "AGM" },
+        { HeliumThermalPropertiesType::entropy, "s" },
+        { HeliumThermalPropertiesType::dynamicViscosity, "eta" },
+        { HeliumThermalPropertiesType::specificHeatCapacity, "cp" },
+        { HeliumThermalPropertiesType::oneByf, "oneByf" },
+        { HeliumThermalPropertiesType::density, "rho" }
+	 }
+	);
+
 	const Foam::dimensionedScalar
 	Foam::HeliumModel::Tlambda_("Tlambda", dimTemperature, 2.1711132461);
 
@@ -81,7 +94,6 @@ Foam::HeliumModel::HeliumModel
         ),
         U.mesh(),
 		TMin_
-		//dimensionedScalar("betaHe", dimless/dimTemperature, 0.0)
     ),
     TMaxField_
     (
@@ -95,7 +107,6 @@ Foam::HeliumModel::HeliumModel
         ),
         U.mesh(),
 		TMax_
-		//dimensionedScalar("betaHe", dimless/dimTemperature, 0.0)
     ),
     betaHe_
     (
@@ -209,8 +220,27 @@ Foam::HeliumModel::HeliumModel
         U.mesh(),
 		dimensionedScalar("nuHe", dimViscosity, 0.0)
     ),
-	HeThermProps_(3)
-{}
+	HeThermProps_(7),
+	HeThermPropsTables_(7)
+{
+	// Initializing pointers to thermal-flow properties
+	HeThermProps_.set(0, &betaHe_);
+	HeThermProps_.set(1, &AGMHe_);
+	HeThermProps_.set(2, &sHe_);
+	HeThermProps_.set(3, &etaHe_);
+	HeThermProps_.set(4, &cpHe_);
+	HeThermProps_.set(5, &onebyf_);
+	HeThermProps_.set(6, &rhoHe_);
+
+	// Initializing pointers to thermal-flow properties tables
+	HeThermPropsTables_.set(0, &betaHeTable_);
+	HeThermPropsTables_.set(1, &AGMHeTable_);
+	HeThermPropsTables_.set(2, &sHeTable_);
+	HeThermPropsTables_.set(3, &etaHeTable_);
+	HeThermPropsTables_.set(4, &cpHeTable_);
+	HeThermPropsTables_.set(5, &onebyfTable_);
+	HeThermPropsTables_.set(6, &rhoHeTable_);
+}
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
@@ -222,8 +252,8 @@ Foam::HeliumModel::HeliumModel
 // but I do not know how to implement this so far.
 void Foam::HeliumModel::calcHeProp
 (
-    volScalarField& vsf, 
-	const List<scalar>& vsfTable,
+    //volScalarField& vsf, 
+	//const List<scalar>& vsfTable,
 	const volScalarField& T,
 	const label maxIndex, 
 	const dimensionedScalar dt
@@ -232,64 +262,112 @@ void Foam::HeliumModel::calcHeProp
 	const scalar TMin(TMin_.value());
 	const scalar TMax(TMax_.value());
 	const scalar dT(dt.value());
-	forAll(vsf, celli)
+	forAll(T, celli)
 	{
 		if (T[celli] < TMin)
 		{
-			vsf[celli] = vsfTable[indexMin_];
+			PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
+			forAllIters(HeThermProps_, iter)
+			{
+				iter()[celli] = iterTable()[indexMin_];
+				iterTable++;
+				//HeThermProps_[iter][celli] = vsfTable[indexMin_];
+			}
 		}
 		else if (T[celli] > TMax)
 		{
-			vsf[celli] = vsfTable[maxIndex];
+			PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
+			forAllIters(HeThermProps_, iter)
+			{
+				iter()[celli] = iterTable()[maxIndex];
+				iterTable++;
+			}
 		}
 		else
 		{
-			label index = (T[celli] - TMin)/dT;
-			if (index == maxIndex)
-			{
-				vsf[celli] = vsfTable[maxIndex];
-			}
-			else
-			{
-				scalar Ti1 = TMin + index*dT;
-				scalar Ti2 = Ti1 + dT;
-				scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
-				scalar b = vsfTable[index] - a*Ti1;
-				vsf[celli] = a*T[celli] + b;
-			}
-		}
+		    label index = (T[celli] - TMin)/dT;
+		    if (index == maxIndex)
+		    {
+		    	PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
+		    	forAllIters(HeThermProps_, iter)
+		    	{
+		    		iter()[celli] = iterTable()[maxIndex];
+					iterTable++;
+		    	}
+		    }
+		    else
+		    {
+		    	scalar Ti1 = TMin + index*dT;
+		    	scalar Ti2 = Ti1 + dT;
+		    	PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
+		    	forAllIters(HeThermProps_, iter)
+		    	{
+		    		scalar a = (iterTable()[index + 1] - iterTable()[index])/(Ti2 - Ti1);
+		    		scalar b = iterTable()[index] - a*Ti1;
+		    		iter()[celli] = a*T[celli] + b;
+					iterTable++;
+		    	}
+		    }
+        }
 	}
+	//forAll(vsf, celli)
+	//{
+	//	if (T[celli] < TMin)
+	//	{
+	//		vsf[celli] = vsfTable[indexMin_];
+	//	}
+	//	else if (T[celli] > TMax)
+	//	{
+	//		vsf[celli] = vsfTable[maxIndex];
+	//	}
+	//	else
+	//	{
+	//		label index = (T[celli] - TMin)/dT;
+	//		if (index == maxIndex)
+	//		{
+	//			vsf[celli] = vsfTable[maxIndex];
+	//		}
+	//		else
+	//		{
+	//			scalar Ti1 = TMin + index*dT;
+	//			scalar Ti2 = Ti1 + dT;
+	//			scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
+	//			scalar b = vsfTable[index] - a*Ti1;
+	//			vsf[celli] = a*T[celli] + b;
+	//		}
+	//	}
+	//}
 
-	forAll(vsf.boundaryField(), patchi)
-	{
-		forAll(vsf.boundaryField()[patchi], facei)
-		{
-			if (T[facei] < TMin)
-			{
-				vsf.boundaryFieldRef()[patchi][facei] = vsfTable[indexMin_];
-			}
-			else if (T[facei] > TMax)
-			{
-				vsf.boundaryFieldRef()[patchi][facei] = vsfTable[maxIndex];
-			}
-			else
-			{
-				label index = (T[facei] - TMin)/dT;
-				if (index == maxIndex)
-				{
-					vsf.boundaryFieldRef()[patchi][facei] = vsfTable[maxIndex];
-				}
-				else
-				{
-					scalar Ti1 = TMin + index*dT;
-					scalar Ti2 = Ti1 + dT;
-					scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
-					scalar b = vsfTable[index] - a*Ti1;
-					vsf.boundaryFieldRef()[patchi][facei] = a*T[facei] + b;
-				}
-			}
-		}
-	}
+	//forAll(vsf.boundaryField(), patchi)
+	//{
+	//	forAll(vsf.boundaryField()[patchi], facei)
+	//	{
+	//		if (T[facei] < TMin)
+	//		{
+	//			vsf.boundaryFieldRef()[patchi][facei] = vsfTable[indexMin_];
+	//		}
+	//		else if (T[facei] > TMax)
+	//		{
+	//			vsf.boundaryFieldRef()[patchi][facei] = vsfTable[maxIndex];
+	//		}
+	//		else
+	//		{
+	//			label index = (T[facei] - TMin)/dT;
+	//			if (index == maxIndex)
+	//			{
+	//				vsf.boundaryFieldRef()[patchi][facei] = vsfTable[maxIndex];
+	//			}
+	//			else
+	//			{
+	//				scalar Ti1 = TMin + index*dT;
+	//				scalar Ti2 = Ti1 + dT;
+	//				scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
+	//				scalar b = vsfTable[index] - a*Ti1;
+	//				vsf.boundaryFieldRef()[patchi][facei] = a*T[facei] + b;
+	//			}
+	//		}
+	//	}
+	//}
 }
 
 

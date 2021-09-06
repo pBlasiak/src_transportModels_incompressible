@@ -64,9 +64,9 @@ class HeliumModel
 public:
 
         //- Enumeration listing the possible helium thermal properties 
-        enum HeliumThermalPropertiesType
+        enum class HeliumThermalPropertiesType
         {
-            thermlExpansion,
+            thermalExpansion,
 			AGMCoeff,
 			entropy,
 			dynamicViscosity,
@@ -156,12 +156,13 @@ protected:
         volScalarField nu_;
 
 		PtrList<volScalarField> HeThermProps_;
+		PtrList<const List<scalar> > HeThermPropsTables_;
 
 		//- Calculates helium thermal property based on temperature
         void calcHeProp
 		(
-		    volScalarField& vsf, 
-			const List<scalar>& vsfTable,
+		    //volScalarField& vsf, 
+			//const List<scalar>& vsfTable,
 			const volScalarField& T,
 			const label maxIndex = indexMax_,
 			const dimensionedScalar dt = dT_
