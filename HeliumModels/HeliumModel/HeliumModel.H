@@ -60,11 +60,27 @@ namespace Foam
 
 class HeliumModel
 {
-    // Private data
+    // Public data
+public:
+
+        //- Enumeration listing the possible helium thermal properties 
+        enum HeliumThermalPropertiesType
+        {
+            thermlExpansion,
+			AGMCoeff,
+			entropy,
+			dynamicViscosity,
+			specificHeatCapacity,
+			oneByf,
+			density
+        };
 
 protected:
 
     // Protected data
+	
+        //- Helium thermal properties types
+        static const Enum<HeliumThermalPropertiesType> HeliumThermalPropertiesTypeNames_;
 	
 		//- Maximum index number for thermophysical tables i = 667
 		static const label indexMax_;
@@ -105,6 +121,7 @@ protected:
 		//- Table for rhoHe
 		static const List<scalar> rhoHeTable_;
 
+
         word name_;
         dictionary HeliumProperties_;
 
@@ -137,6 +154,8 @@ protected:
 
         //- Kinematic Helium
         volScalarField nu_;
+
+		PtrList<volScalarField> HeThermProps_;
 
 		//- Calculates helium thermal property based on temperature
         void calcHeProp

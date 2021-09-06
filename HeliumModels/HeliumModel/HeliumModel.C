@@ -208,7 +208,8 @@ Foam::HeliumModel::HeliumModel
         //calcNu()
         U.mesh(),
 		dimensionedScalar("nuHe", dimViscosity, 0.0)
-    )
+    ),
+	HeThermProps_(3)
 {}
 
 
