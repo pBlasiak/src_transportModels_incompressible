@@ -119,7 +119,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("betaHe", dimless/dimTemperature, 0.0)
+		dimensionedScalar("betaHe", dimless/dimTemperature, 0.0),
+		"zeroGradient"
     ),
 
     AGMHe_
@@ -133,7 +134,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("AGM", dimensionSet(-1,1,1,0,0,0,0), 0.0)
+		dimensionedScalar("AGM", dimensionSet(-1,1,1,0,0,0,0), 0.0),
+		"zeroGradient"
     ),
 
     sHe_
@@ -147,7 +149,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("sHe", dimensionSet(0,2,-2,-1,0,0,0), 0.0)
+		dimensionedScalar("sHe", dimensionSet(0,2,-2,-1,0,0,0), 0.0),
+		"zeroGradient"
     ),
 
     etaHe_
@@ -161,7 +164,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("etaHe", dimensionSet(1,-1,-1,0,0,0,0), 0.0)
+		dimensionedScalar("etaHe", dimensionSet(1,-1,-1,0,0,0,0), 0.0),
+		"zeroGradient"
     ),
 
     cpHe_
@@ -175,7 +179,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("cpHe", dimensionSet(0,2,-2,-1,0,0,0), 0.0)
+		dimensionedScalar("cpHe", dimensionSet(0,2,-2,-1,0,0,0), 0.0),
+		"zeroGradient"
     ),
 	
     onebyf_
@@ -189,7 +194,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("onebyf", dimensionSet(3,1,-9,-1,0,0,0), 0.0)
+		dimensionedScalar("onebyf", dimensionSet(3,1,-9,-1,0,0,0), 0.0),
+		"zeroGradient"
     ),
 
     rhoHe_
@@ -203,7 +209,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("rhoHe", dimDensity, 0.0)
+		dimensionedScalar("rhoHe", dimDensity, 0.0),
+		"zeroGradient"
     ),
 
     nu_
@@ -218,7 +225,8 @@ Foam::HeliumModel::HeliumModel
         ),
         //calcNu()
         U.mesh(),
-		dimensionedScalar("nuHe", dimViscosity, 0.0)
+		dimensionedScalar("nuHe", dimViscosity, 0.0),
+		"zeroGradient"
     ),
 	HeThermProps_(7),
 	HeThermPropsTables_(7)
@@ -252,8 +260,8 @@ Foam::HeliumModel::HeliumModel
 // but I do not know how to implement this so far.
 void Foam::HeliumModel::calcHeProp
 (
-    //volScalarField& vsf, 
-	//const List<scalar>& vsfTable,
+    volScalarField& vsf, 
+	const List<scalar>& vsfTable,
 	const volScalarField& T,
 	const label maxIndex, 
 	const dimensionedScalar dt
@@ -262,81 +270,93 @@ void Foam::HeliumModel::calcHeProp
 	const scalar TMin(TMin_.value());
 	const scalar TMax(TMax_.value());
 	const scalar dT(dt.value());
-	forAll(T, celli)
-	{
-		if (T[celli] < TMin)
-		{
-			PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-			forAllIters(HeThermProps_, iter)
-			{
-				iter()[celli] = iterTable()[indexMin_];
-				iterTable++;
-				//HeThermProps_[iter][celli] = vsfTable[indexMin_];
-			}
-		}
-		else if (T[celli] > TMax)
-		{
-			PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-			forAllIters(HeThermProps_, iter)
-			{
-				iter()[celli] = iterTable()[maxIndex];
-				iterTable++;
-			}
-		}
-		else
-		{
-		    label index = (T[celli] - TMin)/dT;
-		    if (index == maxIndex)
-		    {
-		    	PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-		    	forAllIters(HeThermProps_, iter)
-		    	{
-		    		iter()[celli] = iterTable()[maxIndex];
-					iterTable++;
-		    	}
-		    }
-		    else
-		    {
-		    	scalar Ti1 = TMin + index*dT;
-		    	scalar Ti2 = Ti1 + dT;
-		    	PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-		    	forAllIters(HeThermProps_, iter)
-		    	{
-		    		scalar a = (iterTable()[index + 1] - iterTable()[index])/(Ti2 - Ti1);
-		    		scalar b = iterTable()[index] - a*Ti1;
-		    		iter()[celli] = a*T[celli] + b;
-					iterTable++;
-		    	}
-		    }
-        }
-	}
-	//forAll(vsf, celli)
+
+	// Solution with iterators
+	//forAll(T, celli)
 	//{
 	//	if (T[celli] < TMin)
 	//	{
-	//		vsf[celli] = vsfTable[indexMin_];
+	//		PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
+	//		forAllIters(HeThermProps_, iter)
+	//		{
+	//			iter()[celli] = iterTable()[indexMin_];
+	//			iterTable++;
+	//		}
 	//	}
 	//	else if (T[celli] > TMax)
 	//	{
-	//		vsf[celli] = vsfTable[maxIndex];
+	//		PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
+	//		forAllIters(HeThermProps_, iter)
+	//		{
+	//			iter()[celli] = iterTable()[maxIndex];
+	//			iterTable++;
+	//		}
 	//	}
 	//	else
 	//	{
-	//		label index = (T[celli] - TMin)/dT;
-	//		if (index == maxIndex)
-	//		{
-	//			vsf[celli] = vsfTable[maxIndex];
-	//		}
-	//		else
-	//		{
-	//			scalar Ti1 = TMin + index*dT;
-	//			scalar Ti2 = Ti1 + dT;
-	//			scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
-	//			scalar b = vsfTable[index] - a*Ti1;
-	//			vsf[celli] = a*T[celli] + b;
-	//		}
-	//	}
+	//	    label index = (T[celli] - TMin)/dT;
+	//	    if (index == maxIndex)
+	//	    {
+	//	    	PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
+	//	    	forAllIters(HeThermProps_, iter)
+	//	    	{
+	//	    		iter()[celli] = iterTable()[maxIndex];
+	//				iterTable++;
+	//	    	}
+	//	    }
+	//	    else
+	//	    {
+	//	    	scalar Ti1 = TMin + index*dT;
+	//	    	scalar Ti2 = Ti1 + dT;
+	//	    	PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
+	//	    	forAllIters(HeThermProps_, iter)
+	//	    	{
+	//	    		scalar a = (iterTable()[index + 1] - iterTable()[index])/(Ti2 - Ti1);
+	//	    		scalar b = iterTable()[index] - a*Ti1;
+	//	    		iter()[celli] = a*T[celli] + b;
+	//				iterTable++;
+	//	    	}
+	//	    }
+    //    }
 	//}
+
+	//forAllIters(HeThermProps_, iter)
+	//{
+	//	iter->correctBoundaryConditions();
+	//}
+
+	// Old solution with forAll loops 
+	forAll(vsf, celli)
+	{
+		if (T[celli] < TMin)
+		{
+			vsf[celli] = vsfTable[indexMin_];
+		}
+		else if (T[celli] > TMax)
+		{
+			vsf[celli] = vsfTable[maxIndex];
+		}
+		else
+		{
+			label index = (T[celli] - TMin)/dT;
+			if (index == maxIndex)
+			{
+				vsf[celli] = vsfTable[maxIndex];
+			}
+			else
+			{
+				scalar Ti1 = TMin + index*dT;
+				scalar Ti2 = Ti1 + dT;
+				scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
+				scalar b = vsfTable[index] - a*Ti1;
+				vsf[celli] = a*T[celli] + b;
+			}
+		}
+	}
+
+	// if we have this line probably we do not need 
+	// the second forAll loop over boundaries but it has to be checked
+	vsf.correctBoundaryConditions();
 
 	//forAll(vsf.boundaryField(), patchi)
 	//{

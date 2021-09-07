@@ -161,8 +161,8 @@ protected:
 		//- Calculates helium thermal property based on temperature
         void calcHeProp
 		(
-		    //volScalarField& vsf, 
-			//const List<scalar>& vsfTable,
+		    volScalarField& vsf, 
+			const List<scalar>& vsfTable,
 			const volScalarField& T,
 			const label maxIndex = indexMax_,
 			const dimensionedScalar dt = dT_
