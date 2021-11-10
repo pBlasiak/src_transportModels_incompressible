@@ -152,6 +152,12 @@ protected:
         //- Density of the mixture 
         volScalarField rhoHe_;
 
+        //- Normal density component
+        volScalarField rhon_;
+
+        //- Superfluid density component
+        volScalarField rhos_;
+
         //- Kinematic Helium
         volScalarField nu_;
 
@@ -280,7 +286,7 @@ public:
 		}
 
 		//- Returns reciprocal of thermal conductivity function for helium based on temperature
-        virtual const volScalarField& kappa() const
+        virtual const volScalarField& onebyf() const
 		{
 			return onebyf_;
 		}
@@ -289,6 +295,16 @@ public:
         virtual const volScalarField& rho() const
 		{
 			return rhoHe_;
+		}
+
+		const volScalarField& rhon() const
+		{
+			return rhon_;
+		}
+
+		const volScalarField& rhos() const
+		{
+			return rhos_;
 		}
 
 		static const dimensionedScalar Tlambda() 

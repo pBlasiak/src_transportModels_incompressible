@@ -105,6 +105,9 @@ void Foam::HeliumModels::Helium::correct()
 {
 	Info<< "Helium updates thermal properties..." << endl;
 	nu_ = calcNu();
+	// TODO: dodac update rhon i rhos w pozostalych modelach HeII
+	rhon_ = rhoHe_*pow(max(T_/Tlambda_, dimensionedScalar("small", dimless, SMALL)), scalar(5.6));
+	rhos_ = rhoHe_ - rhon_;
 	calcHeProp(betaHe_, betaHeTable_, T_);
 	calcHeProp(AGMHe_, AGMHeTable_, T_);
 	calcHeProp(sHe_, sHeTable_, T_);

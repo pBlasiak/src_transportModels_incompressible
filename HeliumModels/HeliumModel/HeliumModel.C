@@ -213,6 +213,36 @@ Foam::HeliumModel::HeliumModel
 		"zeroGradient"
     ),
 
+    rhon_
+    (
+        IOobject
+        (
+            "rhon",
+            U.mesh().time().timeName(),
+            U.mesh(),
+            IOobject::NO_READ,
+            IOobject::NO_WRITE
+        ),
+        U.mesh(),
+		dimensionedScalar("rhon", dimDensity, 0.0),
+		"zeroGradient"
+    ),
+
+    rhos_
+    (
+        IOobject
+        (
+            "rhos",
+            U.mesh().time().timeName(),
+            U.mesh(),
+            IOobject::NO_READ,
+            IOobject::NO_WRITE
+        ),
+        U.mesh(),
+		dimensionedScalar("rhos", dimDensity, 0.0),
+		"zeroGradient"
+    ),
+
     nu_
     (
         IOobject

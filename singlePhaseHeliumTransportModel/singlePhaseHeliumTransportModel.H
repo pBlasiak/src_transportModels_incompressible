@@ -94,13 +94,67 @@ public:
     // Member Functions
 
         //- Return the laminar viscosity
-        virtual tmp<volScalarField> nu() const;
+        virtual tmp<volScalarField> nu() const
+		{
+		    return HeliumModelPtr_->nu();
+		}
 
         //- Return the laminar viscosity for patch
-        virtual tmp<scalarField> nu(const label patchi) const;
+        virtual tmp<scalarField> nu(const label patchi) const
+		{
+		    return HeliumModelPtr_->nu(patchi);
+		}
+
+		const volScalarField& betaHe() const
+		{
+			return HeliumModelPtr_->beta();
+		}
+
+		const volScalarField& onebyf() const
+		{
+			return HeliumModelPtr_->onebyf();
+		}
+
+		const volScalarField& cpHe() const
+		{
+			return HeliumModelPtr_->cp();
+		}
+
+		const volScalarField& sHe() const
+		{
+			return HeliumModelPtr_->s();
+		}
+
+		const volScalarField& etaHe() const
+		{
+			return HeliumModelPtr_->eta();
+		}
+
+		const volScalarField& rhoHe() const
+		{
+			return HeliumModelPtr_->rho();
+		}
+
+		const volScalarField& rhon() const
+		{
+			return HeliumModelPtr_->rhon();
+		}
+
+		const volScalarField& rhos() const
+		{
+			return HeliumModelPtr_->rhos();
+		}
+
+		const volScalarField& AGMHe() const
+		{
+			return HeliumModelPtr_->AGM();
+		}
 
         //- Correct the laminar viscosity
-        virtual void correct();
+        virtual void correct()
+		{
+		    HeliumModelPtr_->correct();
+		}
 
         //- Read transportProperties dictionary
         virtual bool read();

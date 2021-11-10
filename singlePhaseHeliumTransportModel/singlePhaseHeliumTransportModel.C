@@ -59,24 +59,8 @@ Foam::singlePhaseHeliumTransportModel::~singlePhaseHeliumTransportModel()
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 
-Foam::tmp<Foam::volScalarField>
-Foam::singlePhaseHeliumTransportModel::nu() const
-{
-    return HeliumModelPtr_->nu();
-}
 
 
-Foam::tmp<Foam::scalarField>
-Foam::singlePhaseHeliumTransportModel::nu(const label patchi) const
-{
-    return HeliumModelPtr_->nu(patchi);
-}
-
-
-void Foam::singlePhaseHeliumTransportModel::correct()
-{
-    HeliumModelPtr_->correct();
-}
 
 
 bool Foam::singlePhaseHeliumTransportModel::read()
