@@ -88,7 +88,7 @@ protected:
 		//- Step of temperature in the thermophysical tables dT = 0.001 K
 		static const dimensionedScalar dT_;
 	
-		//- lambda Temperature 2.1711132461
+		//- lambda Temperature 2.1711132461 // Van Sciver str. 163 Tlambda = 2.177 K
 		static const dimensionedScalar Tlambda_;
 
 		//- Minimum temperature TMin = 1.5 K

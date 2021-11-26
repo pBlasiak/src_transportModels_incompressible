@@ -119,8 +119,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("betaHe", dimless/dimTemperature, 0.0),
-		"zeroGradient"
+		dimensionedScalar("betaHe", dimless/dimTemperature, 0.0)//,
+		//"zeroGradient"
     ),
 
     AGMHe_
@@ -134,8 +134,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("AGM", dimensionSet(-1,1,1,0,0,0,0), 0.0),
-		"zeroGradient"
+		dimensionedScalar("AGM", dimensionSet(-1,1,1,0,0,0,0), 0.0)//,
+		//"zeroGradient"
     ),
 
     sHe_
@@ -149,8 +149,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("sHe", dimensionSet(0,2,-2,-1,0,0,0), 0.0),
-		"zeroGradient"
+		dimensionedScalar("sHe", dimensionSet(0,2,-2,-1,0,0,0), 0.0)//,
+		//"zeroGradient"
     ),
 
     etaHe_
@@ -164,8 +164,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("etaHe", dimensionSet(1,-1,-1,0,0,0,0), 0.0),
-		"zeroGradient"
+		dimensionedScalar("etaHe", dimensionSet(1,-1,-1,0,0,0,0), 0.0)//,
+		//"zeroGradient"
     ),
 
     cpHe_
@@ -179,8 +179,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("cpHe", dimensionSet(0,2,-2,-1,0,0,0), 0.0),
-		"zeroGradient"
+		dimensionedScalar("cpHe", dimensionSet(0,2,-2,-1,0,0,0), 0.0)//,
+		//"zeroGradient"
     ),
 	
     onebyf_
@@ -194,8 +194,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("onebyf", dimensionSet(3,1,-9,-1,0,0,0), 0.0),
-		"zeroGradient"
+		dimensionedScalar("onebyf", dimensionSet(3,1,-9,-1,0,0,0), 0.0)//,
+		//"zeroGradient"
     ),
 
     rhoHe_
@@ -209,8 +209,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("rhoHe", dimDensity, 0.0),
-		"zeroGradient"
+		dimensionedScalar("rhoHe", dimDensity, 0.0)//,
+		//"zeroGradient"
     ),
 
     rhon_
@@ -224,8 +224,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("rhon", dimDensity, 0.0),
-		"zeroGradient"
+		dimensionedScalar("rhon", dimDensity, 0.0)//,
+		//"zeroGradient"
     ),
 
     rhos_
@@ -239,8 +239,8 @@ Foam::HeliumModel::HeliumModel
             IOobject::NO_WRITE
         ),
         U.mesh(),
-		dimensionedScalar("rhos", dimDensity, 0.0),
-		"zeroGradient"
+		dimensionedScalar("rhos", dimDensity, 0.0)//,
+		//"zeroGradient"
     ),
 
     nu_
@@ -255,8 +255,8 @@ Foam::HeliumModel::HeliumModel
         ),
         //calcNu()
         U.mesh(),
-		dimensionedScalar("nuHe", dimViscosity, 0.0),
-		"zeroGradient"
+		dimensionedScalar("nuHe", dimViscosity, 0.0)//,
+		//"zeroGradient"
     ),
 	HeThermProps_(7),
 	HeThermPropsTables_(7)
@@ -386,38 +386,38 @@ void Foam::HeliumModel::calcHeProp
 
 	// if we have this line probably we do not need 
 	// the second forAll loop over boundaries but it has to be checked
-	vsf.correctBoundaryConditions();
+	//vsf.correctBoundaryConditions();
 
-	//forAll(vsf.boundaryField(), patchi)
-	//{
-	//	forAll(vsf.boundaryField()[patchi], facei)
-	//	{
-	//		if (T[facei] < TMin)
-	//		{
-	//			vsf.boundaryFieldRef()[patchi][facei] = vsfTable[indexMin_];
-	//		}
-	//		else if (T[facei] > TMax)
-	//		{
-	//			vsf.boundaryFieldRef()[patchi][facei] = vsfTable[maxIndex];
-	//		}
-	//		else
-	//		{
-	//			label index = (T[facei] - TMin)/dT;
-	//			if (index == maxIndex)
-	//			{
-	//				vsf.boundaryFieldRef()[patchi][facei] = vsfTable[maxIndex];
-	//			}
-	//			else
-	//			{
-	//				scalar Ti1 = TMin + index*dT;
-	//				scalar Ti2 = Ti1 + dT;
-	//				scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
-	//				scalar b = vsfTable[index] - a*Ti1;
-	//				vsf.boundaryFieldRef()[patchi][facei] = a*T[facei] + b;
-	//			}
-	//		}
-	//	}
-	//}
+	forAll(vsf.boundaryField(), patchi)
+	{
+		forAll(vsf.boundaryField()[patchi], facei)
+		{
+			if (T[facei] < TMin)
+			{
+				vsf.boundaryFieldRef()[patchi][facei] = vsfTable[indexMin_];
+			}
+			else if (T[facei] > TMax)
+			{
+				vsf.boundaryFieldRef()[patchi][facei] = vsfTable[maxIndex];
+			}
+			else
+			{
+				label index = (T[facei] - TMin)/dT;
+				if (index == maxIndex)
+				{
+					vsf.boundaryFieldRef()[patchi][facei] = vsfTable[maxIndex];
+				}
+				else
+				{
+					scalar Ti1 = TMin + index*dT;
+					scalar Ti2 = Ti1 + dT;
+					scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
+					scalar b = vsfTable[index] - a*Ti1;
+					vsf.boundaryFieldRef()[patchi][facei] = a*T[facei] + b;
+				}
+			}
+		}
+	}
 }
 
 
