@@ -88,7 +88,9 @@ protected:
 		//- Step of temperature in the thermophysical tables dT = 0.001 K
 		static const dimensionedScalar dT_;
 	
-		//- lambda Temperature 2.1711132461 // Van Sciver str. 163 Tlambda = 2.177 K
+		//- lambda Temperature 2.16795 K from Hepak at 1 atm
+		//  previous value was 2.1711132461 (probably taken from Wiki) 
+		//  Van Sciver str. 163 Tlambda = 2.177 K
 		static const dimensionedScalar Tlambda_;
 
 		//- Minimum temperature TMin = 1.5 K

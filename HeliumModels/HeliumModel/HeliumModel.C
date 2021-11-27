@@ -47,7 +47,7 @@ namespace Foam
 	);
 
 	const Foam::dimensionedScalar
-	Foam::HeliumModel::Tlambda_("Tlambda", dimTemperature, 2.1711132461);
+	Foam::HeliumModel::Tlambda_("Tlambda", dimTemperature, 2.16795);
 
 	const Foam::dimensionedScalar
 	Foam::HeliumModel::TMin_("TMin", dimTemperature, 1.5);
