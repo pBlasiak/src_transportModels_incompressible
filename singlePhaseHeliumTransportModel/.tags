@@ -4,20 +4,38 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AGMHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& AGMHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
 Foam	singlePhaseHeliumTransportModel.H	/^namespace Foam$/;"	n	language:C++
 Foam::singlePhaseHeliumTransportModel	singlePhaseHeliumTransportModel.H	/^class singlePhaseHeliumTransportModel$/;"	c	language:C++	namespace:Foam
+Foam::singlePhaseHeliumTransportModel::AGMHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& AGMHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
 Foam::singlePhaseHeliumTransportModel::HeliumModelPtr_	singlePhaseHeliumTransportModel.H	/^        autoPtr<HeliumModel> HeliumModelPtr_;$/;"	m	language:C++	class:Foam::singlePhaseHeliumTransportModel
-Foam::singlePhaseHeliumTransportModel::correct	singlePhaseHeliumTransportModel.C	/^void Foam::singlePhaseHeliumTransportModel::correct()$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
-Foam::singlePhaseHeliumTransportModel::nu	singlePhaseHeliumTransportModel.C	/^Foam::singlePhaseHeliumTransportModel::nu() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
-Foam::singlePhaseHeliumTransportModel::nu	singlePhaseHeliumTransportModel.C	/^Foam::singlePhaseHeliumTransportModel::nu(const label patchi) const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::betaHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& betaHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::correct	singlePhaseHeliumTransportModel.H	/^        virtual void correct()$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::cpHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& cpHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::etaHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& etaHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::nu	singlePhaseHeliumTransportModel.H	/^        virtual tmp<scalarField> nu(const label patchi) const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::nu	singlePhaseHeliumTransportModel.H	/^        virtual tmp<volScalarField> nu() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::onebyf	singlePhaseHeliumTransportModel.H	/^		const volScalarField& onebyf() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
 Foam::singlePhaseHeliumTransportModel::read	singlePhaseHeliumTransportModel.C	/^bool Foam::singlePhaseHeliumTransportModel::read()$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::rhoHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& rhoHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::rhon	singlePhaseHeliumTransportModel.H	/^		const volScalarField& rhon() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::rhos	singlePhaseHeliumTransportModel.H	/^		const volScalarField& rhos() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+Foam::singlePhaseHeliumTransportModel::sHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& sHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
 Foam::singlePhaseHeliumTransportModel::singlePhaseHeliumTransportModel	singlePhaseHeliumTransportModel.C	/^Foam::singlePhaseHeliumTransportModel::singlePhaseHeliumTransportModel$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
 Foam::singlePhaseHeliumTransportModel::~singlePhaseHeliumTransportModel	singlePhaseHeliumTransportModel.C	/^Foam::singlePhaseHeliumTransportModel::~singlePhaseHeliumTransportModel()$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
 HeliumModelPtr_	singlePhaseHeliumTransportModel.H	/^        autoPtr<HeliumModel> HeliumModelPtr_;$/;"	m	language:C++	class:Foam::singlePhaseHeliumTransportModel
-correct	singlePhaseHeliumTransportModel.C	/^void Foam::singlePhaseHeliumTransportModel::correct()$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
-nu	singlePhaseHeliumTransportModel.C	/^Foam::singlePhaseHeliumTransportModel::nu() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
-nu	singlePhaseHeliumTransportModel.C	/^Foam::singlePhaseHeliumTransportModel::nu(const label patchi) const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+betaHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& betaHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+correct	singlePhaseHeliumTransportModel.H	/^        virtual void correct()$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+cpHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& cpHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+etaHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& etaHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+nu	singlePhaseHeliumTransportModel.H	/^        virtual tmp<scalarField> nu(const label patchi) const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+nu	singlePhaseHeliumTransportModel.H	/^        virtual tmp<volScalarField> nu() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+onebyf	singlePhaseHeliumTransportModel.H	/^		const volScalarField& onebyf() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
 read	singlePhaseHeliumTransportModel.C	/^bool Foam::singlePhaseHeliumTransportModel::read()$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+rhoHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& rhoHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+rhon	singlePhaseHeliumTransportModel.H	/^		const volScalarField& rhon() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+rhos	singlePhaseHeliumTransportModel.H	/^		const volScalarField& rhos() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
+sHe	singlePhaseHeliumTransportModel.H	/^		const volScalarField& sHe() const$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
 singlePhaseHeliumTransportModel	singlePhaseHeliumTransportModel.C	/^Foam::singlePhaseHeliumTransportModel::singlePhaseHeliumTransportModel$/;"	f	language:C++	class:Foam::singlePhaseHeliumTransportModel
 singlePhaseHeliumTransportModel	singlePhaseHeliumTransportModel.H	/^class singlePhaseHeliumTransportModel$/;"	c	language:C++	namespace:Foam
 singlePhaseHeliumTransportModel.C	singlePhaseHeliumTransportModel.C	1;"	F	language:C++

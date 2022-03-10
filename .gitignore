@@ -28,6 +28,7 @@
 *.fls
 *.bcf
 *.pyg
+.tags
 
 # git-ls-files --others --exclude-from=.git/info/exclude
 # Lines that start with '#' are comments.
