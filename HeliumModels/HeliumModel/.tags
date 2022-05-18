@@ -4,126 +4,146 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-AGM	HeliumModel.H	/^        virtual const volScalarField& AGM() const$/;"	f	language:C++	class:Foam::HeliumModel
-AGMCoeff	HeliumModel.H	/^			AGMCoeff,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-AGMHeTable_	HeliumModel.H	/^		static const List<scalar> AGMHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-AGMHe_	HeliumModel.H	/^        volScalarField AGMHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam	HeliumModel.C	/^namespace Foam$/;"	n	language:C++	file:
-Foam	HeliumModel.H	/^namespace Foam$/;"	n	language:C++
-Foam::HeliumModel	HeliumModel.H	/^class HeliumModel$/;"	c	language:C++	namespace:Foam
-Foam::HeliumModel::AGM	HeliumModel.H	/^        virtual const volScalarField& AGM() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::AGMHeTable_	HeliumModel.H	/^		static const List<scalar> AGMHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::AGMHe_	HeliumModel.H	/^        volScalarField AGMHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::HeThermPropsTables_	HeliumModel.H	/^		PtrList<const List<scalar> > HeThermPropsTables_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::HeThermProps_	HeliumModel.H	/^		PtrList<volScalarField> HeThermProps_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::HeliumModel	HeliumModel.C	/^Foam::HeliumModel::HeliumModel$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::HeliumProperties	HeliumModel.H	/^        const dictionary& HeliumProperties() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::HeliumProperties_	HeliumModel.H	/^        dictionary HeliumProperties_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::HeliumThermalPropertiesType	HeliumModel.H	/^        enum class HeliumThermalPropertiesType$/;"	c	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::HeliumThermalPropertiesType::AGMCoeff	HeliumModel.H	/^			AGMCoeff,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-Foam::HeliumModel::HeliumThermalPropertiesType::dynamicViscosity	HeliumModel.H	/^			dynamicViscosity,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-Foam::HeliumModel::HeliumThermalPropertiesType::entropy	HeliumModel.H	/^			entropy,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-Foam::HeliumModel::HeliumThermalPropertiesType::oneByf	HeliumModel.H	/^			oneByf,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-Foam::HeliumModel::HeliumThermalPropertiesType::specificHeatCapacity	HeliumModel.H	/^			specificHeatCapacity,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-Foam::HeliumModel::HeliumThermalPropertiesType::thermalExpansion	HeliumModel.H	/^            thermalExpansion,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-Foam::HeliumModel::HeliumThermalPropertiesTypeNames_	HeliumModel.H	/^        static const Enum<HeliumThermalPropertiesType> HeliumThermalPropertiesTypeNames_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::New	HeliumModelNew.C	/^Foam::autoPtr<Foam::HeliumModel> Foam::HeliumModel::New$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::TMaxField_	HeliumModel.H	/^		volScalarField TMaxField_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::TMax_	HeliumModel.H	/^		static const dimensionedScalar TMax_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::TMinField_	HeliumModel.H	/^		volScalarField TMinField_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::TMin_	HeliumModel.H	/^		static const dimensionedScalar TMin_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::Tlambda	HeliumModel.H	/^		static const dimensionedScalar Tlambda() $/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::Tlambda_	HeliumModel.H	/^		static const dimensionedScalar Tlambda_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::U_	HeliumModel.H	/^        const volVectorField& U_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::beta	HeliumModel.H	/^        virtual const volScalarField& beta() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::betaHeTable_	HeliumModel.H	/^		static const List<scalar> betaHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::betaHe_	HeliumModel.H	/^        volScalarField betaHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::calcHeProp	HeliumModel.C	/^void Foam::HeliumModel::calcHeProp$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::cp	HeliumModel.H	/^        virtual const volScalarField& cp() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::cpHeTable_	HeliumModel.H	/^		static const List<scalar> cpHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::cpHe_	HeliumModel.H	/^        volScalarField cpHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::dT_	HeliumModel.H	/^		static const dimensionedScalar dT_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::eta	HeliumModel.H	/^        virtual const volScalarField& eta() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::etaHeTable_	HeliumModel.H	/^		static const List<scalar> etaHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::etaHe_	HeliumModel.H	/^        volScalarField etaHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::indexMax_	HeliumModel.H	/^		static const label indexMax_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::indexMin_	HeliumModel.H	/^		static const label indexMin_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::name_	HeliumModel.H	/^        word name_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::nu	HeliumModel.H	/^        virtual tmp<scalarField> nu(const label patchi) const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::nu	HeliumModel.H	/^        virtual tmp<volScalarField> nu() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::nu_	HeliumModel.H	/^        volScalarField nu_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::onebyf	HeliumModel.H	/^        virtual const volScalarField& onebyf() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::onebyfTable_	HeliumModel.H	/^		static const List<scalar> onebyfTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::onebyf_	HeliumModel.H	/^        volScalarField onebyf_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::phi_	HeliumModel.H	/^        const surfaceScalarField& phi_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::read	HeliumModel.C	/^bool Foam::HeliumModel::read(const dictionary& HeliumProperties)$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::rho	HeliumModel.H	/^        virtual const volScalarField& rho() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::rhoHeTable_	HeliumModel.H	/^		static const List<scalar> rhoHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::rhoHe_	HeliumModel.H	/^        volScalarField rhoHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::rhon	HeliumModel.H	/^		const volScalarField& rhon() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::rhon_	HeliumModel.H	/^        volScalarField rhon_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::rhos	HeliumModel.H	/^		const volScalarField& rhos() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::rhos_	HeliumModel.H	/^        volScalarField rhos_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::s	HeliumModel.H	/^        virtual const volScalarField& s() const$/;"	f	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::sHeTable_	HeliumModel.H	/^		static const List<scalar> sHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::sHe_	HeliumModel.H	/^        volScalarField sHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-Foam::HeliumModel::~HeliumModel	HeliumModel.H	/^    virtual ~HeliumModel()$/;"	f	language:C++	class:Foam::HeliumModel
-HeThermPropsTables_	HeliumModel.H	/^		PtrList<const List<scalar> > HeThermPropsTables_;$/;"	m	language:C++	class:Foam::HeliumModel
-HeThermProps_	HeliumModel.H	/^		PtrList<volScalarField> HeThermProps_;$/;"	m	language:C++	class:Foam::HeliumModel
-HeliumModel	HeliumModel.C	/^Foam::HeliumModel::HeliumModel$/;"	f	language:C++	class:Foam::HeliumModel
-HeliumModel	HeliumModel.H	/^class HeliumModel$/;"	c	language:C++	namespace:Foam
-HeliumModel.C	HeliumModel.C	1;"	F	language:C++
-HeliumModel.H	HeliumModel.H	1;"	F	language:C++
-HeliumModelNew.C	HeliumModelNew.C	1;"	F	language:C++
-HeliumModel_H	HeliumModel.H	43;"	d	language:C++
-HeliumProperties	HeliumModel.H	/^        const dictionary& HeliumProperties() const$/;"	f	language:C++	class:Foam::HeliumModel
-HeliumProperties_	HeliumModel.H	/^        dictionary HeliumProperties_;$/;"	m	language:C++	class:Foam::HeliumModel
-HeliumThermalPropertiesType	HeliumModel.H	/^        enum class HeliumThermalPropertiesType$/;"	c	language:C++	class:Foam::HeliumModel
-HeliumThermalPropertiesTypeNames_	HeliumModel.H	/^        static const Enum<HeliumThermalPropertiesType> HeliumThermalPropertiesTypeNames_;$/;"	m	language:C++	class:Foam::HeliumModel
-New	HeliumModelNew.C	/^Foam::autoPtr<Foam::HeliumModel> Foam::HeliumModel::New$/;"	f	language:C++	class:Foam::HeliumModel
-TMaxField_	HeliumModel.H	/^		volScalarField TMaxField_;$/;"	m	language:C++	class:Foam::HeliumModel
-TMax_	HeliumModel.H	/^		static const dimensionedScalar TMax_;$/;"	m	language:C++	class:Foam::HeliumModel
-TMinField_	HeliumModel.H	/^		volScalarField TMinField_;$/;"	m	language:C++	class:Foam::HeliumModel
-TMin_	HeliumModel.H	/^		static const dimensionedScalar TMin_;$/;"	m	language:C++	class:Foam::HeliumModel
-Tlambda	HeliumModel.H	/^		static const dimensionedScalar Tlambda() $/;"	f	language:C++	class:Foam::HeliumModel
-Tlambda_	HeliumModel.H	/^		static const dimensionedScalar Tlambda_;$/;"	m	language:C++	class:Foam::HeliumModel
-U_	HeliumModel.H	/^        const volVectorField& U_;$/;"	m	language:C++	class:Foam::HeliumModel
-beta	HeliumModel.H	/^        virtual const volScalarField& beta() const$/;"	f	language:C++	class:Foam::HeliumModel
-betaHeTable_	HeliumModel.H	/^		static const List<scalar> betaHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-betaHe_	HeliumModel.H	/^        volScalarField betaHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-calcHeProp	HeliumModel.C	/^void Foam::HeliumModel::calcHeProp$/;"	f	language:C++	class:Foam::HeliumModel
-cp	HeliumModel.H	/^        virtual const volScalarField& cp() const$/;"	f	language:C++	class:Foam::HeliumModel
-cpHeTable_	HeliumModel.H	/^		static const List<scalar> cpHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-cpHe_	HeliumModel.H	/^        volScalarField cpHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-dT_	HeliumModel.H	/^		static const dimensionedScalar dT_;$/;"	m	language:C++	class:Foam::HeliumModel
-dynamicViscosity	HeliumModel.H	/^			dynamicViscosity,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-entropy	HeliumModel.H	/^			entropy,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-eta	HeliumModel.H	/^        virtual const volScalarField& eta() const$/;"	f	language:C++	class:Foam::HeliumModel
-etaHeTable_	HeliumModel.H	/^		static const List<scalar> etaHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-etaHe_	HeliumModel.H	/^        volScalarField etaHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-indexMax_	HeliumModel.H	/^		static const label indexMax_;$/;"	m	language:C++	class:Foam::HeliumModel
-indexMin_	HeliumModel.H	/^		static const label indexMin_;$/;"	m	language:C++	class:Foam::HeliumModel
-name_	HeliumModel.H	/^        word name_;$/;"	m	language:C++	class:Foam::HeliumModel
-nu	HeliumModel.H	/^        virtual tmp<scalarField> nu(const label patchi) const$/;"	f	language:C++	class:Foam::HeliumModel
-nu	HeliumModel.H	/^        virtual tmp<volScalarField> nu() const$/;"	f	language:C++	class:Foam::HeliumModel
-nu_	HeliumModel.H	/^        volScalarField nu_;$/;"	m	language:C++	class:Foam::HeliumModel
-oneByf	HeliumModel.H	/^			oneByf,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-onebyf	HeliumModel.H	/^        virtual const volScalarField& onebyf() const$/;"	f	language:C++	class:Foam::HeliumModel
-onebyfTable_	HeliumModel.H	/^		static const List<scalar> onebyfTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-onebyf_	HeliumModel.H	/^        volScalarField onebyf_;$/;"	m	language:C++	class:Foam::HeliumModel
-phi_	HeliumModel.H	/^        const surfaceScalarField& phi_;$/;"	m	language:C++	class:Foam::HeliumModel
-read	HeliumModel.C	/^bool Foam::HeliumModel::read(const dictionary& HeliumProperties)$/;"	f	language:C++	class:Foam::HeliumModel
-rho	HeliumModel.H	/^        virtual const volScalarField& rho() const$/;"	f	language:C++	class:Foam::HeliumModel
-rhoHeTable_	HeliumModel.H	/^		static const List<scalar> rhoHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-rhoHe_	HeliumModel.H	/^        volScalarField rhoHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-rhon	HeliumModel.H	/^		const volScalarField& rhon() const$/;"	f	language:C++	class:Foam::HeliumModel
-rhon_	HeliumModel.H	/^        volScalarField rhon_;$/;"	m	language:C++	class:Foam::HeliumModel
-rhos	HeliumModel.H	/^		const volScalarField& rhos() const$/;"	f	language:C++	class:Foam::HeliumModel
-rhos_	HeliumModel.H	/^        volScalarField rhos_;$/;"	m	language:C++	class:Foam::HeliumModel
-s	HeliumModel.H	/^        virtual const volScalarField& s() const$/;"	f	language:C++	class:Foam::HeliumModel
-sHeTable_	HeliumModel.H	/^		static const List<scalar> sHeTable_;$/;"	m	language:C++	class:Foam::HeliumModel
-sHe_	HeliumModel.H	/^        volScalarField sHe_;$/;"	m	language:C++	class:Foam::HeliumModel
-specificHeatCapacity	HeliumModel.H	/^			specificHeatCapacity,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-staticTables.H	staticTables.H	1;"	F	language:C++
-thermalExpansion	HeliumModel.H	/^            thermalExpansion,$/;"	m	language:C++	class:Foam::HeliumModel::HeliumThermalPropertiesType
-~HeliumModel	HeliumModel.H	/^    virtual ~HeliumModel()$/;"	f	language:C++	class:Foam::HeliumModel
+AGM	HeliumModel.H	/^        virtual const volScalarField& AGM() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+AGMCoeff	HeliumModel.H	/^			AGMCoeff,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+AGMHeTable_	HeliumModel.H	/^		static const List<scalar> AGMHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+AGMHe_	HeliumModel.H	/^        volScalarField AGMHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam	HeliumModel.C	/^namespace Foam$/;"	n	file:
+Foam	HeliumModel.H	/^namespace Foam$/;"	n
+Foam::HeliumModel	HeliumModel.H	/^class HeliumModel$/;"	c	namespace:Foam
+Foam::HeliumModel::AGM	HeliumModel.H	/^        virtual const volScalarField& AGM() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::AGMHeTable_	HeliumModel.H	/^		static const List<scalar> AGMHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::AGMHe_	HeliumModel.H	/^        volScalarField AGMHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::HeThermPropsTables_	HeliumModel.H	/^		PtrList<const List<scalar> > HeThermPropsTables_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::HeThermProps_	HeliumModel.H	/^		PtrList<volScalarField> HeThermProps_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::HeliumModel	HeliumModel.C	/^Foam::HeliumModel::HeliumModel$/;"	f	class:Foam::HeliumModel	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+Foam::HeliumModel::HeliumModel	HeliumModel.H	/^        HeliumModel$/;"	p	class:Foam::HeliumModel	access:public	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+Foam::HeliumModel::HeliumModel	HeliumModel.H	/^        HeliumModel(const HeliumModel&);$/;"	p	class:Foam::HeliumModel	access:protected	signature:(const HeliumModel&)
+Foam::HeliumModel::HeliumProperties	HeliumModel.H	/^        const dictionary& HeliumProperties() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::HeliumProperties_	HeliumModel.H	/^        dictionary HeliumProperties_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::HeliumThermalPropertiesType	HeliumModel.H	/^        enum class HeliumThermalPropertiesType$/;"	c	class:Foam::HeliumModel	access:public
+Foam::HeliumModel::HeliumThermalPropertiesType::AGMCoeff	HeliumModel.H	/^			AGMCoeff,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+Foam::HeliumModel::HeliumThermalPropertiesType::dynamicViscosity	HeliumModel.H	/^			dynamicViscosity,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+Foam::HeliumModel::HeliumThermalPropertiesType::entropy	HeliumModel.H	/^			entropy,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+Foam::HeliumModel::HeliumThermalPropertiesType::oneByf	HeliumModel.H	/^			oneByf,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+Foam::HeliumModel::HeliumThermalPropertiesType::specificHeatCapacity	HeliumModel.H	/^			specificHeatCapacity,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+Foam::HeliumModel::HeliumThermalPropertiesType::thermalExpansion	HeliumModel.H	/^            thermalExpansion,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+Foam::HeliumModel::HeliumThermalPropertiesTypeNames_	HeliumModel.H	/^        static const Enum<HeliumThermalPropertiesType> HeliumThermalPropertiesTypeNames_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::New	HeliumModel.H	/^        static autoPtr<HeliumModel> New$/;"	p	class:Foam::HeliumModel	access:public	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+Foam::HeliumModel::New	HeliumModelNew.C	/^Foam::autoPtr<Foam::HeliumModel> Foam::HeliumModel::New$/;"	f	class:Foam::HeliumModel	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+Foam::HeliumModel::TMaxField_	HeliumModel.H	/^		volScalarField TMaxField_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::TMax_	HeliumModel.H	/^		static const dimensionedScalar TMax_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::TMinField_	HeliumModel.H	/^		volScalarField TMinField_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::TMin_	HeliumModel.H	/^		static const dimensionedScalar TMin_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::Tlambda	HeliumModel.H	/^		static const dimensionedScalar Tlambda() $/;"	f	class:Foam::HeliumModel	access:public	signature:()
+Foam::HeliumModel::Tlambda_	HeliumModel.H	/^		static const dimensionedScalar Tlambda_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::U_	HeliumModel.H	/^        const volVectorField& U_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::beta	HeliumModel.H	/^        virtual const volScalarField& beta() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::betaHeTable_	HeliumModel.H	/^		static const List<scalar> betaHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::betaHe_	HeliumModel.H	/^        volScalarField betaHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::calcHeProp	HeliumModel.C	/^void Foam::HeliumModel::calcHeProp$/;"	f	class:Foam::HeliumModel	signature:( volScalarField& vsf, const List<scalar>& vsfTable, const volScalarField& T, const label maxIndex, const dimensionedScalar dt )
+Foam::HeliumModel::calcHeProp	HeliumModel.H	/^        void calcHeProp$/;"	p	class:Foam::HeliumModel	access:protected	signature:( volScalarField& vsf, const List<scalar>& vsfTable, const volScalarField& T, const label maxIndex = indexMax_, const dimensionedScalar dt = dT_ )
+Foam::HeliumModel::correct	HeliumModel.H	/^        virtual void correct() = 0;$/;"	p	class:Foam::HeliumModel	access:public	signature:()
+Foam::HeliumModel::cp	HeliumModel.H	/^        virtual const volScalarField& cp() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::cpHeTable_	HeliumModel.H	/^		static const List<scalar> cpHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::cpHe_	HeliumModel.H	/^        volScalarField cpHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::dT_	HeliumModel.H	/^		static const dimensionedScalar dT_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::declareRunTimeSelectionTable	HeliumModel.H	/^        declareRunTimeSelectionTable$/;"	p	class:Foam::HeliumModel	access:public	signature:( autoPtr, HeliumModel, dictionary, ( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi ), (name, HeliumProperties, U, phi) )
+Foam::HeliumModel::eta	HeliumModel.H	/^        virtual const volScalarField& eta() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::etaHeTable_	HeliumModel.H	/^		static const List<scalar> etaHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::etaHe_	HeliumModel.H	/^        volScalarField etaHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::indexMax_	HeliumModel.H	/^		static const label indexMax_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::indexMin_	HeliumModel.H	/^		static const label indexMin_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::name_	HeliumModel.H	/^        word name_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::nu	HeliumModel.H	/^        virtual tmp<scalarField> nu(const label patchi) const$/;"	f	class:Foam::HeliumModel	access:public	signature:(const label patchi) const
+Foam::HeliumModel::nu	HeliumModel.H	/^        virtual tmp<volScalarField> nu() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::nu_	HeliumModel.H	/^        volScalarField nu_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::onebyf	HeliumModel.H	/^        virtual const volScalarField& onebyf() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::onebyfTable_	HeliumModel.H	/^		static const List<scalar> onebyfTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::onebyf_	HeliumModel.H	/^        volScalarField onebyf_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::operator =	HeliumModel.H	/^        void operator=(const HeliumModel&);$/;"	p	class:Foam::HeliumModel	access:protected	signature:(const HeliumModel&)
+Foam::HeliumModel::phi_	HeliumModel.H	/^        const surfaceScalarField& phi_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::read	HeliumModel.C	/^bool Foam::HeliumModel::read(const dictionary& HeliumProperties)$/;"	f	class:Foam::HeliumModel	signature:(const dictionary& HeliumProperties)
+Foam::HeliumModel::read	HeliumModel.H	/^        virtual bool read(const dictionary& HeliumProperties) = 0;$/;"	p	class:Foam::HeliumModel	access:public	signature:(const dictionary& HeliumProperties)
+Foam::HeliumModel::rho	HeliumModel.H	/^        virtual const volScalarField& rho() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::rhoHeTable_	HeliumModel.H	/^		static const List<scalar> rhoHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::rhoHe_	HeliumModel.H	/^        volScalarField rhoHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::rhon	HeliumModel.H	/^		const volScalarField& rhon() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::rhon_	HeliumModel.H	/^        volScalarField rhon_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::rhos	HeliumModel.H	/^		const volScalarField& rhos() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::rhos_	HeliumModel.H	/^        volScalarField rhos_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::s	HeliumModel.H	/^        virtual const volScalarField& s() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+Foam::HeliumModel::sHeTable_	HeliumModel.H	/^		static const List<scalar> sHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::sHe_	HeliumModel.H	/^        volScalarField sHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+Foam::HeliumModel::~HeliumModel	HeliumModel.H	/^    virtual ~HeliumModel()$/;"	f	class:Foam::HeliumModel	access:public	signature:()
+Foam::defineRunTimeSelectionTable	HeliumModel.C	/^    defineRunTimeSelectionTable(HeliumModel, dictionary);$/;"	p	namespace:Foam	file:	signature:(HeliumModel, dictionary)
+Foam::defineTypeNameAndDebug	HeliumModel.C	/^    defineTypeNameAndDebug(HeliumModel, 0);$/;"	p	namespace:Foam	file:	signature:(HeliumModel, 0)
+HeThermPropsTables_	HeliumModel.H	/^		PtrList<const List<scalar> > HeThermPropsTables_;$/;"	m	class:Foam::HeliumModel	access:protected
+HeThermProps_	HeliumModel.H	/^		PtrList<volScalarField> HeThermProps_;$/;"	m	class:Foam::HeliumModel	access:protected
+HeliumModel	HeliumModel.C	/^Foam::HeliumModel::HeliumModel$/;"	f	class:Foam::HeliumModel	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+HeliumModel	HeliumModel.H	/^        HeliumModel$/;"	p	class:Foam::HeliumModel	access:public	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+HeliumModel	HeliumModel.H	/^        HeliumModel(const HeliumModel&);$/;"	p	class:Foam::HeliumModel	access:protected	signature:(const HeliumModel&)
+HeliumModel	HeliumModel.H	/^class HeliumModel$/;"	c	namespace:Foam
+HeliumModel.C	HeliumModel.C	1;"	F
+HeliumModel.H	HeliumModel.H	1;"	F
+HeliumModelNew.C	HeliumModelNew.C	1;"	F
+HeliumModel_H	HeliumModel.H	43;"	d
+HeliumProperties	HeliumModel.H	/^        const dictionary& HeliumProperties() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+HeliumProperties_	HeliumModel.H	/^        dictionary HeliumProperties_;$/;"	m	class:Foam::HeliumModel	access:protected
+HeliumThermalPropertiesType	HeliumModel.H	/^        enum class HeliumThermalPropertiesType$/;"	c	class:Foam::HeliumModel	access:public
+HeliumThermalPropertiesTypeNames_	HeliumModel.H	/^        static const Enum<HeliumThermalPropertiesType> HeliumThermalPropertiesTypeNames_;$/;"	m	class:Foam::HeliumModel	access:protected
+New	HeliumModel.H	/^        static autoPtr<HeliumModel> New$/;"	p	class:Foam::HeliumModel	access:public	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+New	HeliumModelNew.C	/^Foam::autoPtr<Foam::HeliumModel> Foam::HeliumModel::New$/;"	f	class:Foam::HeliumModel	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+TMaxField_	HeliumModel.H	/^		volScalarField TMaxField_;$/;"	m	class:Foam::HeliumModel	access:protected
+TMax_	HeliumModel.H	/^		static const dimensionedScalar TMax_;$/;"	m	class:Foam::HeliumModel	access:protected
+TMinField_	HeliumModel.H	/^		volScalarField TMinField_;$/;"	m	class:Foam::HeliumModel	access:protected
+TMin_	HeliumModel.H	/^		static const dimensionedScalar TMin_;$/;"	m	class:Foam::HeliumModel	access:protected
+Tlambda	HeliumModel.H	/^		static const dimensionedScalar Tlambda() $/;"	f	class:Foam::HeliumModel	access:public	signature:()
+Tlambda_	HeliumModel.H	/^		static const dimensionedScalar Tlambda_;$/;"	m	class:Foam::HeliumModel	access:protected
+U_	HeliumModel.H	/^        const volVectorField& U_;$/;"	m	class:Foam::HeliumModel	access:protected
+beta	HeliumModel.H	/^        virtual const volScalarField& beta() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+betaHeTable_	HeliumModel.H	/^		static const List<scalar> betaHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+betaHe_	HeliumModel.H	/^        volScalarField betaHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+calcHeProp	HeliumModel.C	/^void Foam::HeliumModel::calcHeProp$/;"	f	class:Foam::HeliumModel	signature:( volScalarField& vsf, const List<scalar>& vsfTable, const volScalarField& T, const label maxIndex, const dimensionedScalar dt )
+calcHeProp	HeliumModel.H	/^        void calcHeProp$/;"	p	class:Foam::HeliumModel	access:protected	signature:( volScalarField& vsf, const List<scalar>& vsfTable, const volScalarField& T, const label maxIndex = indexMax_, const dimensionedScalar dt = dT_ )
+correct	HeliumModel.H	/^        virtual void correct() = 0;$/;"	p	class:Foam::HeliumModel	access:public	signature:()
+cp	HeliumModel.H	/^        virtual const volScalarField& cp() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+cpHeTable_	HeliumModel.H	/^		static const List<scalar> cpHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+cpHe_	HeliumModel.H	/^        volScalarField cpHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+dT_	HeliumModel.H	/^		static const dimensionedScalar dT_;$/;"	m	class:Foam::HeliumModel	access:protected
+declareRunTimeSelectionTable	HeliumModel.H	/^        declareRunTimeSelectionTable$/;"	p	class:Foam::HeliumModel	access:public	signature:( autoPtr, HeliumModel, dictionary, ( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi ), (name, HeliumProperties, U, phi) )
+defineRunTimeSelectionTable	HeliumModel.C	/^    defineRunTimeSelectionTable(HeliumModel, dictionary);$/;"	p	namespace:Foam	file:	signature:(HeliumModel, dictionary)
+defineTypeNameAndDebug	HeliumModel.C	/^    defineTypeNameAndDebug(HeliumModel, 0);$/;"	p	namespace:Foam	file:	signature:(HeliumModel, 0)
+dynamicViscosity	HeliumModel.H	/^			dynamicViscosity,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+entropy	HeliumModel.H	/^			entropy,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+eta	HeliumModel.H	/^        virtual const volScalarField& eta() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+etaHeTable_	HeliumModel.H	/^		static const List<scalar> etaHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+etaHe_	HeliumModel.H	/^        volScalarField etaHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+indexMax_	HeliumModel.H	/^		static const label indexMax_;$/;"	m	class:Foam::HeliumModel	access:protected
+indexMin_	HeliumModel.H	/^		static const label indexMin_;$/;"	m	class:Foam::HeliumModel	access:protected
+name_	HeliumModel.H	/^        word name_;$/;"	m	class:Foam::HeliumModel	access:protected
+nu	HeliumModel.H	/^        virtual tmp<scalarField> nu(const label patchi) const$/;"	f	class:Foam::HeliumModel	access:public	signature:(const label patchi) const
+nu	HeliumModel.H	/^        virtual tmp<volScalarField> nu() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+nu_	HeliumModel.H	/^        volScalarField nu_;$/;"	m	class:Foam::HeliumModel	access:protected
+oneByf	HeliumModel.H	/^			oneByf,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+onebyf	HeliumModel.H	/^        virtual const volScalarField& onebyf() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+onebyfTable_	HeliumModel.H	/^		static const List<scalar> onebyfTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+onebyf_	HeliumModel.H	/^        volScalarField onebyf_;$/;"	m	class:Foam::HeliumModel	access:protected
+operator =	HeliumModel.H	/^        void operator=(const HeliumModel&);$/;"	p	class:Foam::HeliumModel	access:protected	signature:(const HeliumModel&)
+phi_	HeliumModel.H	/^        const surfaceScalarField& phi_;$/;"	m	class:Foam::HeliumModel	access:protected
+read	HeliumModel.C	/^bool Foam::HeliumModel::read(const dictionary& HeliumProperties)$/;"	f	class:Foam::HeliumModel	signature:(const dictionary& HeliumProperties)
+read	HeliumModel.H	/^        virtual bool read(const dictionary& HeliumProperties) = 0;$/;"	p	class:Foam::HeliumModel	access:public	signature:(const dictionary& HeliumProperties)
+rho	HeliumModel.H	/^        virtual const volScalarField& rho() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+rhoHeTable_	HeliumModel.H	/^		static const List<scalar> rhoHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+rhoHe_	HeliumModel.H	/^        volScalarField rhoHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+rhon	HeliumModel.H	/^		const volScalarField& rhon() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+rhon_	HeliumModel.H	/^        volScalarField rhon_;$/;"	m	class:Foam::HeliumModel	access:protected
+rhos	HeliumModel.H	/^		const volScalarField& rhos() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+rhos_	HeliumModel.H	/^        volScalarField rhos_;$/;"	m	class:Foam::HeliumModel	access:protected
+s	HeliumModel.H	/^        virtual const volScalarField& s() const$/;"	f	class:Foam::HeliumModel	access:public	signature:() const
+sHeTable_	HeliumModel.H	/^		static const List<scalar> sHeTable_;$/;"	m	class:Foam::HeliumModel	access:protected
+sHe_	HeliumModel.H	/^        volScalarField sHe_;$/;"	m	class:Foam::HeliumModel	access:protected
+specificHeatCapacity	HeliumModel.H	/^			specificHeatCapacity,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+staticTables.H	staticTables.H	1;"	F
+thermalExpansion	HeliumModel.H	/^            thermalExpansion,$/;"	m	class:Foam::HeliumModel::HeliumThermalPropertiesType	access:private
+~HeliumModel	HeliumModel.H	/^    virtual ~HeliumModel()$/;"	f	class:Foam::HeliumModel	access:public	signature:()

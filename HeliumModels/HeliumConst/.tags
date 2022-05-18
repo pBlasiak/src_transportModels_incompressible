@@ -4,34 +4,42 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-Foam	HeliumConst.C	/^namespace Foam$/;"	n	language:C++	file:
-Foam	HeliumConst.H	/^namespace Foam$/;"	n	language:C++
-Foam::HeliumModels	HeliumConst.C	/^namespace HeliumModels$/;"	n	language:C++	namespace:Foam	file:
-Foam::HeliumModels	HeliumConst.H	/^namespace HeliumModels$/;"	n	language:C++	namespace:Foam
-Foam::HeliumModels::HeliumConst	HeliumConst.H	/^class HeliumConst$/;"	c	language:C++	namespace:Foam::HeliumModels
-Foam::HeliumModels::HeliumConst::HeliumConst	HeliumConst.C	/^Foam::HeliumModels::HeliumConst::HeliumConst$/;"	f	language:C++	class:Foam::HeliumModels::HeliumConst
-Foam::HeliumModels::HeliumConst::HeliumConstCoeffs_	HeliumConst.H	/^        dictionary HeliumConstCoeffs_;$/;"	m	language:C++	class:Foam::HeliumModels::HeliumConst
-Foam::HeliumModels::HeliumConst::TMean0_	HeliumConst.H	/^		dimensionedScalar TMean0_;$/;"	m	language:C++	class:Foam::HeliumModels::HeliumConst
-Foam::HeliumModels::HeliumConst::TMean_	HeliumConst.H	/^		volScalarField TMean_;$/;"	m	language:C++	class:Foam::HeliumModels::HeliumConst
-Foam::HeliumModels::HeliumConst::calcNu	HeliumConst.C	/^Foam::HeliumModels::HeliumConst::calcNu() $/;"	f	language:C++	class:Foam::HeliumModels::HeliumConst
-Foam::HeliumModels::HeliumConst::correct	HeliumConst.C	/^void Foam::HeliumModels::HeliumConst::correct()$/;"	f	language:C++	class:Foam::HeliumModels::HeliumConst
-Foam::HeliumModels::HeliumConst::override	HeliumConst.H	/^        virtual bool read(const dictionary& HeliumProperties) override;$/;"	m	language:C++	class:Foam::HeliumModels::HeliumConst
-Foam::HeliumModels::HeliumConst::override	HeliumConst.H	/^        virtual void correct() override;$/;"	m	language:C++	class:Foam::HeliumModels::HeliumConst
-Foam::HeliumModels::HeliumConst::read	HeliumConst.C	/^bool Foam::HeliumModels::HeliumConst::read$/;"	f	language:C++	class:Foam::HeliumModels::HeliumConst
-Foam::HeliumModels::HeliumConst::~HeliumConst	HeliumConst.H	/^    virtual ~HeliumConst()$/;"	f	language:C++	class:Foam::HeliumModels::HeliumConst
-HeliumConst	HeliumConst.C	/^Foam::HeliumModels::HeliumConst::HeliumConst$/;"	f	language:C++	class:Foam::HeliumModels::HeliumConst
-HeliumConst	HeliumConst.H	/^class HeliumConst$/;"	c	language:C++	namespace:Foam::HeliumModels
-HeliumConst.C	HeliumConst.C	1;"	F	language:C++
-HeliumConst.H	HeliumConst.H	1;"	F	language:C++
-HeliumConstCoeffs_	HeliumConst.H	/^        dictionary HeliumConstCoeffs_;$/;"	m	language:C++	class:Foam::HeliumModels::HeliumConst
-HeliumConst_H	HeliumConst.H	37;"	d	language:C++
-HeliumModels	HeliumConst.C	/^namespace HeliumModels$/;"	n	language:C++	namespace:Foam	file:
-HeliumModels	HeliumConst.H	/^namespace HeliumModels$/;"	n	language:C++	namespace:Foam
-TMean0_	HeliumConst.H	/^		dimensionedScalar TMean0_;$/;"	m	language:C++	class:Foam::HeliumModels::HeliumConst
-TMean_	HeliumConst.H	/^		volScalarField TMean_;$/;"	m	language:C++	class:Foam::HeliumModels::HeliumConst
-calcNu	HeliumConst.C	/^Foam::HeliumModels::HeliumConst::calcNu() $/;"	f	language:C++	class:Foam::HeliumModels::HeliumConst
-correct	HeliumConst.C	/^void Foam::HeliumModels::HeliumConst::correct()$/;"	f	language:C++	class:Foam::HeliumModels::HeliumConst
-override	HeliumConst.H	/^        virtual bool read(const dictionary& HeliumProperties) override;$/;"	m	language:C++	class:Foam::HeliumModels::HeliumConst
-override	HeliumConst.H	/^        virtual void correct() override;$/;"	m	language:C++	class:Foam::HeliumModels::HeliumConst
-read	HeliumConst.C	/^bool Foam::HeliumModels::HeliumConst::read$/;"	f	language:C++	class:Foam::HeliumModels::HeliumConst
-~HeliumConst	HeliumConst.H	/^    virtual ~HeliumConst()$/;"	f	language:C++	class:Foam::HeliumModels::HeliumConst
+Foam	HeliumConst.C	/^namespace Foam$/;"	n	file:
+Foam	HeliumConst.H	/^namespace Foam$/;"	n
+Foam::HeliumModels	HeliumConst.C	/^namespace HeliumModels$/;"	n	namespace:Foam	file:
+Foam::HeliumModels	HeliumConst.H	/^namespace HeliumModels$/;"	n	namespace:Foam
+Foam::HeliumModels::HeliumConst	HeliumConst.H	/^class HeliumConst$/;"	c	namespace:Foam::HeliumModels	inherits:HeliumModel
+Foam::HeliumModels::HeliumConst::HeliumConst	HeliumConst.C	/^Foam::HeliumModels::HeliumConst::HeliumConst$/;"	f	class:Foam::HeliumModels::HeliumConst	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+Foam::HeliumModels::HeliumConst::HeliumConst	HeliumConst.H	/^        HeliumConst$/;"	p	class:Foam::HeliumModels::HeliumConst	access:public	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+Foam::HeliumModels::HeliumConst::HeliumConstCoeffs_	HeliumConst.H	/^        dictionary HeliumConstCoeffs_;$/;"	m	class:Foam::HeliumModels::HeliumConst	access:protected
+Foam::HeliumModels::HeliumConst::TMean0_	HeliumConst.H	/^		dimensionedScalar TMean0_;$/;"	m	class:Foam::HeliumModels::HeliumConst	access:protected
+Foam::HeliumModels::HeliumConst::TMean_	HeliumConst.H	/^		volScalarField TMean_;$/;"	m	class:Foam::HeliumModels::HeliumConst	access:protected
+Foam::HeliumModels::HeliumConst::calcNu	HeliumConst.C	/^Foam::HeliumModels::HeliumConst::calcNu() $/;"	f	class:Foam::HeliumModels::HeliumConst	signature:()
+Foam::HeliumModels::HeliumConst::calcNu	HeliumConst.H	/^        tmp<volScalarField> calcNu() ;$/;"	p	class:Foam::HeliumModels::HeliumConst	access:protected	signature:()
+Foam::HeliumModels::HeliumConst::correct	HeliumConst.C	/^void Foam::HeliumModels::HeliumConst::correct()$/;"	f	class:Foam::HeliumModels::HeliumConst	signature:()
+Foam::HeliumModels::HeliumConst::override	HeliumConst.H	/^        virtual bool read(const dictionary& HeliumProperties) override;$/;"	m	class:Foam::HeliumModels::HeliumConst	access:public
+Foam::HeliumModels::HeliumConst::override	HeliumConst.H	/^        virtual void correct() override;$/;"	m	class:Foam::HeliumModels::HeliumConst	access:public
+Foam::HeliumModels::HeliumConst::read	HeliumConst.C	/^bool Foam::HeliumModels::HeliumConst::read$/;"	f	class:Foam::HeliumModels::HeliumConst	signature:( const dictionary& HeliumProperties )
+Foam::HeliumModels::HeliumConst::~HeliumConst	HeliumConst.H	/^    virtual ~HeliumConst()$/;"	f	class:Foam::HeliumModels::HeliumConst	access:public	signature:()
+Foam::HeliumModels::addToRunTimeSelectionTable	HeliumConst.C	/^    addToRunTimeSelectionTable$/;"	p	namespace:Foam::HeliumModels	file:	signature:( HeliumModel, HeliumConst, dictionary )
+Foam::HeliumModels::defineTypeNameAndDebug	HeliumConst.C	/^    defineTypeNameAndDebug(HeliumConst, 0);$/;"	p	namespace:Foam::HeliumModels	file:	signature:(HeliumConst, 0)
+HeliumConst	HeliumConst.C	/^Foam::HeliumModels::HeliumConst::HeliumConst$/;"	f	class:Foam::HeliumModels::HeliumConst	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+HeliumConst	HeliumConst.H	/^        HeliumConst$/;"	p	class:Foam::HeliumModels::HeliumConst	access:public	signature:( const word& name, const dictionary& HeliumProperties, const volVectorField& U, const surfaceScalarField& phi )
+HeliumConst	HeliumConst.H	/^class HeliumConst$/;"	c	namespace:Foam::HeliumModels	inherits:HeliumModel
+HeliumConst.C	HeliumConst.C	1;"	F
+HeliumConst.H	HeliumConst.H	1;"	F
+HeliumConstCoeffs_	HeliumConst.H	/^        dictionary HeliumConstCoeffs_;$/;"	m	class:Foam::HeliumModels::HeliumConst	access:protected
+HeliumConst_H	HeliumConst.H	37;"	d
+HeliumModels	HeliumConst.C	/^namespace HeliumModels$/;"	n	namespace:Foam	file:
+HeliumModels	HeliumConst.H	/^namespace HeliumModels$/;"	n	namespace:Foam
+TMean0_	HeliumConst.H	/^		dimensionedScalar TMean0_;$/;"	m	class:Foam::HeliumModels::HeliumConst	access:protected
+TMean_	HeliumConst.H	/^		volScalarField TMean_;$/;"	m	class:Foam::HeliumModels::HeliumConst	access:protected
+addToRunTimeSelectionTable	HeliumConst.C	/^    addToRunTimeSelectionTable$/;"	p	namespace:Foam::HeliumModels	file:	signature:( HeliumModel, HeliumConst, dictionary )
+calcNu	HeliumConst.C	/^Foam::HeliumModels::HeliumConst::calcNu() $/;"	f	class:Foam::HeliumModels::HeliumConst	signature:()
+calcNu	HeliumConst.H	/^        tmp<volScalarField> calcNu() ;$/;"	p	class:Foam::HeliumModels::HeliumConst	access:protected	signature:()
+correct	HeliumConst.C	/^void Foam::HeliumModels::HeliumConst::correct()$/;"	f	class:Foam::HeliumModels::HeliumConst	signature:()
+defineTypeNameAndDebug	HeliumConst.C	/^    defineTypeNameAndDebug(HeliumConst, 0);$/;"	p	namespace:Foam::HeliumModels	file:	signature:(HeliumConst, 0)
+override	HeliumConst.H	/^        virtual bool read(const dictionary& HeliumProperties) override;$/;"	m	class:Foam::HeliumModels::HeliumConst	access:public
+override	HeliumConst.H	/^        virtual void correct() override;$/;"	m	class:Foam::HeliumModels::HeliumConst	access:public
+read	HeliumConst.C	/^bool Foam::HeliumModels::HeliumConst::read$/;"	f	class:Foam::HeliumModels::HeliumConst	signature:( const dictionary& HeliumProperties )
+~HeliumConst	HeliumConst.H	/^    virtual ~HeliumConst()$/;"	f	class:Foam::HeliumModels::HeliumConst	access:public	signature:()
