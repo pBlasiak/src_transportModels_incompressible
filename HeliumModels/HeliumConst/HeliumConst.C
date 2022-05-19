@@ -113,7 +113,12 @@ Foam::HeliumModels::HeliumConst::HeliumConst
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 
 void Foam::HeliumModels::HeliumConst::correct()
-{}
+{
+	const volScalarField& T = U_.db().lookupObject<volScalarField>("T");
+	Info<< "HeliumComst updates rhon and rhos..." << endl;
+	rhon_ = rhoHe_*pow(max(T/Tlambda_, dimensionedScalar("small", dimless, SMALL)), scalar(5.6));
+	rhos_ = rhoHe_ - rhon_; 
+}
 
 bool Foam::HeliumModels::HeliumConst::read
 (

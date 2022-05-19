@@ -137,6 +137,8 @@ void Foam::HeliumModels::HeliumFineOnebyf::correct()
 {
 	Info<< "HeliumFineOnebyf updates thermal properties..." << endl;
 	nu_ = calcNu();
+	rhon_ = rhoHe_*pow(max(T_/Tlambda_, dimensionedScalar("small", dimless, SMALL)), scalar(5.6));
+	rhos_ = rhoHe_ - rhon_;
 	calcHeProp(betaHe_, betaHeTable_, T_);
 	calcHeProp(AGMHe_, AGMHeTable_, T_);
 	calcHeProp(sHe_, sHeTable_, T_);
