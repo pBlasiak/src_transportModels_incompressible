@@ -72,6 +72,7 @@ public:
 			dynamicViscosity,
 			specificHeatCapacity,
 			oneByf,
+			oneByfSVP,
 			density
         };
 
@@ -119,6 +120,9 @@ protected:
 
 		//- Table for onebyf
 		static const List<scalar> onebyfTable_;
+
+		//- Table for onebyf at SVP
+		static const List<scalar> onebyfSVPTable_;
 
 		//- Table for rhoHe
 		static const List<scalar> rhoHeTable_;
