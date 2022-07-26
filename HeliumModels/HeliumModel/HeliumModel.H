@@ -49,6 +49,7 @@ SourceFiles
 #include "runTimeSelectionTables.H"
 #include "typeInfo.H"
 #include "volFields.H"
+#include "HeliumLibrary.H"
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
@@ -169,6 +170,8 @@ protected:
 
 		PtrList<volScalarField> HeThermProps_;
 		PtrList<const List<scalar> > HeThermPropsTables_;
+
+		HeliumLibrary hl_;
 
 		//- Calculates helium thermal property based on temperature
         void calcHeProp

@@ -6,7 +6,8 @@ HeliumModels/Helium/Helium.C
 HeliumModels/HeliumSVP/HeliumSVP.C
 HeliumModels/HeliumFineOnebyfConstRho/HeliumFineOnebyfConstRho.C
 HeliumModels/HeliumFineOnebyf/HeliumFineOnebyf.C
+HeliumLibrary/HeliumLibrary.C
 
-singlePhaseHeliumTransportModel/singlePhaseHeliumTransportModel.H
+singlePhaseHeliumTransportModel/singlePhaseHeliumTransportModel.C
 
 LIB = $(FOAM_USER_LIBBIN)/libincompressibleHeliumTransportModelsPB

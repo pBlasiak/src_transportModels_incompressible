@@ -1,0 +1,303 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     |
+    \\  /    A nd           | Copyright (C) 2011 OpenFOAM Foundation
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+License
+    This file is part of OpenFOAM.
+
+    OpenFOAM is free software: you can redistribute it and/or modify it
+    under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
+    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+    for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
+
+Namespace
+    Foam::HeliumLibrarys
+
+Description
+    A namespace for various incompressible HeliumLibrary implementations.
+
+Class
+    Foam::HeliumLibrary
+
+Description
+	He II thermo-physical properties library.
+
+SourceFiles
+    HeliumLibrary.C
+    HeliumLibraryNew.C
+
+\*---------------------------------------------------------------------------*/
+
+#ifndef HeliumLibrary_H
+#define HeliumLibrary_H
+
+#include "dictionary.H"
+#include "volFieldsFwd.H"
+#include "surfaceFieldsFwd.H"
+#include "dimensionedScalar.H"
+#include "runTimeSelectionTables.H"
+#include "typeInfo.H"
+#include "volFields.H"
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+namespace Foam
+{
+
+/*---------------------------------------------------------------------------*\
+                Class HeliumLibrary Declaration
+\*---------------------------------------------------------------------------*/
+
+class HeliumLibrary
+{
+    // Public data
+public:
+
+        //- Enumeration listing the possible helium thermal properties 
+        enum class HeliumPressures
+        {
+			SVP = 0,
+			onebar
+        };
+
+protected:
+
+    // Protected data
+	
+        //- Helium thermal properties types
+        static const Enum<HeliumPressures> HeliumPressuresNames_;
+	
+		//- Maximum index number for thermophysical tables i = 667
+		static const label indexMax_;
+
+		//- Step of temperature in the thermophysical tables dT = 0.001 K
+		static const dimensionedScalar dT_;
+	
+		//- lambda Temperature 2.16795 K from Hepak at 1 atm
+		//  previous value was 2.1711132461 (probably taken from Wiki) 
+		//  Van Sciver str. 163 Tlambda = 2.177 K
+		static const dimensionedScalar Tlambda_;
+
+		//- Minimum temperature TMin = 1.5 K
+		static const dimensionedScalar TMin_;
+
+		//- Maximum temperature TMax = 2.167 K
+		static const dimensionedScalar TMax_;
+
+		//- Minimum index number for thermophysical tables i = 0
+		static const label indexMin_;
+
+		//- Table for betaHe
+		static const List<scalar> betaHeTableSVP_;
+		static const List<scalar> betaHeTable1bar_;
+
+		//- Table for AGMHe
+		static const List<scalar> AGMHeTableSVP_;
+		static const List<scalar> AGMHeTable1bar_;
+
+		//- Table for sHe
+		static const List<scalar> sHeTableSVP_;
+		static const List<scalar> sHeTable1bar_;
+
+		//- Table for etaHe
+		static const List<scalar> etaHeTableSVP_;
+		static const List<scalar> etaHeTable1bar_;
+
+		//- Table for cpHe
+		static const List<scalar> cpHeTableSVP_;
+		static const List<scalar> cpHeTable1bar_;
+
+		//- Table for onebyf
+		static const List<scalar> onebyfTableSVP_;
+		static const List<scalar> onebyfTable1bar_;
+
+		//- Table for rhoHe
+		static const List<scalar> rhoHeTableSVP_;
+		static const List<scalar> rhoHeTable1bar_;
+
+
+        //word name_;
+        //dictionary HeliumProperties_;
+
+        const volVectorField& U_;
+        const surfaceScalarField& phi_;
+
+		//volScalarField TMinField_;
+		//volScalarField TMaxField_;
+
+        ////- Thermal expansion coefficient
+        //volScalarField betaHe_;
+		//
+        ////- Goerter-Mellink parameter
+        //volScalarField AGMHe_;
+
+        ////- Entropy
+        //volScalarField sHe_;
+		//
+        ////- Dynamic Helium
+        //volScalarField etaHe_;
+		//
+        ////- Specific heat at constant pressure
+        //volScalarField cpHe_;
+		//
+        ////- Thermal conductivity function
+        //volScalarField onebyf_;
+
+        ////- Density of the mixture 
+        //volScalarField rhoHe_;
+
+        ////- Normal density component
+        //volScalarField rhon_;
+
+        ////- Superfluid density component
+        //volScalarField rhos_;
+
+        ////- Kinematic Helium
+        //volScalarField nu_;
+
+		//PtrList<volScalarField> HeThermProps_;
+		//PtrList<const List<scalar> > HeThermPropsTables_;
+
+		////- Calculates helium thermal property based on temperature
+        //void calcHeProp
+		//(
+		//    volScalarField& vsf, 
+		//	const List<scalar>& vsfTable,
+		//	const volScalarField& T,
+		//	const label maxIndex = indexMax_,
+		//	const dimensionedScalar dt = dT_
+		//);
+
+    // Private Member Functions
+
+        //- Disallow copy construct
+        HeliumLibrary(const HeliumLibrary&);
+
+        //- Disallow default bitwise assignment
+        void operator=(const HeliumLibrary&);
+
+
+public:
+
+
+    // Constructors
+
+        //- Construct from components
+        HeliumLibrary
+        (
+            //const word& name,
+            //const dictionary& HeliumProperties,
+            const volVectorField& U,
+            const surfaceScalarField& phi
+        );
+
+
+    //- Destructor
+    virtual ~HeliumLibrary()
+    {}
+
+
+    // Member Functions
+
+        ////- Return the helium properties dictionary
+        //const dictionary& HeliumProperties() const
+        //{
+        //    return HeliumProperties_;
+        //}
+
+        ////- Return the laminar kinematic viscosity of Helium
+        //virtual tmp<volScalarField> nu() const
+        //{
+        //    return nu_;
+        //}
+
+        ////- Return the laminar kinematic viscosity of Helium for patch
+        //virtual tmp<scalarField> nu(const label patchi) const
+        //{
+        //    return nu_.boundaryField()[patchi];
+        //}
+
+		////- Returns thermal expansion coefficient 
+        //virtual const volScalarField& beta() const
+		//{
+		//	return betaHe_;
+		//}
+
+		////- Returns Goerter-Mellink coefficient 
+        //virtual const volScalarField& AGM() const
+		//{
+		//	return AGMHe_;
+		//}
+
+		////- Returns entropy 
+        //virtual const volScalarField& s() const
+		//{
+		//	return sHe_;
+		//}
+
+		////- Returns dynamic Helium 
+        //virtual const volScalarField& eta() const
+		//{
+		//	return etaHe_;
+		//}
+	
+		////- Returns specific heat capacity 
+        //virtual const volScalarField& cp() const
+		//{
+		//	return cpHe_;
+		//}
+
+		////- Returns reciprocal of thermal conductivity function for helium based on temperature
+        //virtual const volScalarField& onebyf() const
+		//{
+		//	return onebyf_;
+		//}
+		//
+        ////- Returns the density
+        //virtual const volScalarField& rho() const
+		//{
+		//	return rhoHe_;
+		//}
+
+		//const volScalarField& rhon() const
+		//{
+		//	return rhon_;
+		//}
+
+		//const volScalarField& rhos() const
+		//{
+		//	return rhos_;
+		//}
+
+		//static const dimensionedScalar Tlambda() 
+		//{
+		//	return Tlambda_;
+		//}
+		//
+        ////- Correct the laminar Helium
+        //virtual void correct() = 0;
+
+        ////- Read transportProperties dictionary
+        //virtual bool read(const dictionary& HeliumProperties) = 0;
+};
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+} // End namespace Foam
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#endif
+
+// ************************************************************************* //

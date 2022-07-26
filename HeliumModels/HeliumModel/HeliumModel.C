@@ -259,7 +259,9 @@ Foam::HeliumModel::HeliumModel
 		//"zeroGradient"
     ),
 	HeThermProps_(7),
-	HeThermPropsTables_(7)
+	HeThermPropsTables_(7),
+
+	hl_(U, phi)
 {
 	// Initializing pointers to thermal-flow properties
 	HeThermProps_.set(0, &betaHe_);
