@@ -59,16 +59,20 @@ namespace Foam
 
 class HeliumLibrary
 {
-    // Public data
-public:
+    // Private data
+private:
 
         //- Enumeration listing the possible helium pressures
-        enum HeliumPressures
+        enum class HeliumPressures
         {
 			SVP = 0,
 			onebar,
 			size_
         };
+
+		const unsigned int SVP_ = static_cast<unsigned int>(HeliumPressures::SVP);
+		const unsigned int onebar_ = static_cast<unsigned int>(HeliumPressures::onebar);
+		const unsigned int pressures_size_ = static_cast<unsigned int>(HeliumPressures::size_);
 
 protected:
 

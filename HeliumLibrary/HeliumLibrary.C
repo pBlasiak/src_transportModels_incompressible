@@ -100,30 +100,30 @@ Foam::HeliumLibrary::HeliumLibrary
     //    U.mesh(),
 	//	TMax_
     //),
-	betaHeTables_(HeliumPressures::size_),
-	AGMHeTables_(HeliumPressures::size_),
-	sHeTables_(HeliumPressures::size_),
-	etaHeTables_(HeliumPressures::size_),
-	cpHeTables_(HeliumPressures::size_),
-	onebyfTables_(HeliumPressures::size_),
-	rhoHeTables_(HeliumPressures::size_)
+	betaHeTables_(pressures_size_),
+	AGMHeTables_(pressures_size_),
+	sHeTables_(pressures_size_),
+	etaHeTables_(pressures_size_),
+	cpHeTables_(pressures_size_),
+	onebyfTables_(pressures_size_),
+	rhoHeTables_(pressures_size_)
 	//HeThermProps_(7),
 	//HeThermPropsTables_(7)
 { 
-	betaHeTables_.set(HeliumPressures::SVP,    &betaHeTableSVP_);
-	betaHeTables_.set(HeliumPressures::onebar, &betaHeTable1bar_);
-	AGMHeTables_.set(HeliumPressures::SVP,     &AGMHeTableSVP_);
-	AGMHeTables_.set(HeliumPressures::onebar,  &AGMHeTable1bar_);
-	sHeTables_.set(HeliumPressures::SVP,       &sHeTableSVP_);
-	sHeTables_.set(HeliumPressures::onebar,    &sHeTable1bar_);
-	etaHeTables_.set(HeliumPressures::SVP,     &etaHeTableSVP_);
-	etaHeTables_.set(HeliumPressures::onebar,  &etaHeTable1bar_);
-	cpHeTables_.set(HeliumPressures::SVP,      &cpHeTableSVP_);
-	cpHeTables_.set(HeliumPressures::onebar,   &cpHeTable1bar_);
-	onebyfTables_.set(HeliumPressures::SVP,    &onebyfTableSVP_);
-	onebyfTables_.set(HeliumPressures::onebar, &onebyfTable1bar_);
-	rhoHeTables_.set(HeliumPressures::SVP,     &rhoHeTableSVP_);
-	rhoHeTables_.set(HeliumPressures::onebar,  &rhoHeTable1bar_); 
+	betaHeTables_.set(SVP_,    &betaHeTableSVP_);
+	betaHeTables_.set(onebar_, &betaHeTable1bar_);
+	AGMHeTables_.set(SVP_,     &AGMHeTableSVP_);
+	AGMHeTables_.set(onebar_,  &AGMHeTable1bar_);
+	sHeTables_.set(SVP_,       &sHeTableSVP_);
+	sHeTables_.set(onebar_,    &sHeTable1bar_);
+	etaHeTables_.set(SVP_,     &etaHeTableSVP_);
+	etaHeTables_.set(onebar_,  &etaHeTable1bar_);
+	cpHeTables_.set(SVP_,      &cpHeTableSVP_);
+	cpHeTables_.set(onebar_,   &cpHeTable1bar_);
+	onebyfTables_.set(SVP_,    &onebyfTableSVP_);
+	onebyfTables_.set(onebar_, &onebyfTable1bar_);
+	rhoHeTables_.set(SVP_,     &rhoHeTableSVP_);
+	rhoHeTables_.set(onebar_,  &rhoHeTable1bar_); 
 }
 
 
