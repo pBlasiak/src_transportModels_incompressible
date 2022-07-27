@@ -46,25 +46,6 @@ namespace Foam
 	 }
 	);
 
-	const Foam::dimensionedScalar
-	Foam::HeliumModel::Tlambda_("Tlambda", dimTemperature, 2.16795);
-
-	const Foam::dimensionedScalar
-	Foam::HeliumModel::TMin_("TMin", dimTemperature, 1.5);
-	
-	const Foam::dimensionedScalar
-	Foam::HeliumModel::TMax_("TMax", dimTemperature, 2.167);
-	
-	const Foam::label
-	Foam::HeliumModel::indexMin_(0);
-	
-	const Foam::label
-	Foam::HeliumModel::indexMax_(667);
-	
-	const Foam::dimensionedScalar
-	Foam::HeliumModel::dT_("dT", dimTemperature, 0.001);
-
-	#include "staticTables.H"
 }
 
 
@@ -82,32 +63,32 @@ Foam::HeliumModel::HeliumModel
     HeliumProperties_(HeliumProperties),
     U_(U),
     phi_(phi),
-    TMinField_
-    (
-        IOobject
-        (
-            "TMin",
-            U.mesh().time().timeName(),
-            U.mesh(),
-            IOobject::NO_READ,
-            IOobject::NO_WRITE
-        ),
-        U.mesh(),
-		TMin_
-    ),
-    TMaxField_
-    (
-        IOobject
-        (
-            "TMax",
-            U.mesh().time().timeName(),
-            U.mesh(),
-            IOobject::NO_READ,
-            IOobject::NO_WRITE
-        ),
-        U.mesh(),
-		TMax_
-    ),
+//    TMinField_
+//    (
+//        IOobject
+//        (
+//            "TMin",
+//            U.mesh().time().timeName(),
+//            U.mesh(),
+//            IOobject::NO_READ,
+//            IOobject::NO_WRITE
+//        ),
+//        U.mesh(),
+//		TMin_
+//    ),
+//    TMaxField_
+//    (
+//        IOobject
+//        (
+//            "TMax",
+//            U.mesh().time().timeName(),
+//            U.mesh(),
+//            IOobject::NO_READ,
+//            IOobject::NO_WRITE
+//        ),
+//        U.mesh(),
+//		TMax_
+//    ),
     betaHe_
     (
         IOobject
@@ -258,169 +239,32 @@ Foam::HeliumModel::HeliumModel
 		dimensionedScalar("nuHe", dimViscosity, 0.0)//,
 		//"zeroGradient"
     ),
-	HeThermProps_(7),
-	HeThermPropsTables_(7),
-
+	//HeThermProps_(7),
+	//HeThermPropsTables_(7),
 	hl_(U, phi)
-{
-	// Initializing pointers to thermal-flow properties
-	HeThermProps_.set(0, &betaHe_);
-	HeThermProps_.set(1, &AGMHe_);
-	HeThermProps_.set(2, &sHe_);
-	HeThermProps_.set(3, &etaHe_);
-	HeThermProps_.set(4, &cpHe_);
-	HeThermProps_.set(5, &onebyf_);
-	HeThermProps_.set(6, &rhoHe_);
 
-	// Initializing pointers to thermal-flow properties tables
-	HeThermPropsTables_.set(0, &betaHeTable_);
-	HeThermPropsTables_.set(1, &AGMHeTable_);
-	HeThermPropsTables_.set(2, &sHeTable_);
-	HeThermPropsTables_.set(3, &etaHeTable_);
-	HeThermPropsTables_.set(4, &cpHeTable_);
-	HeThermPropsTables_.set(5, &onebyfTable_);
-	HeThermPropsTables_.set(6, &rhoHeTable_);
+{
+	//// Initializing pointers to thermal-flow properties
+	//HeThermProps_.set(0, &betaHe_);
+	//HeThermProps_.set(1, &AGMHe_);
+	//HeThermProps_.set(2, &sHe_);
+	//HeThermProps_.set(3, &etaHe_);
+	//HeThermProps_.set(4, &cpHe_);
+	//HeThermProps_.set(5, &onebyf_);
+	//HeThermProps_.set(6, &rhoHe_);
+
+	//// Initializing pointers to thermal-flow properties tables
+	//HeThermPropsTables_.set(0, &betaHeTable_);
+	//HeThermPropsTables_.set(1, &AGMHeTable_);
+	//HeThermPropsTables_.set(2, &sHeTable_);
+	//HeThermPropsTables_.set(3, &etaHeTable_);
+	//HeThermPropsTables_.set(4, &cpHeTable_);
+	//HeThermPropsTables_.set(5, &onebyfTable_);
+	//HeThermPropsTables_.set(6, &rhoHeTable_);
 }
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
-// NOTICE:
-// This function should be tested if works good.
-// It would be better to implement it without forAll loop
-// and without additional loop over patches because it slows down
-// calculation probably. The better way is to use OpenFOAM class operators
-// but I do not know how to implement this so far.
-void Foam::HeliumModel::calcHeProp
-(
-    volScalarField& vsf, 
-	const List<scalar>& vsfTable,
-	const volScalarField& T,
-	const label maxIndex, 
-	const dimensionedScalar dt
-)
-{
-	const scalar TMin(TMin_.value());
-	const scalar TMax(TMax_.value());
-	const scalar dT(dt.value());
-
-	// Solution with iterators
-	//forAll(T, celli)
-	//{
-	//	if (T[celli] < TMin)
-	//	{
-	//		PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-	//		forAllIters(HeThermProps_, iter)
-	//		{
-	//			iter()[celli] = iterTable()[indexMin_];
-	//			iterTable++;
-	//		}
-	//	}
-	//	else if (T[celli] > TMax)
-	//	{
-	//		PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-	//		forAllIters(HeThermProps_, iter)
-	//		{
-	//			iter()[celli] = iterTable()[maxIndex];
-	//			iterTable++;
-	//		}
-	//	}
-	//	else
-	//	{
-	//	    label index = (T[celli] - TMin)/dT;
-	//	    if (index == maxIndex)
-	//	    {
-	//	    	PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-	//	    	forAllIters(HeThermProps_, iter)
-	//	    	{
-	//	    		iter()[celli] = iterTable()[maxIndex];
-	//				iterTable++;
-	//	    	}
-	//	    }
-	//	    else
-	//	    {
-	//	    	scalar Ti1 = TMin + index*dT;
-	//	    	scalar Ti2 = Ti1 + dT;
-	//	    	PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-	//	    	forAllIters(HeThermProps_, iter)
-	//	    	{
-	//	    		scalar a = (iterTable()[index + 1] - iterTable()[index])/(Ti2 - Ti1);
-	//	    		scalar b = iterTable()[index] - a*Ti1;
-	//	    		iter()[celli] = a*T[celli] + b;
-	//				iterTable++;
-	//	    	}
-	//	    }
-    //    }
-	//}
-
-	//forAllIters(HeThermProps_, iter)
-	//{
-	//	iter->correctBoundaryConditions();
-	//}
-
-	// Old solution with forAll loops 
-	forAll(vsf, celli)
-	{
-		if (T[celli] < TMin)
-		{
-			vsf[celli] = vsfTable[indexMin_];
-		}
-		else if (T[celli] > TMax)
-		{
-			vsf[celli] = vsfTable[maxIndex];
-		}
-		else
-		{
-			label index = (T[celli] - TMin)/dT;
-			if (index == maxIndex)
-			{
-				vsf[celli] = vsfTable[maxIndex];
-			}
-			else
-			{
-				scalar Ti1 = TMin + index*dT;
-				scalar Ti2 = Ti1 + dT;
-				scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
-				scalar b = vsfTable[index] - a*Ti1;
-				vsf[celli] = a*T[celli] + b;
-			}
-		}
-	}
-
-	// if we have this line probably we do not need 
-	// the second forAll loop over boundaries but it has to be checked
-	//vsf.correctBoundaryConditions();
-
-	forAll(vsf.boundaryField(), patchi)
-	{
-		forAll(vsf.boundaryField()[patchi], facei)
-		{
-			if (T[facei] < TMin)
-			{
-				vsf.boundaryFieldRef()[patchi][facei] = vsfTable[indexMin_];
-			}
-			else if (T[facei] > TMax)
-			{
-				vsf.boundaryFieldRef()[patchi][facei] = vsfTable[maxIndex];
-			}
-			else
-			{
-				label index = (T[facei] - TMin)/dT;
-				if (index == maxIndex)
-				{
-					vsf.boundaryFieldRef()[patchi][facei] = vsfTable[maxIndex];
-				}
-				else
-				{
-					scalar Ti1 = TMin + index*dT;
-					scalar Ti2 = Ti1 + dT;
-					scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
-					scalar b = vsfTable[index] - a*Ti1;
-					vsf.boundaryFieldRef()[patchi][facei] = a*T[facei] + b;
-				}
-			}
-		}
-	}
-}
 
 
 bool Foam::HeliumModel::read(const dictionary& HeliumProperties)

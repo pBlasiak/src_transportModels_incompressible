@@ -1,4 +1,4 @@
-/* in the array onebyfarray there are values of thermal expansion coefficient of helium
+/* in the array onebyfarray there are values of thermal conductivity function of helium
  these values correspond the temperature range from Tmin = 1.5 to 2.167
  the temperatures are equdisdanced with dT
  dT is constant and equals 0.001 K

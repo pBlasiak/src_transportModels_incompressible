@@ -79,78 +79,37 @@ public:
 
 protected:
 
-    // Protected data
+    // Static data
 	
         //- Helium thermal properties types
         static const Enum<HeliumThermalPropertiesType> HeliumThermalPropertiesTypeNames_;
+
 	
-		//- Maximum index number for thermophysical tables i = 667
-		static const label indexMax_;
-
-		//- Step of temperature in the thermophysical tables dT = 0.001 K
-		static const dimensionedScalar dT_;
+    // Protected data
 	
-		//- lambda Temperature 2.16795 K from Hepak at 1 atm
-		//  previous value was 2.1711132461 (probably taken from Wiki) 
-		//  Van Sciver str. 163 Tlambda = 2.177 K
-		static const dimensionedScalar Tlambda_;
-
-		//- Minimum temperature TMin = 1.5 K
-		static const dimensionedScalar TMin_;
-
-		//- Maximum temperature TMax = 2.167 K
-		static const dimensionedScalar TMax_;
-
-		//- Minimum index number for thermophysical tables i = 0
-		static const label indexMin_;
-
-		//- Table for betaHe
-		static const List<scalar> betaHeTable_;
-
-		//- Table for AGMHe
-		static const List<scalar> AGMHeTable_;
-
-		//- Table for sHe
-		static const List<scalar> sHeTable_;
-
-		//- Table for etaHe
-		static const List<scalar> etaHeTable_;
-
-		//- Table for cpHe
-		static const List<scalar> cpHeTable_;
-
-		//- Table for onebyf
-		static const List<scalar> onebyfTable_;
-
-		//- Table for onebyf at SVP
-		static const List<scalar> onebyfSVPTable_;
-
-		//- Table for rhoHe
-		static const List<scalar> rhoHeTable_;
-
-
         word name_;
         dictionary HeliumProperties_;
 
         const volVectorField& U_;
         const surfaceScalarField& phi_;
 
-		volScalarField TMinField_;
-		volScalarField TMaxField_;
+		//TODO: usun??
+		//volScalarField TMinField_;
+		//volScalarField TMaxField_;
 
         //- Thermal expansion coefficient
         volScalarField betaHe_;
 		
-        //- Goerter-Mellink parameter
+        //- Gorter-Mellink parameter
         volScalarField AGMHe_;
 
         //- Entropy
         volScalarField sHe_;
 		
-        //- Dynamic Helium
+        //- Helium dynamic viscosity
         volScalarField etaHe_;
 		
-        //- Specific heat at constant pressure
+        //- Specific heat capacity at constant pressure
         volScalarField cpHe_;
 		
         //- Thermal conductivity function
@@ -165,23 +124,16 @@ protected:
         //- Superfluid density component
         volScalarField rhos_;
 
-        //- Kinematic Helium
+        //- Helium kinematic viscosity
         volScalarField nu_;
 
-		PtrList<volScalarField> HeThermProps_;
-		PtrList<const List<scalar> > HeThermPropsTables_;
+		//TODO: usun??
+		//PtrList<volScalarField> HeThermProps_;
+		//PtrList<const List<scalar>> HeThermPropsTables_;
 
 		HeliumLibrary hl_;
 
-		//- Calculates helium thermal property based on temperature
-        void calcHeProp
-		(
-		    volScalarField& vsf, 
-			const List<scalar>& vsfTable,
-			const volScalarField& T,
-			const label maxIndex = indexMax_,
-			const dimensionedScalar dt = dT_
-		);
+private:
 
     // Private Member Functions
 
@@ -270,7 +222,7 @@ public:
 			return betaHe_;
 		}
 
-		//- Returns Goerter-Mellink coefficient 
+		//- Returns Gorter-Mellink coefficient 
         virtual const volScalarField& AGM() const
 		{
 			return AGMHe_;
@@ -282,13 +234,13 @@ public:
 			return sHe_;
 		}
 
-		//- Returns dynamic Helium 
+		//- Returns dynamic viscosity 
         virtual const volScalarField& eta() const
 		{
 			return etaHe_;
 		}
 	
-		//- Returns specific heat capacity 
+		//- Returns specific heat capacity at constant pressure
         virtual const volScalarField& cp() const
 		{
 			return cpHe_;
@@ -318,7 +270,8 @@ public:
 
 		static const dimensionedScalar Tlambda() 
 		{
-			return Tlambda_;
+			return HeliumLibrary::Tlambda();
+			//return Tlambda_;
 		}
 		
         //- Correct the laminar Helium
