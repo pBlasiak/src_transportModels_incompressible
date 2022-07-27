@@ -73,7 +73,7 @@ Foam::HeliumLibrary::HeliumLibrary
     //name_(name),
     //HeliumProperties_(HeliumProperties),
     U_(U),
-    phi_(phi)
+    phi_(phi),
     //TMinField_
     //(
     //    IOobject
@@ -100,9 +100,31 @@ Foam::HeliumLibrary::HeliumLibrary
     //    U.mesh(),
 	//	TMax_
     //),
+	betaHeTables_(HeliumPressures::size_),
+	AGMHeTables_(HeliumPressures::size_),
+	sHeTables_(HeliumPressures::size_),
+	etaHeTables_(HeliumPressures::size_),
+	cpHeTables_(HeliumPressures::size_),
+	onebyfTables_(HeliumPressures::size_),
+	rhoHeTables_(HeliumPressures::size_)
 	//HeThermProps_(7),
 	//HeThermPropsTables_(7)
-{ }
+{ 
+	betaHeTables_.set(HeliumPressures::SVP,    &betaHeTableSVP_);
+	betaHeTables_.set(HeliumPressures::onebar, &betaHeTable1bar_);
+	AGMHeTables_.set(HeliumPressures::SVP,     &AGMHeTableSVP_);
+	AGMHeTables_.set(HeliumPressures::onebar,  &AGMHeTable1bar_);
+	sHeTables_.set(HeliumPressures::SVP,       &sHeTableSVP_);
+	sHeTables_.set(HeliumPressures::onebar,    &sHeTable1bar_);
+	etaHeTables_.set(HeliumPressures::SVP,     &etaHeTableSVP_);
+	etaHeTables_.set(HeliumPressures::onebar,  &etaHeTable1bar_);
+	cpHeTables_.set(HeliumPressures::SVP,      &cpHeTableSVP_);
+	cpHeTables_.set(HeliumPressures::onebar,   &cpHeTable1bar_);
+	onebyfTables_.set(HeliumPressures::SVP,    &onebyfTableSVP_);
+	onebyfTables_.set(HeliumPressures::onebar, &onebyfTable1bar_);
+	rhoHeTables_.set(HeliumPressures::SVP,     &rhoHeTableSVP_);
+	rhoHeTables_.set(HeliumPressures::onebar,  &rhoHeTable1bar_); 
+}
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //

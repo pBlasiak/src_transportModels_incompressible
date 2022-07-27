@@ -63,13 +63,22 @@ class HeliumLibrary
 public:
 
         //- Enumeration listing the possible helium pressures
-        enum class HeliumPressures
+        enum HeliumPressures
         {
 			SVP = 0,
-			onebar
+			onebar,
+			size_
         };
 
 protected:
+
+		////- Auxiliary class
+		//struct HeliumTableData
+		//{
+		//	using List = List<scalar>;
+
+		//	List 
+		//};
 
     // Protected data
 	
@@ -134,6 +143,15 @@ protected:
         const volVectorField& U_;
         const surfaceScalarField& phi_;
 
+		//TODO: add fineOneByf ??
+		//- Pointers to table data of helium
+		PtrList<const List<scalar>> betaHeTables_;
+		PtrList<const List<scalar>> AGMHeTables_;
+		PtrList<const List<scalar>> sHeTables_;
+		PtrList<const List<scalar>> etaHeTables_;
+		PtrList<const List<scalar>> cpHeTables_;
+		PtrList<const List<scalar>> onebyfTables_;
+		PtrList<const List<scalar>> rhoHeTables_;
 		//volScalarField TMinField_;
 		//volScalarField TMaxField_;
 
@@ -150,6 +168,7 @@ protected:
 			const dimensionedScalar dt = dT_
 		);
 
+private:
     // Private Member Functions
 
         //- Disallow copy construct
