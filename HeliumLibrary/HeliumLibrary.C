@@ -30,11 +30,26 @@ License
 
 namespace Foam
 {
+	const Enum<HeliumLibrary::HeliumThermalPropertiesType>
+	HeliumLibrary::HeliumThermalPropertiesTypeNames_
+	({
+        { HeliumThermalPropertiesType::thermalExpansion, "beta" },
+        { HeliumThermalPropertiesType::AGMCoeff, "AGM" },
+        { HeliumThermalPropertiesType::entropy, "s" },
+        { HeliumThermalPropertiesType::dynamicViscosity, "eta" },
+        { HeliumThermalPropertiesType::specificHeatCapacity, "cp" },
+        { HeliumThermalPropertiesType::oneByf, "oneByf" },
+        { HeliumThermalPropertiesType::density, "rho" },
+        { HeliumThermalPropertiesType::thermPropsSize_, "thermPropsSize" }
+	 }
+	);
+
 	const Enum<HeliumLibrary::HeliumPressures>
 	HeliumLibrary::HeliumPressuresNames_
 	({
         { HeliumPressures::SVP,    "SVP"  },
-        { HeliumPressures::onebar, "1bar" }
+        { HeliumPressures::onebar, "1bar" },
+        { HeliumPressures::pressuresSize_,  "pressuresSize" }
 	 }
 	);
 
@@ -72,6 +87,7 @@ Foam::HeliumLibrary::HeliumLibrary
 :
     //name_(name),
     //HeliumProperties_(HeliumProperties),
+	//heliumPressure_(HeliumPressures::onebar),
     U_(U),
     phi_(phi),
     //TMinField_
@@ -100,30 +116,41 @@ Foam::HeliumLibrary::HeliumLibrary
     //    U.mesh(),
 	//	TMax_
     //),
-	betaHeTables_(pressures_size_),
-	AGMHeTables_(pressures_size_),
-	sHeTables_(pressures_size_),
-	etaHeTables_(pressures_size_),
-	cpHeTables_(pressures_size_),
-	onebyfTables_(pressures_size_),
-	rhoHeTables_(pressures_size_)
+	betaHeTables_(pressuresSize_),
+	AGMHeTables_(pressuresSize_),
+	sHeTables_(pressuresSize_),
+	etaHeTables_(pressuresSize_),
+	cpHeTables_(pressuresSize_),
+	onebyfTables_(pressuresSize_),
+	rhoHeTables_(pressuresSize_),
+
+	HeThermPropsTables_(thermPropsSize_)
 	//HeThermProps_(7),
 	//HeThermPropsTables_(7)
 { 
-	betaHeTables_.set(SVP_,    &betaHeTableSVP_);
-	betaHeTables_.set(onebar_, &betaHeTable1bar_);
-	AGMHeTables_.set(SVP_,     &AGMHeTableSVP_);
-	AGMHeTables_.set(onebar_,  &AGMHeTable1bar_);
-	sHeTables_.set(SVP_,       &sHeTableSVP_);
-	sHeTables_.set(onebar_,    &sHeTable1bar_);
-	etaHeTables_.set(SVP_,     &etaHeTableSVP_);
-	etaHeTables_.set(onebar_,  &etaHeTable1bar_);
-	cpHeTables_.set(SVP_,      &cpHeTableSVP_);
-	cpHeTables_.set(onebar_,   &cpHeTable1bar_);
-	onebyfTables_.set(SVP_,    &onebyfTableSVP_);
-	onebyfTables_.set(onebar_, &onebyfTable1bar_);
-	rhoHeTables_.set(SVP_,     &rhoHeTableSVP_);
-	rhoHeTables_.set(onebar_,  &rhoHeTable1bar_); 
+	//TODO: sprawdz czy dobrze pointers sa przypisane
+	betaHeTables_.set(SVP,    &betaHeTableSVP_);
+	betaHeTables_.set(onebar, &betaHeTable1bar_);
+	AGMHeTables_.set(SVP,     &AGMHeTableSVP_);
+	AGMHeTables_.set(onebar,  &AGMHeTable1bar_);
+	sHeTables_.set(SVP,       &sHeTableSVP_);
+	sHeTables_.set(onebar,    &sHeTable1bar_);
+	etaHeTables_.set(SVP,     &etaHeTableSVP_);
+	etaHeTables_.set(onebar,  &etaHeTable1bar_);
+	cpHeTables_.set(SVP,      &cpHeTableSVP_);
+	cpHeTables_.set(onebar,   &cpHeTable1bar_);
+	onebyfTables_.set(SVP,    &onebyfTableSVP_);
+	onebyfTables_.set(onebar, &onebyfTable1bar_);
+	rhoHeTables_.set(SVP,     &rhoHeTableSVP_);
+	rhoHeTables_.set(onebar,  &rhoHeTable1bar_); 
+
+	HeThermPropsTables_.set(thermalExpansion, &betaHeTables_);
+	HeThermPropsTables_.set(AGMCoeff, &AGMHeTables_);
+	HeThermPropsTables_.set(entropy, &sHeTables_);
+	HeThermPropsTables_.set(dynamicViscosity, &etaHeTables_);
+	HeThermPropsTables_.set(specificHeatCapacity, &cpHeTables_);
+	HeThermPropsTables_.set(oneByf, &onebyfTables_);
+	HeThermPropsTables_.set(density, &rhoHeTables_);
 }
 
 
@@ -133,6 +160,7 @@ void Foam::HeliumLibrary::calcHeProp
 (
     volScalarField& vsf, 
 	//const List<scalar>& vsfTable,
+	//TODO: sprawdz potem czy sprawdza jak dasz inna wartosc np. 10bar
 	HeliumPressures p,
 	const volScalarField& T,
 	const label maxIndex, 
@@ -198,7 +226,7 @@ void Foam::HeliumLibrary::calcHeProp
 	//}
 
 	// Old solution with forAll loops 
-	const List<scalar>& 
+	const List<scalar>& vsfTable(*betaHeTables_.set(p)); 
 	forAll(vsf, celli)
 	{
 		if (T[celli] < TMin)

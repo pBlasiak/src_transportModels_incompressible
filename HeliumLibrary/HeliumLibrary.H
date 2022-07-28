@@ -62,31 +62,45 @@ class HeliumLibrary
     // Private data
 private:
 
+	//TODO: sprobowac zamienic potem na enum class
+        //- Enumeration listing the possible helium thermal properties 
+        enum HeliumThermalPropertiesType
+        {
+            thermalExpansion = 0,
+			AGMCoeff,
+			entropy,
+			dynamicViscosity,
+			specificHeatCapacity,
+			oneByf,
+			//TODO: dodac fineonebyf???
+			density,
+			thermPropsSize_
+        };
+
         //- Enumeration listing the possible helium pressures
-        enum class HeliumPressures
+        enum HeliumPressures
         {
 			SVP = 0,
 			onebar,
-			size_
+			pressuresSize_
         };
 
-		const unsigned int SVP_ = static_cast<unsigned int>(HeliumPressures::SVP);
-		const unsigned int onebar_ = static_cast<unsigned int>(HeliumPressures::onebar);
-		const unsigned int pressures_size_ = static_cast<unsigned int>(HeliumPressures::size_);
+
+		//const unsigned int SVP_ = static_cast<unsigned int>(HeliumPressures::SVP);
+		//const unsigned int onebar_ = static_cast<unsigned int>(HeliumPressures::onebar);
+		//const unsigned int pressures_size_ = static_cast<unsigned int>(HeliumPressures::size_);
+
+		//HeliumPressures heliumPressure_;
 
 protected:
 
-		////- Auxiliary class
-		//struct HeliumTableData
-		//{
-		//	using List = List<scalar>;
-
-		//	List 
-		//};
 
     // Protected data
 	
 	//TODO zamien const na constexpr????
+	//
+        //- Helium thermal properties types
+        static const Enum<HeliumThermalPropertiesType> HeliumThermalPropertiesTypeNames_;
 	
         //- Helium thermal properties types
         static const Enum<HeliumPressures> HeliumPressuresNames_;
@@ -156,6 +170,9 @@ protected:
 		PtrList<const List<scalar>> cpHeTables_;
 		PtrList<const List<scalar>> onebyfTables_;
 		PtrList<const List<scalar>> rhoHeTables_;
+
+		PtrList<PtrList<const List<scalar>>> HeThermPropsTables_;
+
 		//volScalarField TMinField_;
 		//volScalarField TMaxField_;
 
@@ -166,7 +183,8 @@ protected:
         void calcHeProp
 		(
 		    volScalarField& vsf, 
-			const List<scalar>& vsfTable,
+			//const List<scalar>& vsfTable,
+			HeliumPressures p,
 			const volScalarField& T,
 			const label maxIndex = indexMax_,
 			const dimensionedScalar dt = dT_
