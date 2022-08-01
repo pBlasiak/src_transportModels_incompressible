@@ -1,11 +1,6 @@
 HeliumModels/HeliumModel/HeliumModel.C
 HeliumModels/HeliumModel/HeliumModelNew.C
-HeliumModels/HeliumConst/HeliumConst.C
-HeliumModels/HeliumConstRho/HeliumConstRho.C
 HeliumModels/Helium/Helium.C
-HeliumModels/HeliumSVP/HeliumSVP.C
-HeliumModels/HeliumFineOnebyfConstRho/HeliumFineOnebyfConstRho.C
-HeliumModels/HeliumFineOnebyf/HeliumFineOnebyf.C
 HeliumLibrary/HeliumLibrary.C
 
 singlePhaseHeliumTransportModel/singlePhaseHeliumTransportModel.C

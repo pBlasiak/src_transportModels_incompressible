@@ -59,8 +59,8 @@ namespace Foam
 
 class HeliumLibrary
 {
-    // Private data
-private:
+    // Public data
+public:
 
 	//TODO: sprobowac zamienic potem na enum class
         //- Enumeration listing the possible helium thermal properties 
@@ -179,13 +179,15 @@ protected:
 		//PtrList<volScalarField> HeThermProps_;
 		//PtrList<const List<scalar> > HeThermPropsTables_;
 
+public:
 		//- Calculates helium thermal property based on temperature
         void calcHeProp
 		(
 		    volScalarField& vsf, 
 			//const List<scalar>& vsfTable,
-			HeliumPressures p,
 			const volScalarField& T,
+			HeliumThermalPropertiesType tp,
+			HeliumPressures p = SVP,
 			const label maxIndex = indexMax_,
 			const dimensionedScalar dt = dT_
 		);

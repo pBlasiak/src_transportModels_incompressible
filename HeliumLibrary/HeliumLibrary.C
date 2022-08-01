@@ -161,8 +161,9 @@ void Foam::HeliumLibrary::calcHeProp
     volScalarField& vsf, 
 	//const List<scalar>& vsfTable,
 	//TODO: sprawdz potem czy sprawdza jak dasz inna wartosc np. 10bar
-	HeliumPressures p,
 	const volScalarField& T,
+	HeliumThermalPropertiesType tp,
+	HeliumPressures p,
 	const label maxIndex, 
 	const dimensionedScalar dt
 )
@@ -226,7 +227,8 @@ void Foam::HeliumLibrary::calcHeProp
 	//}
 
 	// Old solution with forAll loops 
-	const List<scalar>& vsfTable(*betaHeTables_.set(p)); 
+	PtrList<const List<scalar>> thermProp(*HeThermPropsTables_.set(tp));
+	const List<scalar>& vsfTable(*thermProp.set(p)); 
 	forAll(vsf, celli)
 	{
 		if (T[celli] < TMin)

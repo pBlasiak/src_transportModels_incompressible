@@ -51,8 +51,8 @@ Foam::tmp<Foam::volScalarField>
 Foam::HeliumModels::Helium::calcNu() 
 {
 	Info<< "Jestem w calcNu() w Helium. " << endl;
-	calcHeProp(etaHe_, etaHeTable_, T_);
-	calcHeProp(rhoHe_, rhoHeTable_, T_);
+	hl_.calcHeProp(etaHe_, T_, HeliumLibrary::dynamicViscosity, HeliumLibrary::SVP);
+	hl_.calcHeProp(rhoHe_, T_, HeliumLibrary::density, HeliumLibrary::SVP);
 
     volScalarField nu
     (
