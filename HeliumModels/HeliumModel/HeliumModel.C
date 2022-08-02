@@ -49,6 +49,8 @@ Foam::HeliumModel::HeliumModel
     HeliumProperties_(HeliumProperties),
     U_(U),
     phi_(phi),
+	hl_(U, phi),
+	p_(HeliumProperties_.lookupOrDefault<word>("heliumPressure", "SVP")),
 //    TMinField_
 //    (
 //        IOobject
@@ -224,10 +226,13 @@ Foam::HeliumModel::HeliumModel
         U.mesh(),
 		dimensionedScalar("nuHe", dimViscosity, 0.0)//,
 		//"zeroGradient"
-    ),
-	hl_(U, phi)
+    )
 
-{ }
+{ 
+		Info<< "sssssssssssssssss" << (hl_.getThermProp("eta", p_)) << endl;
+		//Info<< "YYYYYYYYYYYYY" << hl_.getThermProp("eta", p_)[hl_.indexMax()]/
+		//hl_.getThermProp("rho", p_)[hl_.indexMax()] << endl;
+}
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //

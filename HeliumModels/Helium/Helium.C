@@ -92,7 +92,6 @@ Foam::HeliumModels::Helium::Helium
     HeliumModel(name, HeliumProperties, U, phi),
     HeliumCoeffs_(HeliumProperties.subDict(typeName + "Coeffs")),
 	T_(U.db().lookupObject<volScalarField>("T")),
-	p_(HeliumCoeffs_.lookupOrDefault<word>("heliumPressure", "SVP")),
     //nuMin_("nuMin", dimViscosity, etaHeTable_[indexMin_]/rhoHeTable_[indexMin_]),
     //nuMax_("nuMax", dimViscosity, etaHeTable_[indexMax_]/rhoHeTable_[indexMax_])
     nuMin_

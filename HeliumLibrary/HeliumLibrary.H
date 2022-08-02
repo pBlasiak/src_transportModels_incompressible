@@ -62,7 +62,6 @@ class HeliumLibrary
     // Public data
 public:
 
-	//TODO: sprobowac zamienic potem na enum class
         //- Enumeration listing the possible helium thermal properties 
         enum HeliumThermalPropertyType
         {
@@ -91,18 +90,11 @@ public:
         //- Helium pressures names
         static const Enum<HeliumPressure> HeliumPressureNames_;
 
-		//const unsigned int SVP_ = static_cast<unsigned int>(HeliumPressures::SVP);
-		//const unsigned int onebar_ = static_cast<unsigned int>(HeliumPressures::onebar);
-		//const unsigned int pressures_size_ = static_cast<unsigned int>(HeliumPressures::size_);
-
-		//HeliumPressures heliumPressure_;
-
 private:
 
     // Private data
 	
 	//TODO zamien const na constexpr????
-	//
 	
 		//- Minimum index number for thermophysical tables i = 0
 		static const label indexMin_;
@@ -245,7 +237,7 @@ public:
 		(
 			const word wthermalProperty, 
 			const word wpressure = "SVP"
-		);
+		) const;
         ////- Correct the laminar Helium
         //virtual void correct() = 0;
 

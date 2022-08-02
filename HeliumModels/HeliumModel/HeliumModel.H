@@ -77,6 +77,12 @@ protected:
         const volVectorField& U_;
         const surfaceScalarField& phi_;
 
+		//- Access to helium library
+		HeliumLibrary hl_;
+
+		//- Helium pressure
+		const word p_;
+
 		//TODO: usun??
 		//volScalarField TMinField_;
 		//volScalarField TMaxField_;
@@ -115,7 +121,6 @@ protected:
 		//PtrList<volScalarField> HeThermProps_;
 		//PtrList<const List<scalar>> HeThermPropsTables_;
 
-		HeliumLibrary hl_;
 
 private:
 
