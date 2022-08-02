@@ -32,20 +32,6 @@ namespace Foam
 {
     defineTypeNameAndDebug(HeliumModel, 0);
     defineRunTimeSelectionTable(HeliumModel, dictionary);
-
-	const Enum<HeliumModel::HeliumThermalPropertiesType>
-	HeliumModel::HeliumThermalPropertiesTypeNames_
-	({
-        { HeliumThermalPropertiesType::thermalExpansion, "beta" },
-        { HeliumThermalPropertiesType::AGMCoeff, "AGM" },
-        { HeliumThermalPropertiesType::entropy, "s" },
-        { HeliumThermalPropertiesType::dynamicViscosity, "eta" },
-        { HeliumThermalPropertiesType::specificHeatCapacity, "cp" },
-        { HeliumThermalPropertiesType::oneByf, "oneByf" },
-        { HeliumThermalPropertiesType::density, "rho" }
-	 }
-	);
-
 }
 
 
@@ -239,29 +225,9 @@ Foam::HeliumModel::HeliumModel
 		dimensionedScalar("nuHe", dimViscosity, 0.0)//,
 		//"zeroGradient"
     ),
-	//HeThermProps_(7),
-	//HeThermPropsTables_(7),
 	hl_(U, phi)
 
-{
-	//// Initializing pointers to thermal-flow properties
-	//HeThermProps_.set(0, &betaHe_);
-	//HeThermProps_.set(1, &AGMHe_);
-	//HeThermProps_.set(2, &sHe_);
-	//HeThermProps_.set(3, &etaHe_);
-	//HeThermProps_.set(4, &cpHe_);
-	//HeThermProps_.set(5, &onebyf_);
-	//HeThermProps_.set(6, &rhoHe_);
-
-	//// Initializing pointers to thermal-flow properties tables
-	//HeThermPropsTables_.set(0, &betaHeTable_);
-	//HeThermPropsTables_.set(1, &AGMHeTable_);
-	//HeThermPropsTables_.set(2, &sHeTable_);
-	//HeThermPropsTables_.set(3, &etaHeTable_);
-	//HeThermPropsTables_.set(4, &cpHeTable_);
-	//HeThermPropsTables_.set(5, &onebyfTable_);
-	//HeThermPropsTables_.set(6, &rhoHeTable_);
-}
+{ }
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //

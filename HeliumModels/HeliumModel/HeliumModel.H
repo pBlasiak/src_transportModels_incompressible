@@ -64,26 +64,10 @@ class HeliumModel
     // Public data
 public:
 
-        //- Enumeration listing the possible helium thermal properties 
-        enum class HeliumThermalPropertiesType
-        {
-            thermalExpansion,
-			AGMCoeff,
-			entropy,
-			dynamicViscosity,
-			specificHeatCapacity,
-			oneByf,
-			oneByfSVP,
-			density
-        };
-
 protected:
 
     // Static data
 	
-        //- Helium thermal properties types
-        static const Enum<HeliumThermalPropertiesType> HeliumThermalPropertiesTypeNames_;
-
 	
     // Protected data
 	
@@ -271,7 +255,6 @@ public:
 		static const dimensionedScalar Tlambda() 
 		{
 			return HeliumLibrary::Tlambda();
-			//return Tlambda_;
 		}
 		
         //- Correct the laminar Helium
