@@ -64,7 +64,7 @@ public:
 
 	//TODO: sprobowac zamienic potem na enum class
         //- Enumeration listing the possible helium thermal properties 
-        enum HeliumThermalPropertiesType
+        enum HeliumThermalPropertyType
         {
             thermalExpansion = 0,
 			AGMCoeff,
@@ -76,15 +76,20 @@ public:
 			density,
 			thermPropsSize_
         };
+		
+        //- Helium thermal properties types
+        static const Enum<HeliumThermalPropertyType> HeliumThermalPropertyTypeNames_;
 
         //- Enumeration listing the possible helium pressures
-        enum HeliumPressures
+        enum HeliumPressure
         {
 			SVP = 0,
 			onebar,
 			pressuresSize_
         };
 
+        //- Helium pressures names
+        static const Enum<HeliumPressure> HeliumPressureNames_;
 
 		//const unsigned int SVP_ = static_cast<unsigned int>(HeliumPressures::SVP);
 		//const unsigned int onebar_ = static_cast<unsigned int>(HeliumPressures::onebar);
@@ -92,19 +97,16 @@ public:
 
 		//HeliumPressures heliumPressure_;
 
-protected:
+private:
 
-
-    // Protected data
+    // Private data
 	
 	//TODO zamien const na constexpr????
 	//
-        //- Helium thermal properties types
-        static const Enum<HeliumThermalPropertiesType> HeliumThermalPropertiesTypeNames_;
 	
-        //- Helium thermal properties types
-        static const Enum<HeliumPressures> HeliumPressuresNames_;
-	
+		//- Minimum index number for thermophysical tables i = 0
+		static const label indexMin_;
+
 		//- Maximum index number for thermophysical tables i = 667
 		static const label indexMax_;
 
@@ -121,9 +123,6 @@ protected:
 
 		//- Maximum temperature TMax = 2.167 K
 		static const dimensionedScalar TMax_;
-
-		//- Minimum index number for thermophysical tables i = 0
-		static const label indexMin_;
 
 		//- Static tables defined in staticTables.H file
 		//- Table for thermal expansion coefficient, 1/K
@@ -179,20 +178,9 @@ protected:
 		//PtrList<volScalarField> HeThermProps_;
 		//PtrList<const List<scalar> > HeThermPropsTables_;
 
-public:
-		//- Calculates helium thermal property based on temperature
-        void calcHeProp
-		(
-		    volScalarField& vsf, 
-			//const List<scalar>& vsfTable,
-			const volScalarField& T,
-			HeliumThermalPropertiesType tp,
-			HeliumPressures p = SVP,
-			const label maxIndex = indexMax_,
-			const dimensionedScalar dt = dT_
-		);
 
 private:
+
     // Private Member Functions
 
         //- Disallow copy construct
@@ -224,12 +212,40 @@ public:
 
     // Member Functions
 
+		static const label& indexMin() 
+		{
+			return indexMin_;
+		}
 
-		static const dimensionedScalar Tlambda() 
+		static const label& indexMax() 
+		{
+			return indexMax_;
+		}
+
+		static const dimensionedScalar& Tlambda() 
 		{
 			return Tlambda_;
 		}
-		//
+
+		//- Calculates helium thermal property based on temperature
+        void calcHeProp
+		(
+		    volScalarField& vsf, 
+			//const List<scalar>& vsfTable,
+			const volScalarField& T,
+			const word wthermalProperty,
+			const word wpressure = "SVP",
+			//HeliumThermalPropertyType tp,
+			//HeliumPressure p = SVP,
+			const label maxIndex = indexMax_,
+			const dimensionedScalar dt = dT_
+		);
+		
+		const List<scalar>& getThermProp
+		(
+			const word wthermalProperty, 
+			const word wpressure = "SVP"
+		);
         ////- Correct the laminar Helium
         //virtual void correct() = 0;
 

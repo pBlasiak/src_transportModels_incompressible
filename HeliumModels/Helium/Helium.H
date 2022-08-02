@@ -60,6 +60,8 @@ protected:
         dictionary HeliumCoeffs_;
 
         const volScalarField& T_;
+		//- Helium pressure
+		const word p_;
 
         dimensionedScalar nuMin_;
         dimensionedScalar nuMax_;

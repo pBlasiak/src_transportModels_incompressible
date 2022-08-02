@@ -51,8 +51,8 @@ Foam::tmp<Foam::volScalarField>
 Foam::HeliumModels::Helium::calcNu() 
 {
 	Info<< "Jestem w calcNu() w Helium. " << endl;
-	hl_.calcHeProp(etaHe_, T_, HeliumLibrary::dynamicViscosity, HeliumLibrary::SVP);
-	hl_.calcHeProp(rhoHe_, T_, HeliumLibrary::density, HeliumLibrary::SVP);
+	hl_.calcHeProp(etaHe_, T_, "eta", p_);
+	hl_.calcHeProp(rhoHe_, T_, "density", p_);
 
     volScalarField nu
     (
@@ -92,8 +92,23 @@ Foam::HeliumModels::Helium::Helium
     HeliumModel(name, HeliumProperties, U, phi),
     HeliumCoeffs_(HeliumProperties.subDict(typeName + "Coeffs")),
 	T_(U.db().lookupObject<volScalarField>("T")),
-    nuMin_("nuMin", dimViscosity, etaHeTable_[indexMin_]/rhoHeTable_[indexMin_]),
-    nuMax_("nuMax", dimViscosity, etaHeTable_[indexMax_]/rhoHeTable_[indexMax_])
+	p_(HeliumCoeffs_.lookupOrDefault<word>("heliumPressure", "SVP")),
+    //nuMin_("nuMin", dimViscosity, etaHeTable_[indexMin_]/rhoHeTable_[indexMin_]),
+    //nuMax_("nuMax", dimViscosity, etaHeTable_[indexMax_]/rhoHeTable_[indexMax_])
+    nuMin_
+	(
+		"nuMin", 
+		dimViscosity, 
+		hl_.getThermProp("eta", p_)[hl_.indexMin()]/
+		hl_.getThermProp("rho", p_)[hl_.indexMin()]
+	),
+    nuMax_
+	(
+		"nuMax", 
+		dimViscosity,
+		hl_.getThermProp("eta", p_)[hl_.indexMax()]/
+		hl_.getThermProp("rho", p_)[hl_.indexMax()]
+	)
 {
 
 }
@@ -107,13 +122,14 @@ void Foam::HeliumModels::Helium::correct()
 	nu_ = calcNu();
 	// TODO: dodano update rhon i rhos w pozostalych modelach HeII
 	// ale nie sprawdzono czy to jest ok zrobione
-	rhon_ = rhoHe_*pow(max(T_/Tlambda_, dimensionedScalar("small", dimless, SMALL)), scalar(5.6));
+	const dimensionedScalar Tlambda{hl_.Tlambda()};
+	rhon_ = rhoHe_*pow(max(T_/Tlambda, dimensionedScalar("small", dimless, SMALL)), scalar(5.6));
 	rhos_ = rhoHe_ - rhon_;
-	calcHeProp(betaHe_, betaHeTable_, T_);
-	calcHeProp(AGMHe_, AGMHeTable_, T_);
-	calcHeProp(sHe_, sHeTable_, T_);
-	calcHeProp(cpHe_, cpHeTable_, T_);
-	calcHeProp(onebyf_, onebyfTable_, T_);
+	hl_.calcHeProp(betaHe_, T_, "beta", p_);
+	hl_.calcHeProp(AGMHe_, T_, "AGM", p_);
+	hl_.calcHeProp(sHe_, T_, "s", p_);
+	hl_.calcHeProp(cpHe_, T_, "cp", p_);
+	hl_.calcHeProp(onebyf_, T_, "oneByf", p_);
 }
 
 bool Foam::HeliumModels::Helium::read

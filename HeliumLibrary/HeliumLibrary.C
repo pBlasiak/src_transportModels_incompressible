@@ -30,28 +30,37 @@ License
 
 namespace Foam
 {
-	const Enum<HeliumLibrary::HeliumThermalPropertiesType>
-	HeliumLibrary::HeliumThermalPropertiesTypeNames_
+	const Enum<HeliumLibrary::HeliumThermalPropertyType>
+	HeliumLibrary::HeliumThermalPropertyTypeNames_
 	({
-        { HeliumThermalPropertiesType::thermalExpansion, "beta" },
-        { HeliumThermalPropertiesType::AGMCoeff, "AGM" },
-        { HeliumThermalPropertiesType::entropy, "s" },
-        { HeliumThermalPropertiesType::dynamicViscosity, "eta" },
-        { HeliumThermalPropertiesType::specificHeatCapacity, "cp" },
-        { HeliumThermalPropertiesType::oneByf, "oneByf" },
-        { HeliumThermalPropertiesType::density, "rho" },
-        { HeliumThermalPropertiesType::thermPropsSize_, "thermPropsSize" }
+        { HeliumThermalPropertyType::thermalExpansion, "beta" },
+        { HeliumThermalPropertyType::AGMCoeff, "AGM" },
+        { HeliumThermalPropertyType::entropy, "s" },
+        { HeliumThermalPropertyType::dynamicViscosity, "eta" },
+        { HeliumThermalPropertyType::specificHeatCapacity, "cp" },
+        { HeliumThermalPropertyType::oneByf, "oneByf" },
+        { HeliumThermalPropertyType::density, "rho" },
+        { HeliumThermalPropertyType::thermPropsSize_, "thermPropsSize" }
 	 }
 	);
 
-	const Enum<HeliumLibrary::HeliumPressures>
-	HeliumLibrary::HeliumPressuresNames_
+	const Enum<HeliumLibrary::HeliumPressure>
+	HeliumLibrary::HeliumPressureNames_
 	({
-        { HeliumPressures::SVP,    "SVP"  },
-        { HeliumPressures::onebar, "1bar" },
-        { HeliumPressures::pressuresSize_,  "pressuresSize" }
+        { HeliumPressure::SVP,    "SVP"  },
+        { HeliumPressure::onebar, "1bar" },
+        { HeliumPressure::pressuresSize_,  "pressuresSize" }
 	 }
 	);
+
+	const Foam::label
+	Foam::HeliumLibrary::indexMin_(0);
+	
+	const Foam::label
+	Foam::HeliumLibrary::indexMax_(667);
+
+	const Foam::dimensionedScalar
+	Foam::HeliumLibrary::dT_("dT", dimTemperature, 0.001);
 
 	const Foam::dimensionedScalar
 	Foam::HeliumLibrary::Tlambda_("Tlambda", dimTemperature, 2.16795);
@@ -62,14 +71,6 @@ namespace Foam
 	const Foam::dimensionedScalar
 	Foam::HeliumLibrary::TMax_("TMax", dimTemperature, 2.167);
 	
-	const Foam::label
-	Foam::HeliumLibrary::indexMin_(0);
-	
-	const Foam::label
-	Foam::HeliumLibrary::indexMax_(667);
-	
-	const Foam::dimensionedScalar
-	Foam::HeliumLibrary::dT_("dT", dimTemperature, 0.001);
 
 	#include "staticTables.H"
 }
@@ -162,8 +163,10 @@ void Foam::HeliumLibrary::calcHeProp
 	//const List<scalar>& vsfTable,
 	//TODO: sprawdz potem czy sprawdza jak dasz inna wartosc np. 10bar
 	const volScalarField& T,
-	HeliumThermalPropertiesType tp,
-	HeliumPressures p,
+	const word wtp,
+	const word wp,
+	//HeliumThermalPropertiesType tp,
+	//HeliumPressures p,
 	const label maxIndex, 
 	const dimensionedScalar dt
 )
@@ -227,8 +230,8 @@ void Foam::HeliumLibrary::calcHeProp
 	//}
 
 	// Old solution with forAll loops 
-	PtrList<const List<scalar>> thermProp(*HeThermPropsTables_.set(tp));
-	const List<scalar>& vsfTable(*thermProp.set(p)); 
+	
+	const List<scalar>& vsfTable = getThermProp(wtp, wp); 
 	forAll(vsf, celli)
 	{
 		if (T[celli] < TMin)
@@ -291,6 +294,18 @@ void Foam::HeliumLibrary::calcHeProp
 			}
 		}
 	}
+}
+
+const Foam::List<Foam::scalar>&
+Foam::HeliumLibrary::getThermProp(const word wtp, const word wp)
+{
+	// Retrieve thermal property
+	const label tp(HeliumThermalPropertyTypeNames_.get(wtp));
+	// Retrieve pressure
+	const label p(HeliumPressureNames_.get(wp));
+	PtrList<const List<scalar>> thermProp(*HeThermPropsTables_.set(tp));
+	const List<scalar>& vsfTable(*thermProp.set(p)); 
+	return vsfTable;
 }
 //
 //
