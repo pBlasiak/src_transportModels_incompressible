@@ -117,10 +117,6 @@ protected:
         //- Helium kinematic viscosity
         volScalarField nu_;
 
-		//TODO: usun??
-		//PtrList<volScalarField> HeThermProps_;
-		//PtrList<const List<scalar>> HeThermPropsTables_;
-
 
 private:
 

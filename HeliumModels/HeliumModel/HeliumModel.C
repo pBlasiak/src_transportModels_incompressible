@@ -228,7 +228,10 @@ Foam::HeliumModel::HeliumModel
 		//"zeroGradient"
     )
 
-{ }
+{
+
+	Info<< "\nHelium operating pressure is " << p_ << endl << endl;
+}
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
