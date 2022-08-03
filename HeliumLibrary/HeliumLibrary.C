@@ -299,15 +299,9 @@ void Foam::HeliumLibrary::calcHeProp
 const Foam::List<Foam::scalar>&
 Foam::HeliumLibrary::getThermProp(const word wtp, const word wp) const
 {
-	//tmp<const List<scalar>> tvsfTable(new const List<scalar>);
-	//const List<scalar>& vsfTable = tvsfTable(); 
-	// Retrieve thermal property
 	const label tp(HeliumThermalPropertyTypeNames_.get(wtp));
-	// Retrieve pressure
 	const label p(HeliumPressureNames_.get(wp));
-	PtrList<const List<scalar>> thermProp(*HeThermPropsTables_.get(tp));
-	//return *thermProp.get(p); 
-	return thermProp.get(p)->; 
+	return HeThermPropsTables_[tp][p];
 }
 //
 //

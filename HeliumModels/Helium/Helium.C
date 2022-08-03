@@ -52,7 +52,7 @@ Foam::HeliumModels::Helium::calcNu()
 {
 	Info<< "Jestem w calcNu() w Helium. " << endl;
 	hl_.calcHeProp(etaHe_, T_, "eta", p_);
-	hl_.calcHeProp(rhoHe_, T_, "density", p_);
+	hl_.calcHeProp(rhoHe_, T_, "rho", p_);
 
     volScalarField nu
     (

@@ -228,11 +228,7 @@ Foam::HeliumModel::HeliumModel
 		//"zeroGradient"
     )
 
-{ 
-		Info<< "sssssssssssssssss" << (hl_.getThermProp("eta", p_)) << endl;
-		//Info<< "YYYYYYYYYYYYY" << hl_.getThermProp("eta", p_)[hl_.indexMax()]/
-		//hl_.getThermProp("rho", p_)[hl_.indexMax()] << endl;
-}
+{ }
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
