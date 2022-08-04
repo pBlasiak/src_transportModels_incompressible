@@ -164,12 +164,6 @@ private:
 
 		PtrList<PtrList<const List<scalar>>> HeThermPropsTables_;
 
-		//volScalarField TMinField_;
-		//volScalarField TMaxField_;
-
-		//PtrList<volScalarField> HeThermProps_;
-		//PtrList<const List<scalar> > HeThermPropsTables_;
-
 
 private:
 
