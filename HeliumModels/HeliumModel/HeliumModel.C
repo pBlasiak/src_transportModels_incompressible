@@ -50,7 +50,7 @@ Foam::HeliumModel::HeliumModel
     U_(U),
     phi_(phi),
 	hl_(U, phi),
-	p_(HeliumProperties_.lookupOrDefault<word>("heliumPressure", "SVP")),
+	p_(HeliumProperties_.lookup("heliumPressure")),
 //    TMinField_
 //    (
 //        IOobject

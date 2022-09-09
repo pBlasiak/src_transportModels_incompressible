@@ -230,7 +230,7 @@ public:
 		const List<scalar>& getThermProp
 		(
 			const word wthermalProperty, 
-			const word wpressure = "SVP"
+			const word wpressure
 		) const;
         ////- Correct the laminar Helium
         //virtual void correct() = 0;
