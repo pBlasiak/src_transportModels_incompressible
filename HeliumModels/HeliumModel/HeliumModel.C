@@ -51,32 +51,6 @@ Foam::HeliumModel::HeliumModel
     phi_(phi),
 	hl_(U, phi),
 	p_(HeliumProperties_.lookup("heliumPressure")),
-//    TMinField_
-//    (
-//        IOobject
-//        (
-//            "TMin",
-//            U.mesh().time().timeName(),
-//            U.mesh(),
-//            IOobject::NO_READ,
-//            IOobject::NO_WRITE
-//        ),
-//        U.mesh(),
-//		TMin_
-//    ),
-//    TMaxField_
-//    (
-//        IOobject
-//        (
-//            "TMax",
-//            U.mesh().time().timeName(),
-//            U.mesh(),
-//            IOobject::NO_READ,
-//            IOobject::NO_WRITE
-//        ),
-//        U.mesh(),
-//		TMax_
-//    ),
     betaHe_
     (
         IOobject
@@ -227,9 +201,7 @@ Foam::HeliumModel::HeliumModel
 		dimensionedScalar("nuHe", dimViscosity, 0.0)//,
 		//"zeroGradient"
     )
-
 {
-
 	Info<< "\nHelium operating pressure is " << p_ << endl << endl;
 }
 

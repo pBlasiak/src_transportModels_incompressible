@@ -23,57 +23,53 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "singlePhaseHeliumTransportModel.H"
-#include "HeliumModel.H"
-#include "volFields.H"
+#include "HeliumThermalConductivityModel.H"
 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
-
-Foam::singlePhaseHeliumTransportModel::singlePhaseHeliumTransportModel
+Foam::autoPtr<Foam::HeliumThermalConductivityModel>
+Foam::HeliumThermalConductivityModel::New
 (
     const volVectorField& U,
     const surfaceScalarField& phi
 )
-:
-    IOdictionary
+{
+    IOdictionary heliumThermalConductivityDict
     (
         IOobject
         (
             "transportProperties",
             U.time().constant(),
             U.db(),
-            IOobject::MUST_READ_IF_MODIFIED,
-            IOobject::NO_WRITE
+            IOobject::MUST_READ,
+            IOobject::NO_WRITE,
+            false
         )
-    ),
-    HeliumModelPtr_(HeliumModel::New("helium", *this, U, phi)),
-    kHeModelPtr_(HeliumThermalConductivityModel::New(U, phi))
-{}
+    );
 
+    word HeliumThermalConductivityModelTypeName
+    (
+        heliumThermalConductivityDict.lookup("kHeModel")
+    );
 
-// * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
+    Info<< "Selecting "
+        << HeliumThermalConductivityModelTypeName << endl;
 
-Foam::singlePhaseHeliumTransportModel::~singlePhaseHeliumTransportModel()
-{}
+    componentsConstructorTable::iterator cstrIter =
+        componentsConstructorTablePtr_
+            ->find(HeliumThermalConductivityModelTypeName);
 
-
-// * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
-
-
-
-
-
-bool Foam::singlePhaseHeliumTransportModel::read()
-{
-    if (regIOobject::read())
+    if (cstrIter == componentsConstructorTablePtr_->end())
     {
-        return HeliumModelPtr_->read(*this);
+        FatalErrorInFunction
+            << "Unknown HeliumThermalConductivityModel type "
+            << HeliumThermalConductivityModelTypeName << endl << endl
+            << "Valid  HeliumThermalConductivityModels are : " << endl
+            << componentsConstructorTablePtr_->sortedToc()
+            << exit(FatalError);
     }
-    else
-    {
-        return false;
-    }
+
+    return autoPtr<HeliumThermalConductivityModel>(cstrIter()(U, phi));
 }
 
 

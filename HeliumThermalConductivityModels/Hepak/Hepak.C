@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     |
-    \\  /    A nd           | Copyright (C) 2011-2015 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -23,58 +23,57 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "singlePhaseHeliumTransportModel.H"
-#include "HeliumModel.H"
-#include "volFields.H"
+#include "Hepak.H"
+#include "addToRunTimeSelectionTable.H"
 
+// * * * * * * * * * * * * * * Static Data Members * * * * * * * * * * * * * //
+
+namespace Foam
+{
+namespace HeliumThermalConductivityModels
+{
+    defineTypeNameAndDebug(Hepak, 0);
+    addToRunTimeSelectionTable(HeliumThermalConductivityModel, Hepak, components);
+}
+}
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
-Foam::singlePhaseHeliumTransportModel::singlePhaseHeliumTransportModel
+Foam::HeliumThermalConductivityModels::Hepak::Hepak
 (
     const volVectorField& U,
     const surfaceScalarField& phi
 )
 :
-    IOdictionary
-    (
-        IOobject
-        (
-            "transportProperties",
-            U.time().constant(),
-            U.db(),
-            IOobject::MUST_READ_IF_MODIFIED,
-            IOobject::NO_WRITE
-        )
-    ),
-    HeliumModelPtr_(HeliumModel::New("helium", *this, U, phi)),
-    kHeModelPtr_(HeliumThermalConductivityModel::New(U, phi))
-{}
+    HeliumThermalConductivityModel(typeName, U, phi)
 
-
-// * * * * * * * * * * * * * * * * Destructor  * * * * * * * * * * * * * * * //
-
-Foam::singlePhaseHeliumTransportModel::~singlePhaseHeliumTransportModel()
-{}
+    //Cc_(HeliumThermalConductivityModelCoeffs_.subDict(type() + "Coeffs").lookup("Cc")),
+    //Cv_(HeliumThermalConductivityModelCoeffs_.subDict(type() + "Coeffs").lookup("Cv")),
+{
+}
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
 
-
-
-
-
-bool Foam::singlePhaseHeliumTransportModel::read()
+void Foam::HeliumThermalConductivityModels::Hepak::calckHe(const HeliumModel& hm)
 {
-    if (regIOobject::read())
-    {
-        return HeliumModelPtr_->read(*this);
-    }
-    else
-    {
-        return false;
-    }
+	Info<< "Hepak thermal conductivity model  updates kHe..." << endl;
+	setkHe(pow(hm.onebyf()/magGradT2(), 1./3));
 }
+
+//bool Foam::HeliumThermalConductivityModels::Hepak::read
+//(
+//    const dictionary& HeliumProperties
+//)
+//{
+//    HeliumThermalConductivityModel::read(HeliumProperties);
+//
+//    //HepakCoeffs_ = HeliumProperties.subDict(typeName + "Coeffs");
+//
+//    //HepakCoeffs_.lookup("TMean") >> TMean_;
+//
+//    return true;
+//}
 
 
 // ************************************************************************* //

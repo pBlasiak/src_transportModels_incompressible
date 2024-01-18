@@ -42,6 +42,7 @@ SourceFiles
 #include "IOdictionary.H"
 #include "autoPtr.H"
 #include "HeliumModel.H"
+#include "HeliumThermalConductivityModel.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -71,9 +72,11 @@ class singlePhaseHeliumTransportModel
 protected:		
     // Protected Data
 
+		//- Pointer to helium model
         autoPtr<HeliumModel> HeliumModelPtr_;
 
-
+		//- Pointer to helium thermal conductivity model
+        autoPtr<HeliumThermalConductivityModel> kHeModelPtr_; 
 
 public:
 
@@ -154,6 +157,16 @@ public:
         virtual void correct()
 		{
 		    HeliumModelPtr_->correct();
+		}
+
+		void calckHe() 
+		{
+			kHeModelPtr_->calckHe(*HeliumModelPtr_);
+		}
+
+		const volScalarField& kHe() const 
+		{
+			return kHeModelPtr_->kHe();
 		}
 
         //- Read transportProperties dictionary

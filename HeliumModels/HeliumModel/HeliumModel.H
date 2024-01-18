@@ -83,10 +83,6 @@ protected:
 		//- Helium pressure
 		const word p_;
 
-		//TODO: usun??
-		//volScalarField TMinField_;
-		//volScalarField TMaxField_;
-
         //- Thermal expansion coefficient
         volScalarField betaHe_;
 		
@@ -116,7 +112,6 @@ protected:
 
         //- Helium kinematic viscosity
         volScalarField nu_;
-
 
 private:
 
@@ -257,7 +252,7 @@ public:
 		{
 			return HeliumLibrary::Tlambda();
 		}
-		
+
         //- Correct the laminar Helium
         virtual void correct() = 0;
 
