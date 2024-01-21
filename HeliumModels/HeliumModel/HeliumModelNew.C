@@ -41,10 +41,13 @@ Foam::autoPtr<Foam::HeliumModel> Foam::HeliumModel::New
 
     Info<< "Selecting Helium model " << modelType << endl;
 
-    dictionaryConstructorTable::iterator cstrIter =
-        dictionaryConstructorTablePtr_->find(modelType);
+    auto* ctorPtr = dictionaryConstructorTable(modelType);
 
-    if (cstrIter == dictionaryConstructorTablePtr_->end())
+   // dictionaryConstructorTable::iterator cstrIter =
+   //     dictionaryConstructorTablePtr_->find(modelType);
+
+   // if (cstrIter == dictionaryConstructorTablePtr_->end())
+    if (!ctorPtr)
     {
         FatalErrorInFunction
             << "Unknown HeliumModel type "
@@ -54,8 +57,9 @@ Foam::autoPtr<Foam::HeliumModel> Foam::HeliumModel::New
             << exit(FatalError);
     }
 
-    return autoPtr<HeliumModel>
-        (cstrIter()(name, HeliumProperties, U, phi));
+    //return autoPtr<HeliumModel>
+    //    (cstrIter()(name, HeliumProperties, U, phi));
+    return autoPtr<HeliumModel>(ctorPtr(name, HeliumProperties, U, phi));
 }
 
 

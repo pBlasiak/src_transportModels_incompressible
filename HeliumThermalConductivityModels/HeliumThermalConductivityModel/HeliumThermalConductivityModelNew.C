@@ -47,19 +47,22 @@ Foam::HeliumThermalConductivityModel::New
         )
     );
 
-    word HeliumThermalConductivityModelTypeName
+    const word HeliumThermalConductivityModelTypeName
     (
         heliumThermalConductivityDict.lookup("kHeModel")
     );
 
-    Info<< "Selecting "
+    Info<< "Selecting helium thermal conductivity model "
         << HeliumThermalConductivityModelTypeName << endl;
 
-    componentsConstructorTable::iterator cstrIter =
-        componentsConstructorTablePtr_
-            ->find(HeliumThermalConductivityModelTypeName);
+	auto* cstrPtr = componentsConstructorTable(HeliumThermalConductivityModelTypeName);
+	
+    //componentsConstructorTable::iterator cstrIter =
+    //    componentsConstructorTablePtr_
+    //        ->find(HeliumThermalConductivityModelTypeName);
 
-    if (cstrIter == componentsConstructorTablePtr_->end())
+   // if (cstrIter == componentsConstructorTablePtr_->end())
+    if (!cstrPtr)
     {
         FatalErrorInFunction
             << "Unknown HeliumThermalConductivityModel type "
@@ -69,7 +72,7 @@ Foam::HeliumThermalConductivityModel::New
             << exit(FatalError);
     }
 
-    return autoPtr<HeliumThermalConductivityModel>(cstrIter()(U, phi));
+    return autoPtr<HeliumThermalConductivityModel>(cstrPtr(U, phi));
 }
 
 
