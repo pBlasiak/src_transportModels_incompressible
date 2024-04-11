@@ -86,37 +86,8 @@ Foam::HeliumLibrary::HeliumLibrary
     const surfaceScalarField& phi
 )
 :
-    //name_(name),
-    //HeliumProperties_(HeliumProperties),
-	//heliumPressure_(HeliumPressures::onebar),
     U_(U),
     phi_(phi),
-    //TMinField_
-    //(
-    //    IOobject
-    //    (
-    //        "TMin",
-    //        U.mesh().time().timeName(),
-    //        U.mesh(),
-    //        IOobject::NO_READ,
-    //        IOobject::NO_WRITE
-    //    ),
-    //    U.mesh(),
-	//	TMin_
-    //),
-    //TMaxField_
-    //(
-    //    IOobject
-    //    (
-    //        "TMax",
-    //        U.mesh().time().timeName(),
-    //        U.mesh(),
-    //        IOobject::NO_READ,
-    //        IOobject::NO_WRITE
-    //    ),
-    //    U.mesh(),
-	//	TMax_
-    //),
 	betaHeTables_(pressuresSize_),
 	AGMHeTables_(pressuresSize_),
 	sHeTables_(pressuresSize_),
@@ -294,6 +265,80 @@ void Foam::HeliumLibrary::calcHeProp
 			}
 		}
 	}
+}
+
+
+Foam::volScalarField& Foam::HeliumLibrary::ddT
+(
+    volScalarField& derivative,
+	const volScalarField& T,
+	const word wtp,
+	const word wp,
+	const label maxIndex, 
+	const dimensionedScalar dt
+)
+{
+	const scalar TMin(TMin_.value());
+	const scalar TMax(TMax_.value());
+	const scalar dT(dt.value());
+	
+	const List<scalar>& vsfTable = getThermProp(wtp, wp); 
+	forAll(derivative, celli)
+	{
+		if (T[celli] < TMin)
+		{
+			derivative[celli] = (vsfTable[indexMin_+1]-vsfTable[indexMin_])/dT;
+		}
+		else if (T[celli] > TMax)
+		{
+			derivative[celli] = (vsfTable[maxIndex]-vsfTable[maxIndex-1])/dT;
+		}
+		else
+		{
+			label index = (T[celli] - TMin)/dT;
+			if (index == maxIndex)
+			{
+				derivative[celli] = (vsfTable[maxIndex]-vsfTable[maxIndex-1])/dT;
+			}
+			else
+			{
+				derivative[celli] = (vsfTable[index+1] - vsfTable[index])/dT;
+			}
+		}
+	}
+
+	forAll(derivative.boundaryField(), patchi)
+	{
+		forAll(derivative.boundaryField()[patchi], facei)
+		{
+			if (T[facei] < TMin)
+			{
+				derivative.boundaryFieldRef()[patchi][facei] 
+					= (vsfTable[indexMin_+1]-vsfTable[indexMin_])/dT;
+			}
+			else if (T[facei] > TMax)
+			{
+				derivative.boundaryFieldRef()[patchi][facei] 
+					= (vsfTable[maxIndex]-vsfTable[maxIndex-1])/dT;
+			}
+			else
+			{
+				label index = (T[facei] - TMin)/dT;
+				if (index == maxIndex)
+				{
+					derivative.boundaryFieldRef()[patchi][facei] 
+						= (vsfTable[maxIndex]-vsfTable[maxIndex-1])/dT;
+				}
+				else
+				{
+					derivative.boundaryFieldRef()[patchi][facei] 
+						= (vsfTable[index+1] - vsfTable[index])/dT;
+				}
+			}
+		}
+	}
+	
+	return derivative;
 }
 
 const Foam::List<Foam::scalar>&

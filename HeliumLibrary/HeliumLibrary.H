@@ -227,11 +227,25 @@ public:
 			const dimensionedScalar dt = dT_
 		);
 		
+		//- Calculates derivative over temperature
+		//  of thermal property of He II
+        volScalarField& ddT
+		(
+		    volScalarField& derivative,
+			const volScalarField& T,
+			const word wthermalProperty,
+			const word wpressure = "SVP",
+			const label maxIndex = indexMax_,
+			const dimensionedScalar dt = dT_
+		);
+
 		const List<scalar>& getThermProp
 		(
 			const word wthermalProperty, 
 			const word wpressure
 		) const;
+
+
         ////- Correct the laminar Helium
         //virtual void correct() = 0;
 
