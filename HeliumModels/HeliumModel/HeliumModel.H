@@ -113,6 +113,12 @@ protected:
         //- Helium kinematic viscosity
         volScalarField nu_;
 
+        //- ds/dT - required in two-fluid model
+        volScalarField dSdT_;
+
+        //- drho/dT - required in two-fluid model
+        volScalarField drhodT_;
+
 private:
 
     // Private Member Functions
@@ -246,6 +252,20 @@ public:
 		const volScalarField& rhos() const
 		{
 			return rhos_;
+		}
+
+		//- Calculates ds/dT - needed in two-fluid model
+		volScalarField& dSdT(const word& p) 
+		{
+			const volScalarField& T{U_.db().lookupObject<volScalarField>("T")};
+			return hl_.ddT(dSdT_, "s", T, p);
+		}
+
+		//- Calculates d(rho)/dT - needed in two-fluid model
+		volScalarField& drhodT(const word& p) 
+		{
+			const volScalarField& T{U_.db().lookupObject<volScalarField>("T")};
+			return hl_.ddT(drhodT_, "rho", T, p);
 		}
 
 		static const dimensionedScalar Tlambda() 

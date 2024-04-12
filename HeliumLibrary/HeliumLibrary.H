@@ -102,8 +102,14 @@ private:
 		//- Maximum index number for thermophysical tables i = 667
 		static const label indexMax_;
 
+		//- Maximum index number for fine thermophysical tables i = 6672
+		static const label indexMaxFine_;
+
 		//- Step of temperature in the thermophysical tables dT = 0.001 K
 		static const dimensionedScalar dT_;
+		
+		//- Step of temperature in the fine thermophysical tables dT = 0.0001 K
+		static const dimensionedScalar dTfine_;
 	
 		//- lambda Temperature 2.16795 K from Hepak at 1 atm
 		//  previous value was 2.1711132461 (probably taken from Wiki) 
@@ -137,7 +143,7 @@ private:
 		static const List<scalar> cpHeTableSVP_;
 		static const List<scalar> cpHeTable1bar_;
 
-		//- Table for thermalc conductivity function f^(-1), W^3/(m^5 K)
+		//- Table for thermal conductivity function f^(-1), W^3/(m^5 K)
 		static const List<scalar> onebyfTableSVP_;
 		static const List<scalar> onebyfTable1bar_;
 
@@ -220,24 +226,18 @@ public:
 			//const List<scalar>& vsfTable,
 			const volScalarField& T,
 			const word wthermalProperty,
-			const word wpressure = "SVP",
-			//HeliumThermalPropertyType tp,
-			//HeliumPressure p = SVP,
-			const label maxIndex = indexMax_,
-			const dimensionedScalar dt = dT_
+			const word wpressure = "SVP"
 		);
 		
 		//- Calculates derivative over temperature
 		//  of thermal property of He II
-        volScalarField& ddT
+        volScalarField& ddT 
 		(
-		    volScalarField& derivative,
-			const volScalarField& T,
+			volScalarField& derivative,
 			const word wthermalProperty,
-			const word wpressure = "SVP",
-			const label maxIndex = indexMax_,
-			const dimensionedScalar dt = dT_
-		);
+			const volScalarField& T,
+			const word wpressure = "SVP"
+		) const;
 
 		const List<scalar>& getThermProp
 		(

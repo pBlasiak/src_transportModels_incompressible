@@ -58,6 +58,7 @@ class HeliumFineOnebyf
 {
     // Private data
 
+		//- Maximum index number for thermophysical tables i = 6672
 		static const label largeIndex_;
 
 		//- Step of temperature in the thermophysical tables dT = 0.0001 K

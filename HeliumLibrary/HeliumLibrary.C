@@ -59,8 +59,14 @@ namespace Foam
 	const Foam::label
 	Foam::HeliumLibrary::indexMax_(667);
 
+	const Foam::label
+	Foam::HeliumLibrary::indexMaxFine_(6672);
+
 	const Foam::dimensionedScalar
 	Foam::HeliumLibrary::dT_("dT", dimTemperature, 0.001);
+
+	const Foam::dimensionedScalar
+	Foam::HeliumLibrary::dTfine_("dTfine", dimTemperature, 0.0001);
 
 	const Foam::dimensionedScalar
 	Foam::HeliumLibrary::Tlambda_("Tlambda", dimTemperature, 2.16795);
@@ -131,78 +137,27 @@ Foam::HeliumLibrary::HeliumLibrary
 void Foam::HeliumLibrary::calcHeProp
 (
     volScalarField& vsf, 
-	//const List<scalar>& vsfTable,
-	//TODO: sprawdz potem czy sprawdza jak dasz inna wartosc np. 10bar
 	const volScalarField& T,
 	const word wtp,
-	const word wp,
-	//HeliumThermalPropertiesType tp,
-	//HeliumPressures p,
-	const label maxIndex, 
-	const dimensionedScalar dt
+	const word wp
 )
 {
+	const List<scalar>& vsfTable = getThermProp(wtp, wp); 
 	const scalar TMin(TMin_.value());
 	const scalar TMax(TMax_.value());
-	const scalar dT(dt.value());
-
-	// Solution with iterators
-	//forAll(T, celli)
+	const label maxIndex{vsfTable.size()-1};
+	//if (!(maxIndex == indexMax_ || maxIndex == indexMaxFine_))
 	//{
-	//	if (T[celli] < TMin)
-	//	{
-	//		PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-	//		forAllIters(HeThermProps_, iter)
-	//		{
-	//			iter()[celli] = iterTable()[indexMin_];
-	//			iterTable++;
-	//		}
-	//	}
-	//	else if (T[celli] > TMax)
-	//	{
-	//		PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-	//		forAllIters(HeThermProps_, iter)
-	//		{
-	//			iter()[celli] = iterTable()[maxIndex];
-	//			iterTable++;
-	//		}
-	//	}
-	//	else
-	//	{
-	//	    label index = (T[celli] - TMin)/dT;
-	//	    if (index == maxIndex)
-	//	    {
-	//	    	PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-	//	    	forAllIters(HeThermProps_, iter)
-	//	    	{
-	//	    		iter()[celli] = iterTable()[maxIndex];
-	//				iterTable++;
-	//	    	}
-	//	    }
-	//	    else
-	//	    {
-	//	    	scalar Ti1 = TMin + index*dT;
-	//	    	scalar Ti2 = Ti1 + dT;
-	//	    	PtrList<const List<scalar> >::const_iterator iterTable = HeThermPropsTables_.begin();
-	//	    	forAllIters(HeThermProps_, iter)
-	//	    	{
-	//	    		scalar a = (iterTable()[index + 1] - iterTable()[index])/(Ti2 - Ti1);
-	//	    		scalar b = iterTable()[index] - a*Ti1;
-	//	    		iter()[celli] = a*T[celli] + b;
-	//				iterTable++;
-	//	    	}
-	//	    }
-    //    }
+    //    FatalErrorInFunction
+    //        << "Max index of "
+    //        << "thermal property is incorrect: " << maxIndex << endl << endl
+    //        << "Valid indexes are : " << endl
+    //        << indexMax_ << " and " << indexMaxFine_ 
+    //        << exit(FatalError); 
 	//}
+	const scalar dT{maxIndex==indexMaxFine_ ? dTfine_.value() : dT_.value()};
+	//Info<< "????????? dT = " << dT << endl;
 
-	//forAllIters(HeThermProps_, iter)
-	//{
-	//	iter->correctBoundaryConditions();
-	//}
-
-	// Old solution with forAll loops 
-	
-	const List<scalar>& vsfTable = getThermProp(wtp, wp); 
 	forAll(vsf, celli)
 	{
 		if (T[celli] < TMin)
@@ -230,10 +185,6 @@ void Foam::HeliumLibrary::calcHeProp
 			}
 		}
 	}
-
-	// if we have this line probably we do not need 
-	// the second forAll loop over boundaries but it has to be checked
-	//vsf.correctBoundaryConditions();
 
 	forAll(vsf.boundaryField(), patchi)
 	{
@@ -271,18 +222,27 @@ void Foam::HeliumLibrary::calcHeProp
 Foam::volScalarField& Foam::HeliumLibrary::ddT
 (
     volScalarField& derivative,
-	const volScalarField& T,
 	const word wtp,
-	const word wp,
-	const label maxIndex, 
-	const dimensionedScalar dt
-)
+	const volScalarField& T,
+	const word wp
+) const 
 {
+	const List<scalar>& vsfTable = getThermProp(wtp, wp); 
 	const scalar TMin(TMin_.value());
 	const scalar TMax(TMax_.value());
-	const scalar dT(dt.value());
-	
-	const List<scalar>& vsfTable = getThermProp(wtp, wp); 
+	const label maxIndex{vsfTable.size()-1};
+	//if (!(maxIndex == indexMax_ || maxIndex == indexMaxFine_))
+	//{
+    //    FatalErrorInFunction
+    //        << "Max index of "
+    //        << "thermal property is incorrect: " << maxIndex << endl << endl
+    //        << "Valid indexes are : " << endl
+    //        << indexMax_ << " and " << indexMaxFine_ 
+    //        << exit(FatalError); 
+	//}
+	const scalar dT{maxIndex==indexMaxFine_ ? dTfine_.value() : dT_.value()};
+	//Info<< "????????? dT = " << dT << endl;
+
 	forAll(derivative, celli)
 	{
 		if (T[celli] < TMin)

@@ -200,6 +200,32 @@ Foam::HeliumModel::HeliumModel
         U.mesh(),
 		dimensionedScalar("nuHe", dimViscosity, 0.0)//,
 		//"zeroGradient"
+    ),
+    dSdT_
+    (
+        IOobject
+        (
+            name,
+            U_.time().timeName(),
+            U_.db(),
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        U.mesh(),
+		dimensionedScalar(dimensionSet(0,2,-2,-2,0,0,0), 0.0)
+    ),
+    drhodT_
+    (
+        IOobject
+        (
+            name,
+            U_.time().timeName(),
+            U_.db(),
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        U.mesh(),
+		dimensionedScalar(dimDensity/dimTemperature, 0.0)
     )
 {
 	Info<< "\nHelium operating pressure is " << p_ << endl << endl;

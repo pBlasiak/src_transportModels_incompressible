@@ -169,6 +169,18 @@ public:
 			return kHeModelPtr_->kHe();
 		}
 
+		//- Calculates ds/dT - needed in two-fluid model
+		volScalarField& dSdT(const word& p) 
+		{
+			return HeliumModelPtr_->dSdT(p);
+		}
+
+		//- Calculates drho/dT - needed in two-fluid model
+		volScalarField& drhodT(const word& p) 
+		{
+			return HeliumModelPtr_->drhodT(p);
+		}
+
         //- Read transportProperties dictionary
         virtual bool read();
 };
