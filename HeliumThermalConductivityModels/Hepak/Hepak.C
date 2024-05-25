@@ -45,11 +45,15 @@ Foam::HeliumThermalConductivityModels::Hepak::Hepak
     const surfaceScalarField& phi
 )
 :
-    HeliumThermalConductivityModel(typeName, U, phi)
-
-    //Cc_(HeliumThermalConductivityModelCoeffs_.subDict(type() + "Coeffs").lookup("Cc")),
-    //Cv_(HeliumThermalConductivityModelCoeffs_.subDict(type() + "Coeffs").lookup("Cv")),
+    HeliumThermalConductivityModel(typeName, U, phi),
+	isExponentDifferentFrom3_{HeliumPropertiesDict_.getOrDefault<bool>
+		("isExponentDifferentFrom3", false)}
 {
+	if (isExponentDifferentFrom3_)
+	{
+		exponentGM_ = HeliumPropertiesDict_.get<scalar>("exponentGM");
+	}
+	Info<< "Exponent used in Gorter-Mellink relation is: " << exponentGM_ << endl;
 }
 
 
@@ -58,7 +62,16 @@ Foam::HeliumThermalConductivityModels::Hepak::Hepak
 void Foam::HeliumThermalConductivityModels::Hepak::calckHe(const HeliumModel& hm)
 {
 	Info<< "Hepak thermal conductivity model  updates kHe..." << endl;
-	setkHe(pow(hm.onebyf()/magGradT2(), 1./3));
+	if (isExponentDifferentFrom3_)
+	{
+		tmp<volScalarField> tkhe{pow(hm.onebyf()/magGradT2(), 1./exponentGM_)};
+		tkhe.ref().dimensions().reset(dimensionSet{1, 1, -3, -1, 0, 0, 0});
+		setkHe(tkhe);
+	}
+	else
+	{
+		setkHe(pow(hm.onebyf()/magGradT2(), 1./3));
+	}
 }
 
 //bool Foam::HeliumThermalConductivityModels::Hepak::read

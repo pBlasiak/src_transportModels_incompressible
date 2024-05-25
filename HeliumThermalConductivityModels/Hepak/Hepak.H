@@ -53,8 +53,12 @@ class Hepak
 :
     public HeliumThermalConductivityModel
 {
-    // Private data
+    // Flag to change exponent in Gorter-Mellink relation
+	// that defines gradT and q relationship
+	bool isExponentDifferentFrom3_{false};
 
+	// Exponent in Gorter-Mellink relation
+	scalar exponentGM_{3.0};
 		
 
 public:
