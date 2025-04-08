@@ -181,7 +181,8 @@ private:
         //- Disallow default bitwise assignment
         void operator=(const HeliumLibrary&);
 
-
+		//- Returns dimensions of HeII property
+		dimensionSet getThermPropDimensions(const word& wtp) const;
 public:
 
 
@@ -218,6 +219,15 @@ public:
 		{
 			return Tlambda_;
 		}
+
+		//- Calculates thermal property of HeII at specific 
+		//  temperature and pressure
+        dimensionedScalar calcHeProp
+		(
+			const dimensionedScalar& temp,
+			const word wthermalProperty,
+			const word wpressure = "SVP"
+		) const;
 
 		//- Calculates helium thermal property based on temperature
         void calcHeProp

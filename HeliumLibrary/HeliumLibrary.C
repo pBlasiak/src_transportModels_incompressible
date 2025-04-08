@@ -81,6 +81,30 @@ namespace Foam
 	#include "staticTables.H"
 }
 
+// * * * * * * * * * * * * * * Private Member Functions  * * * * * * * * * * * * * * //
+Foam::dimensionSet Foam::HeliumLibrary::getThermPropDimensions
+(
+	const word& wtp
+) const
+{
+	switch (HeliumThermalPropertyTypeNames_[wtp])
+	{
+		case thermalExpansion:
+			return dimensionSet{dimless/dimTemperature};
+		case AGMCoeff:
+			return dimensionSet(0,0,-1,1,0,0,0);
+		case entropy:
+			return dimensionSet{dimEnergy/dimMass};
+		case dynamicViscosity:
+			return dimensionSet{dimPressure*dimTime};
+		case specificHeatCapacity:
+			return dimensionSet{dimEnergy/dimMass/dimTemperature};
+		case density:
+			return dimensionSet{dimMass/dimVolume};
+		default:
+			FatalErrorInFunction << "Unknown model selected" << abort(FatalError);
+	}
+}
 
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
@@ -133,6 +157,47 @@ Foam::HeliumLibrary::HeliumLibrary
 
 
 // * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * * //
+
+Foam::dimensionedScalar Foam::HeliumLibrary::calcHeProp
+(
+	const dimensionedScalar& temp,
+	const word wtp,
+	const word wp
+) const
+{
+	scalar heProp{};
+	const List<scalar>& vsfTable = getThermProp(wtp, wp); 
+	const scalar TMin(TMin_.value());
+	const scalar TMax(TMax_.value());
+	const label maxIndex{vsfTable.size()-1};
+	const scalar dT{maxIndex==indexMaxFine_ ? dTfine_.value() : dT_.value()};
+
+	if (temp.value() < TMin)
+	{
+		heProp = vsfTable[indexMin_];
+	}
+	else if (temp.value() > TMax)
+	{
+		heProp = vsfTable[maxIndex];
+	}
+	else
+	{
+		label index = (temp.value() - TMin)/dT;
+		if (index == maxIndex)
+		{
+			heProp = vsfTable[maxIndex];
+		}
+		else
+		{
+			scalar Ti1 = TMin + index*dT;
+			scalar Ti2 = Ti1 + dT;
+			scalar a = (vsfTable[index + 1] - vsfTable[index])/(Ti2 - Ti1);
+			scalar b = vsfTable[index] - a*Ti1;
+			heProp = a*temp.value() + b;
+		}
+	}
+	return dimensionedScalar{getThermPropDimensions(wtp), heProp};
+}
 
 void Foam::HeliumLibrary::calcHeProp
 (

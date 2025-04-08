@@ -268,6 +268,18 @@ public:
 			return hl_.ddT(drhodT_, "rho", T, p);
 		}
 
+		//- Calculates thermal property of HeII at specific 
+		//  temperature and pressure
+		dimensionedScalar thermProp
+		(
+			const dimensionedScalar& temp, 
+			const word& wtp,
+			const word& wp = "SVP"
+		) const
+		{
+			return hl_.calcHeProp(temp,wtp,wp);
+		}
+
 		static const dimensionedScalar Tlambda() 
 		{
 			return HeliumLibrary::Tlambda();

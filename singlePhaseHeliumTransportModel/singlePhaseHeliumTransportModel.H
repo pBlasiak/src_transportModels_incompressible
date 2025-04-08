@@ -181,6 +181,18 @@ public:
 			return HeliumModelPtr_->drhodT(p);
 		}
 
+		//- Calculates thermal property of HeII at specific 
+		//  temperature and pressure
+		dimensionedScalar heThermProp
+		(
+			const dimensionedScalar& temp, 
+			const word& wtp,
+			const word& wp = "SVP"
+		) const
+		{
+			return HeliumModelPtr_->thermProp(temp,wtp,wp);
+		}
+
         //- Read transportProperties dictionary
         virtual bool read();
 };
