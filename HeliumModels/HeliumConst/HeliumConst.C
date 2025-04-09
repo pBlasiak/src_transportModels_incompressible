@@ -50,8 +50,9 @@ namespace HeliumModels
 Foam::tmp<Foam::volScalarField>
 Foam::HeliumModels::HeliumConst::calcNu() 
 {
-	calcHeProp(etaHe_, etaHeTable_, TMean_);
-	calcHeProp(rhoHe_, rhoHeTable_, TMean_);
+	Info<< "Jestem w calcNu() w HeliumConst. " << endl;
+	hl_.calcHeProp(etaHe_, TMean_, "eta", p_);
+	hl_.calcHeProp(rhoHe_, TMean_, "rho", p_);
 
 	return tmp<volScalarField>
 	(
@@ -91,13 +92,13 @@ Foam::HeliumModels::HeliumConst::HeliumConst
 		TMean0_
     )
 {
-	Info<< "HeliumConst calculates thermal properties for TMean = " << TMean_ << endl;
+	Info<< "HeliumConst calculates thermal properties for TMean = " << TMean0_ << endl;
 	nu_ = calcNu();
-	calcHeProp(betaHe_, betaHeTable_, TMean_);
-	calcHeProp(AGMHe_, AGMHeTable_, TMean_);
-	calcHeProp(sHe_, sHeTable_, TMean_);
-	calcHeProp(cpHe_, cpHeTable_, TMean_);
-	calcHeProp(onebyf_, onebyfTable_, TMean_);
+	hl_.calcHeProp(betaHe_, TMean_, "beta", p_);
+	hl_.calcHeProp(AGMHe_, TMean_, "AGM", p_);
+	hl_.calcHeProp(sHe_, TMean_, "s", p_);
+	hl_.calcHeProp(cpHe_, TMean_, "cp", p_);
+	hl_.calcHeProp(onebyf_, TMean_, "oneByf", p_);
 
 	Info<< "TMean = " << TMean_ << endl;
 	Info<< "betaHe = " << betaHe_ << endl;
@@ -115,8 +116,9 @@ Foam::HeliumModels::HeliumConst::HeliumConst
 void Foam::HeliumModels::HeliumConst::correct()
 {
 	const volScalarField& T = U_.db().lookupObject<volScalarField>("T");
-	Info<< "HeliumComst updates rhon and rhos..." << endl;
-	rhon_ = rhoHe_*pow(max(T/Tlambda_, dimensionedScalar("small", dimless, SMALL)), scalar(5.6));
+	Info<< "HeliumConst updates rhon and rhos..." << endl;
+	const dimensionedScalar Tlambda{hl_.Tlambda()};
+	rhon_ = rhoHe_*pow(max(T/Tlambda, dimensionedScalar("small", dimless, SMALL)), scalar(5.6));
 	rhos_ = rhoHe_ - rhon_; 
 }
 
@@ -133,11 +135,11 @@ bool Foam::HeliumModels::HeliumConst::read
 
 	Info<< "HeliumConst updates thermal properties..." << endl;
 	nu_ = calcNu();
-	calcHeProp(betaHe_, betaHeTable_, TMean_);
-	calcHeProp(AGMHe_, AGMHeTable_, TMean_);
-	calcHeProp(sHe_, sHeTable_, TMean_);
-	calcHeProp(cpHe_, cpHeTable_, TMean_);
-	calcHeProp(onebyf_, onebyfTable_, TMean_);
+	hl_.calcHeProp(betaHe_, TMean_, "beta", p_);
+	hl_.calcHeProp(AGMHe_, TMean_, "AGM", p_);
+	hl_.calcHeProp(sHe_, TMean_, "s", p_);
+	hl_.calcHeProp(cpHe_, TMean_, "cp", p_);
+	hl_.calcHeProp(onebyf_, TMean_, "oneByf", p_);
 
 	Info<< "TMean = " << TMean_ << endl;
 	Info<< "betaHe = " << betaHe_ << endl;

@@ -4,6 +4,7 @@ HeliumThermalConductivityModels/HeliumThermalConductivityModel/HeliumThermalCond
 HeliumThermalConductivityModels/HeliumThermalConductivityModel/HeliumThermalConductivityModelNew.C
 HeliumThermalConductivityModels/Hepak/Hepak.C
 HeliumModels/Helium/Helium.C
+HeliumModels/HeliumConst/HeliumConst.C
 HeliumLibrary/HeliumLibrary.C
 
 singlePhaseHeliumTransportModel/singlePhaseHeliumTransportModel.C
